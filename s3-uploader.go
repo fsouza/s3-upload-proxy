@@ -25,6 +25,7 @@ type Config struct {
 	HealthcheckPath string            `envconfig:"HEALTHCHECK_PATH" default:"/healthcheck"`
 	HTTPPort        int               `envconfig:"HTTP_PORT" default:"80"`
 	LogLevel        string            `envconfig:"LOG_LEVEL" default:"debug"`
+	FastlySurrogate bool              `envconfig:"FASTLY_SURROGATE_CACHE"`
 	CacheControl    cacheControlRules `envconfig:"CACHE_CONTROL_RULES"`
 }
 
@@ -42,6 +43,16 @@ func (c *Config) logger() *logrus.Logger {
 	logger := logrus.New()
 	logger.Level = level
 	return logger
+}
+
+func (c *Config) addCacheMetadata(input *s3manager.UploadInput) {
+	if value := c.CacheControl.headerValue(aws.StringValue(input.Key)); value != nil {
+		if c.FastlySurrogate {
+			input.Metadata["surrogate-control"] = value
+		} else {
+			input.CacheControl = value
+		}
+	}
 }
 
 func healthcheck(w http.ResponseWriter, r *http.Request) {
@@ -76,13 +87,15 @@ func main() {
 		contentType := mime.TypeByExtension(filepath.Ext(key))
 		logFields := logrus.Fields{"bucket": cfg.BucketName, "objectKey": key}
 		logger.WithFields(logFields).WithField("contentType", contentType).Debug("uploading file to S3")
-		_, err = uploader.Upload(&s3manager.UploadInput{
-			Bucket:       aws.String(cfg.BucketName),
-			Key:          aws.String(key),
-			Body:         r.Body,
-			ContentType:  aws.String(contentType),
-			CacheControl: cfg.CacheControl.headerValue(key),
-		})
+		input := s3manager.UploadInput{
+			Bucket:      aws.String(cfg.BucketName),
+			Key:         aws.String(key),
+			Body:        r.Body,
+			ContentType: aws.String(contentType),
+			Metadata:    make(map[string]*string),
+		}
+		cfg.addCacheMetadata(&input)
+		_, err = uploader.Upload(&input)
 		if err != nil {
 			logger.WithFields(logFields).WithError(err).Error("failed to upload file")
 			http.Error(w, err.Error(), http.StatusInternalServerError)

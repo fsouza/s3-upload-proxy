@@ -28,13 +28,14 @@ Environment variables
 s3-upload-proxy configuration's is defined using the following environment
 variables:
 
-| Variable            | Default value | Required  |
-| ------------------- | ------------- | --------- |
-| BUCKET_NAME         |               | Yes       |
-| HEALTHCHECK_PATH    | /healthcheck  | No        |
-| HTTP_PORT           | 80            | No        |
-| LOG_LEVEL           | debug         | No        |
-| CACHE_CONTROL_RULES |               | No        |
+| Variable               | Default value | Required | Description                                                                             |
+| -------------------    | ------------- | -------- | --------------------------------------------------------------------------------------- |
+| BUCKET_NAME            |               | Yes      | Name of the bucket                                                                      |
+| HEALTHCHECK_PATH       | /healthcheck  | No       | Path for healthcheck                                                                    |
+| HTTP_PORT              | 80            | No       | Port to bind (unsigned int)                                                             |
+| LOG_LEVEL              | debug         | No       | Logging level                                                                           |
+| CACHE_CONTROL_RULES    |               | No       | JSON array with cache control rules (see below)                                         |
+| FASTLY_SURROGATE_CACHE | false         | No       | Whether or not to use Fastly surrogate caching headers instead of regular Cache-Control |
 
 Defining cache-control rules
 ----------------------------
