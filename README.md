@@ -28,11 +28,25 @@ Environment variables
 s3-upload-proxy configuration's is defined using the following environment
 variables:
 
-| Variable         | Default value | Required  |
-| ---------------- | ------------- | --------- |
-| BUCKET_NAME      |               | Yes       |
-| HEALTHCHECK_PATH | /healthcheck  | No        |
-| HTTP_PORT        | 80            | No        |
-| LOG_LEVEL        | debug         | No        |
+| Variable            | Default value | Required  |
+| ------------------- | ------------- | --------- |
+| BUCKET_NAME         |               | Yes       |
+| HEALTHCHECK_PATH    | /healthcheck  | No        |
+| HTTP_PORT           | 80            | No        |
+| LOG_LEVEL           | debug         | No        |
+| CACHE_CONTROL_RULES |               | No        |
+
+Defining cache-control rules
+----------------------------
+
+The tool also allow configuration for cache-control rules. The value of the
+environment variable ``CACHE_CONTROL_RULES`` is a JSON array with the rules. An
+example:
+
+```
+% export CACHE_CONTROL_RULES='[{"ext":".mp4","maxAge":3600},{"ext":".ts","maxAge":99999999},{"ext":".m3u8","private":true}]'
+```
+
+Notice that the extension must include the dot.
 
 Also available on Docker Hub: https://hub.docker.com/r/fsouza/s3-upload-proxy/.
