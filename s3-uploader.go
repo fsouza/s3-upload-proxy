@@ -20,7 +20,6 @@ type Config struct {
 	BucketName      string `envconfig:"BUCKET_NAME" required:"true"`
 	HealthcheckPath string `envconfig:"HEALTHCHECK_PATH" default:"/healthcheck"`
 	HTTPPort        int    `envconfig:"HTTP_PORT" default:"80"`
-	UploadBasePath  string `envconfig:"UPLOAD_BASE_PATH"`
 	LogLevel        string `envconfig:"LOG_LEVEL" default:"debug"`
 }
 
@@ -41,6 +40,10 @@ func (c *Config) logger() *logrus.Logger {
 }
 
 func healthcheck(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "GET" {
+		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
 	w.WriteHeader(http.StatusOK)
 }
 
