@@ -91,5 +91,6 @@ func main() {
 		logger.WithError(err).Fatal("failed to start listener")
 	}
 	defer listener.Close()
+	logger.Infof("listening on %s", listener.Addr())
 	http.Serve(listener, nil)
 }
