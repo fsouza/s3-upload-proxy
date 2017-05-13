@@ -68,13 +68,14 @@ func main() {
 		}
 
 		key := strings.TrimLeft(r.URL.Path, "/")
+		contentType := mime.TypeByExtension(filepath.Ext(key))
 		logFields := logrus.Fields{"bucket": cfg.BucketName, "objectKey": key}
-		logger.WithFields(logFields).Debug("uploading file to S3")
+		logger.WithFields(logFields).WithField("contentType", contentType).Debug("uploading file to S3")
 		_, err = uploader.Upload(&s3manager.UploadInput{
 			Bucket:      aws.String(cfg.BucketName),
 			Key:         aws.String(key),
 			Body:        r.Body,
-			ContentType: aws.String(mime.TypeByExtension(filepath.Ext(key))),
+			ContentType: aws.String(contentType),
 		})
 		if err != nil {
 			logger.WithFields(logFields).WithError(err).Error("failed to upload file")
