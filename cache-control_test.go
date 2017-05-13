@@ -48,6 +48,7 @@ func TestCacheControlHeaderValue(t *testing.T) {
 	rules := cacheControlRules{
 		cacheControlRule{Extension: ".mp4", MaxAge: 123456},
 		cacheControlRule{Extension: ".html", MaxAge: 60},
+		cacheControlRule{Extension: ".m3u8", Private: true},
 	}
 	var tests = []struct {
 		input    string
@@ -64,6 +65,10 @@ func TestCacheControlHeaderValue(t *testing.T) {
 		{
 			"some/path/index.html",
 			aws.String("max-age=60"),
+		},
+		{
+			"video/master.m3u8",
+			aws.String("private"),
 		},
 		{
 			"some/path/video.webm",

@@ -15,6 +15,14 @@ type cacheControlRules []cacheControlRule
 type cacheControlRule struct {
 	Extension string `json:"ext"`
 	MaxAge    uint   `json:"maxAge"`
+	Private   bool   `json:"private"`
+}
+
+func (r cacheControlRule) String() string {
+	if r.Private {
+		return "private"
+	}
+	return fmt.Sprintf("max-age=%d", r.MaxAge)
 }
 
 func (c *cacheControlRules) Set(value string) error {
@@ -24,15 +32,14 @@ func (c *cacheControlRules) Set(value string) error {
 
 func (c cacheControlRules) headerValue(file string) *string {
 	var (
-		found  bool
-		maxAge uint
+		found bool
+		rule  cacheControlRule
 	)
-
 	ext := filepath.Ext(file)
-	for _, rule := range c {
+
+	for _, rule = range c {
 		if rule.Extension == ext {
 			found = true
-			maxAge = rule.MaxAge
 			break
 		}
 	}
@@ -40,6 +47,6 @@ func (c cacheControlRules) headerValue(file string) *string {
 	if !found {
 		return nil
 	}
-	cacheControl := fmt.Sprintf("max-age=%d", maxAge)
+	cacheControl := rule.String()
 	return &cacheControl
 }
