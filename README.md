@@ -25,7 +25,7 @@ Having Go and AWS credentials, just set the environment variable
 Environment variables
 ---------------------
 
-s3-upload-proxy configuration's is defined in the following environment
+s3-upload-proxy configuration's is defined using the following environment
 variables:
 
 | Variable         | Default value | Required  |
