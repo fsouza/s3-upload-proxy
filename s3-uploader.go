@@ -21,10 +21,11 @@ import (
 
 // Config is the configuration of the s3-uploader.
 type Config struct {
-	BucketName      string `envconfig:"BUCKET_NAME" required:"true"`
-	HealthcheckPath string `envconfig:"HEALTHCHECK_PATH" default:"/healthcheck"`
-	HTTPPort        int    `envconfig:"HTTP_PORT" default:"80"`
-	LogLevel        string `envconfig:"LOG_LEVEL" default:"debug"`
+	BucketName      string            `envconfig:"BUCKET_NAME" required:"true"`
+	HealthcheckPath string            `envconfig:"HEALTHCHECK_PATH" default:"/healthcheck"`
+	HTTPPort        int               `envconfig:"HTTP_PORT" default:"80"`
+	LogLevel        string            `envconfig:"LOG_LEVEL" default:"debug"`
+	CacheControl    cacheControlRules `envconfig:"CACHE_CONTROL_RULES"`
 }
 
 func loadConfig() (Config, error) {
@@ -76,10 +77,11 @@ func main() {
 		logFields := logrus.Fields{"bucket": cfg.BucketName, "objectKey": key}
 		logger.WithFields(logFields).WithField("contentType", contentType).Debug("uploading file to S3")
 		_, err = uploader.Upload(&s3manager.UploadInput{
-			Bucket:      aws.String(cfg.BucketName),
-			Key:         aws.String(key),
-			Body:        r.Body,
-			ContentType: aws.String(contentType),
+			Bucket:       aws.String(cfg.BucketName),
+			Key:          aws.String(key),
+			Body:         r.Body,
+			ContentType:  aws.String(contentType),
+			CacheControl: cfg.CacheControl.headerValue(key),
 		})
 		if err != nil {
 			logger.WithFields(logFields).WithError(err).Error("failed to upload file")
