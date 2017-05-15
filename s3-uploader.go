@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/Sirupsen/logrus"
 	"github.com/aws/aws-sdk-go/aws"
@@ -86,7 +87,6 @@ func main() {
 		key := strings.TrimLeft(r.URL.Path, "/")
 		contentType := mime.TypeByExtension(filepath.Ext(key))
 		logFields := logrus.Fields{"bucket": cfg.BucketName, "objectKey": key}
-		logger.WithFields(logFields).WithField("contentType", contentType).Debug("uploading file to S3")
 		input := s3manager.UploadInput{
 			Bucket:      aws.String(cfg.BucketName),
 			Key:         aws.String(key),
@@ -95,12 +95,14 @@ func main() {
 			Metadata:    make(map[string]*string),
 		}
 		cfg.addCacheMetadata(&input)
+		start := time.Now()
 		_, err = uploader.Upload(&input)
 		if err != nil {
 			logger.WithFields(logFields).WithError(err).Error("failed to upload file")
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
+		logger.WithFields(logFields).WithField("contentType", contentType).Debugf("finished upload in %s", time.Since(start))
 		fmt.Fprintln(w, "OK")
 	})
 
