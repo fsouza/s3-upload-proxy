@@ -78,6 +78,7 @@ func main() {
 	uploader := s3manager.NewUploader(sess)
 	http.HandleFunc(cfg.HealthcheckPath, healthcheck)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		start := time.Now()
 		defer r.Body.Close()
 		if r.Method != "POST" && r.Method != "PUT" {
 			http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
@@ -95,7 +96,6 @@ func main() {
 			Metadata:    make(map[string]*string),
 		}
 		cfg.addCacheMetadata(&input)
-		start := time.Now()
 		_, err = uploader.Upload(&input)
 		if err != nil {
 			logger.WithFields(logFields).WithError(err).Error("failed to upload file")
