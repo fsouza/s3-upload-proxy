@@ -179,6 +179,12 @@
 			"revisionTime": "2017-04-24T16:37:37Z"
 		},
 		{
+			"checksumSHA1": "/YsxkUA+LSSCvK4zVU7Oa3s0470=",
+			"path": "github.com/sirupsen/logrus",
+			"revision": "3d4380f53a34dcdc95f0c1db702615992b38d9a4",
+			"revisionTime": "2017-06-20T14:45:10Z"
+		},
+		{
 			"checksumSHA1": "rTPzsn0jeqfgnQR0OsMKR8JRy5Y=",
 			"path": "golang.org/x/sys/unix",
 			"revision": "e24f485414aeafb646f6fca458b0bf869c0880a1",
