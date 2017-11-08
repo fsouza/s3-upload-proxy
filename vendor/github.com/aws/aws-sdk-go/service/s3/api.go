@@ -18,19 +18,18 @@ const opAbortMultipartUpload = "AbortMultipartUpload"
 
 // AbortMultipartUploadRequest generates a "aws/request.Request" representing the
 // client's request for the AbortMultipartUpload operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See AbortMultipartUpload for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the AbortMultipartUpload method directly
-// instead.
+// See AbortMultipartUpload for more information on using the AbortMultipartUpload
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the AbortMultipartUploadRequest method.
 //    req, resp := client.AbortMultipartUploadRequest(params)
@@ -102,19 +101,18 @@ const opCompleteMultipartUpload = "CompleteMultipartUpload"
 
 // CompleteMultipartUploadRequest generates a "aws/request.Request" representing the
 // client's request for the CompleteMultipartUpload operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See CompleteMultipartUpload for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the CompleteMultipartUpload method directly
-// instead.
+// See CompleteMultipartUpload for more information on using the CompleteMultipartUpload
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the CompleteMultipartUploadRequest method.
 //    req, resp := client.CompleteMultipartUploadRequest(params)
@@ -177,19 +175,18 @@ const opCopyObject = "CopyObject"
 
 // CopyObjectRequest generates a "aws/request.Request" representing the
 // client's request for the CopyObject operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See CopyObject for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the CopyObject method directly
-// instead.
+// See CopyObject for more information on using the CopyObject
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the CopyObjectRequest method.
 //    req, resp := client.CopyObjectRequest(params)
@@ -258,19 +255,18 @@ const opCreateBucket = "CreateBucket"
 
 // CreateBucketRequest generates a "aws/request.Request" representing the
 // client's request for the CreateBucket operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See CreateBucket for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the CreateBucket method directly
-// instead.
+// See CreateBucket for more information on using the CreateBucket
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the CreateBucketRequest method.
 //    req, resp := client.CreateBucketRequest(params)
@@ -341,19 +337,18 @@ const opCreateMultipartUpload = "CreateMultipartUpload"
 
 // CreateMultipartUploadRequest generates a "aws/request.Request" representing the
 // client's request for the CreateMultipartUpload operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See CreateMultipartUpload for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the CreateMultipartUpload method directly
-// instead.
+// See CreateMultipartUpload for more information on using the CreateMultipartUpload
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the CreateMultipartUploadRequest method.
 //    req, resp := client.CreateMultipartUploadRequest(params)
@@ -422,19 +417,18 @@ const opDeleteBucket = "DeleteBucket"
 
 // DeleteBucketRequest generates a "aws/request.Request" representing the
 // client's request for the DeleteBucket operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See DeleteBucket for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the DeleteBucket method directly
-// instead.
+// See DeleteBucket for more information on using the DeleteBucket
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the DeleteBucketRequest method.
 //    req, resp := client.DeleteBucketRequest(params)
@@ -500,19 +494,18 @@ const opDeleteBucketAnalyticsConfiguration = "DeleteBucketAnalyticsConfiguration
 
 // DeleteBucketAnalyticsConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the DeleteBucketAnalyticsConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See DeleteBucketAnalyticsConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the DeleteBucketAnalyticsConfiguration method directly
-// instead.
+// See DeleteBucketAnalyticsConfiguration for more information on using the DeleteBucketAnalyticsConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the DeleteBucketAnalyticsConfigurationRequest method.
 //    req, resp := client.DeleteBucketAnalyticsConfigurationRequest(params)
@@ -578,19 +571,18 @@ const opDeleteBucketCors = "DeleteBucketCors"
 
 // DeleteBucketCorsRequest generates a "aws/request.Request" representing the
 // client's request for the DeleteBucketCors operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See DeleteBucketCors for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the DeleteBucketCors method directly
-// instead.
+// See DeleteBucketCors for more information on using the DeleteBucketCors
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the DeleteBucketCorsRequest method.
 //    req, resp := client.DeleteBucketCorsRequest(params)
@@ -651,23 +643,98 @@ func (c *S3) DeleteBucketCorsWithContext(ctx aws.Context, input *DeleteBucketCor
 	return out, req.Send()
 }
 
+const opDeleteBucketEncryption = "DeleteBucketEncryption"
+
+// DeleteBucketEncryptionRequest generates a "aws/request.Request" representing the
+// client's request for the DeleteBucketEncryption operation. The "output" return
+// value will be populated with the request's response once the request complets
+// successfuly.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See DeleteBucketEncryption for more information on using the DeleteBucketEncryption
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//
+//    // Example sending a request using the DeleteBucketEncryptionRequest method.
+//    req, resp := client.DeleteBucketEncryptionRequest(params)
+//
+//    err := req.Send()
+//    if err == nil { // resp is now filled
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketEncryption
+func (c *S3) DeleteBucketEncryptionRequest(input *DeleteBucketEncryptionInput) (req *request.Request, output *DeleteBucketEncryptionOutput) {
+	op := &request.Operation{
+		Name:       opDeleteBucketEncryption,
+		HTTPMethod: "DELETE",
+		HTTPPath:   "/{Bucket}?encryption",
+	}
+
+	if input == nil {
+		input = &DeleteBucketEncryptionInput{}
+	}
+
+	output = &DeleteBucketEncryptionOutput{}
+	req = c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Remove(restxml.UnmarshalHandler)
+	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
+	return
+}
+
+// DeleteBucketEncryption API operation for Amazon Simple Storage Service.
+//
+// Deletes the server-side encryption configuration from the bucket.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon Simple Storage Service's
+// API operation DeleteBucketEncryption for usage and error information.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketEncryption
+func (c *S3) DeleteBucketEncryption(input *DeleteBucketEncryptionInput) (*DeleteBucketEncryptionOutput, error) {
+	req, out := c.DeleteBucketEncryptionRequest(input)
+	return out, req.Send()
+}
+
+// DeleteBucketEncryptionWithContext is the same as DeleteBucketEncryption with the addition of
+// the ability to pass a context and additional request options.
+//
+// See DeleteBucketEncryption for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *S3) DeleteBucketEncryptionWithContext(ctx aws.Context, input *DeleteBucketEncryptionInput, opts ...request.Option) (*DeleteBucketEncryptionOutput, error) {
+	req, out := c.DeleteBucketEncryptionRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opDeleteBucketInventoryConfiguration = "DeleteBucketInventoryConfiguration"
 
 // DeleteBucketInventoryConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the DeleteBucketInventoryConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See DeleteBucketInventoryConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the DeleteBucketInventoryConfiguration method directly
-// instead.
+// See DeleteBucketInventoryConfiguration for more information on using the DeleteBucketInventoryConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the DeleteBucketInventoryConfigurationRequest method.
 //    req, resp := client.DeleteBucketInventoryConfigurationRequest(params)
@@ -733,19 +800,18 @@ const opDeleteBucketLifecycle = "DeleteBucketLifecycle"
 
 // DeleteBucketLifecycleRequest generates a "aws/request.Request" representing the
 // client's request for the DeleteBucketLifecycle operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See DeleteBucketLifecycle for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the DeleteBucketLifecycle method directly
-// instead.
+// See DeleteBucketLifecycle for more information on using the DeleteBucketLifecycle
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the DeleteBucketLifecycleRequest method.
 //    req, resp := client.DeleteBucketLifecycleRequest(params)
@@ -810,19 +876,18 @@ const opDeleteBucketMetricsConfiguration = "DeleteBucketMetricsConfiguration"
 
 // DeleteBucketMetricsConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the DeleteBucketMetricsConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See DeleteBucketMetricsConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the DeleteBucketMetricsConfiguration method directly
-// instead.
+// See DeleteBucketMetricsConfiguration for more information on using the DeleteBucketMetricsConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the DeleteBucketMetricsConfigurationRequest method.
 //    req, resp := client.DeleteBucketMetricsConfigurationRequest(params)
@@ -888,19 +953,18 @@ const opDeleteBucketPolicy = "DeleteBucketPolicy"
 
 // DeleteBucketPolicyRequest generates a "aws/request.Request" representing the
 // client's request for the DeleteBucketPolicy operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See DeleteBucketPolicy for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the DeleteBucketPolicy method directly
-// instead.
+// See DeleteBucketPolicy for more information on using the DeleteBucketPolicy
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the DeleteBucketPolicyRequest method.
 //    req, resp := client.DeleteBucketPolicyRequest(params)
@@ -965,19 +1029,18 @@ const opDeleteBucketReplication = "DeleteBucketReplication"
 
 // DeleteBucketReplicationRequest generates a "aws/request.Request" representing the
 // client's request for the DeleteBucketReplication operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See DeleteBucketReplication for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the DeleteBucketReplication method directly
-// instead.
+// See DeleteBucketReplication for more information on using the DeleteBucketReplication
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the DeleteBucketReplicationRequest method.
 //    req, resp := client.DeleteBucketReplicationRequest(params)
@@ -1042,19 +1105,18 @@ const opDeleteBucketTagging = "DeleteBucketTagging"
 
 // DeleteBucketTaggingRequest generates a "aws/request.Request" representing the
 // client's request for the DeleteBucketTagging operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See DeleteBucketTagging for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the DeleteBucketTagging method directly
-// instead.
+// See DeleteBucketTagging for more information on using the DeleteBucketTagging
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the DeleteBucketTaggingRequest method.
 //    req, resp := client.DeleteBucketTaggingRequest(params)
@@ -1119,19 +1181,18 @@ const opDeleteBucketWebsite = "DeleteBucketWebsite"
 
 // DeleteBucketWebsiteRequest generates a "aws/request.Request" representing the
 // client's request for the DeleteBucketWebsite operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See DeleteBucketWebsite for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the DeleteBucketWebsite method directly
-// instead.
+// See DeleteBucketWebsite for more information on using the DeleteBucketWebsite
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the DeleteBucketWebsiteRequest method.
 //    req, resp := client.DeleteBucketWebsiteRequest(params)
@@ -1196,19 +1257,18 @@ const opDeleteObject = "DeleteObject"
 
 // DeleteObjectRequest generates a "aws/request.Request" representing the
 // client's request for the DeleteObject operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See DeleteObject for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the DeleteObject method directly
-// instead.
+// See DeleteObject for more information on using the DeleteObject
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the DeleteObjectRequest method.
 //    req, resp := client.DeleteObjectRequest(params)
@@ -1273,19 +1333,18 @@ const opDeleteObjectTagging = "DeleteObjectTagging"
 
 // DeleteObjectTaggingRequest generates a "aws/request.Request" representing the
 // client's request for the DeleteObjectTagging operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See DeleteObjectTagging for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the DeleteObjectTagging method directly
-// instead.
+// See DeleteObjectTagging for more information on using the DeleteObjectTagging
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the DeleteObjectTaggingRequest method.
 //    req, resp := client.DeleteObjectTaggingRequest(params)
@@ -1348,19 +1407,18 @@ const opDeleteObjects = "DeleteObjects"
 
 // DeleteObjectsRequest generates a "aws/request.Request" representing the
 // client's request for the DeleteObjects operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See DeleteObjects for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the DeleteObjects method directly
-// instead.
+// See DeleteObjects for more information on using the DeleteObjects
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the DeleteObjectsRequest method.
 //    req, resp := client.DeleteObjectsRequest(params)
@@ -1424,19 +1482,18 @@ const opGetBucketAccelerateConfiguration = "GetBucketAccelerateConfiguration"
 
 // GetBucketAccelerateConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketAccelerateConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketAccelerateConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketAccelerateConfiguration method directly
-// instead.
+// See GetBucketAccelerateConfiguration for more information on using the GetBucketAccelerateConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketAccelerateConfigurationRequest method.
 //    req, resp := client.GetBucketAccelerateConfigurationRequest(params)
@@ -1499,19 +1556,18 @@ const opGetBucketAcl = "GetBucketAcl"
 
 // GetBucketAclRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketAcl operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketAcl for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketAcl method directly
-// instead.
+// See GetBucketAcl for more information on using the GetBucketAcl
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketAclRequest method.
 //    req, resp := client.GetBucketAclRequest(params)
@@ -1574,19 +1630,18 @@ const opGetBucketAnalyticsConfiguration = "GetBucketAnalyticsConfiguration"
 
 // GetBucketAnalyticsConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketAnalyticsConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketAnalyticsConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketAnalyticsConfiguration method directly
-// instead.
+// See GetBucketAnalyticsConfiguration for more information on using the GetBucketAnalyticsConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketAnalyticsConfigurationRequest method.
 //    req, resp := client.GetBucketAnalyticsConfigurationRequest(params)
@@ -1650,19 +1705,18 @@ const opGetBucketCors = "GetBucketCors"
 
 // GetBucketCorsRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketCors operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketCors for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketCors method directly
-// instead.
+// See GetBucketCors for more information on using the GetBucketCors
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketCorsRequest method.
 //    req, resp := client.GetBucketCorsRequest(params)
@@ -1721,23 +1775,96 @@ func (c *S3) GetBucketCorsWithContext(ctx aws.Context, input *GetBucketCorsInput
 	return out, req.Send()
 }
 
+const opGetBucketEncryption = "GetBucketEncryption"
+
+// GetBucketEncryptionRequest generates a "aws/request.Request" representing the
+// client's request for the GetBucketEncryption operation. The "output" return
+// value will be populated with the request's response once the request complets
+// successfuly.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See GetBucketEncryption for more information on using the GetBucketEncryption
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//
+//    // Example sending a request using the GetBucketEncryptionRequest method.
+//    req, resp := client.GetBucketEncryptionRequest(params)
+//
+//    err := req.Send()
+//    if err == nil { // resp is now filled
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketEncryption
+func (c *S3) GetBucketEncryptionRequest(input *GetBucketEncryptionInput) (req *request.Request, output *GetBucketEncryptionOutput) {
+	op := &request.Operation{
+		Name:       opGetBucketEncryption,
+		HTTPMethod: "GET",
+		HTTPPath:   "/{Bucket}?encryption",
+	}
+
+	if input == nil {
+		input = &GetBucketEncryptionInput{}
+	}
+
+	output = &GetBucketEncryptionOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// GetBucketEncryption API operation for Amazon Simple Storage Service.
+//
+// Returns the server-side encryption configuration of a bucket.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon Simple Storage Service's
+// API operation GetBucketEncryption for usage and error information.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketEncryption
+func (c *S3) GetBucketEncryption(input *GetBucketEncryptionInput) (*GetBucketEncryptionOutput, error) {
+	req, out := c.GetBucketEncryptionRequest(input)
+	return out, req.Send()
+}
+
+// GetBucketEncryptionWithContext is the same as GetBucketEncryption with the addition of
+// the ability to pass a context and additional request options.
+//
+// See GetBucketEncryption for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *S3) GetBucketEncryptionWithContext(ctx aws.Context, input *GetBucketEncryptionInput, opts ...request.Option) (*GetBucketEncryptionOutput, error) {
+	req, out := c.GetBucketEncryptionRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opGetBucketInventoryConfiguration = "GetBucketInventoryConfiguration"
 
 // GetBucketInventoryConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketInventoryConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketInventoryConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketInventoryConfiguration method directly
-// instead.
+// See GetBucketInventoryConfiguration for more information on using the GetBucketInventoryConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketInventoryConfigurationRequest method.
 //    req, resp := client.GetBucketInventoryConfigurationRequest(params)
@@ -1801,19 +1928,18 @@ const opGetBucketLifecycle = "GetBucketLifecycle"
 
 // GetBucketLifecycleRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketLifecycle operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketLifecycle for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketLifecycle method directly
-// instead.
+// See GetBucketLifecycle for more information on using the GetBucketLifecycle
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketLifecycleRequest method.
 //    req, resp := client.GetBucketLifecycleRequest(params)
@@ -1879,19 +2005,18 @@ const opGetBucketLifecycleConfiguration = "GetBucketLifecycleConfiguration"
 
 // GetBucketLifecycleConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketLifecycleConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketLifecycleConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketLifecycleConfiguration method directly
-// instead.
+// See GetBucketLifecycleConfiguration for more information on using the GetBucketLifecycleConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketLifecycleConfigurationRequest method.
 //    req, resp := client.GetBucketLifecycleConfigurationRequest(params)
@@ -1954,19 +2079,18 @@ const opGetBucketLocation = "GetBucketLocation"
 
 // GetBucketLocationRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketLocation operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketLocation for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketLocation method directly
-// instead.
+// See GetBucketLocation for more information on using the GetBucketLocation
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketLocationRequest method.
 //    req, resp := client.GetBucketLocationRequest(params)
@@ -2029,19 +2153,18 @@ const opGetBucketLogging = "GetBucketLogging"
 
 // GetBucketLoggingRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketLogging operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketLogging for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketLogging method directly
-// instead.
+// See GetBucketLogging for more information on using the GetBucketLogging
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketLoggingRequest method.
 //    req, resp := client.GetBucketLoggingRequest(params)
@@ -2105,19 +2228,18 @@ const opGetBucketMetricsConfiguration = "GetBucketMetricsConfiguration"
 
 // GetBucketMetricsConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketMetricsConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketMetricsConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketMetricsConfiguration method directly
-// instead.
+// See GetBucketMetricsConfiguration for more information on using the GetBucketMetricsConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketMetricsConfigurationRequest method.
 //    req, resp := client.GetBucketMetricsConfigurationRequest(params)
@@ -2181,19 +2303,18 @@ const opGetBucketNotification = "GetBucketNotification"
 
 // GetBucketNotificationRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketNotification operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketNotification for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketNotification method directly
-// instead.
+// See GetBucketNotification for more information on using the GetBucketNotification
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketNotificationRequest method.
 //    req, resp := client.GetBucketNotificationRequest(params)
@@ -2259,19 +2380,18 @@ const opGetBucketNotificationConfiguration = "GetBucketNotificationConfiguration
 
 // GetBucketNotificationConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketNotificationConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketNotificationConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketNotificationConfiguration method directly
-// instead.
+// See GetBucketNotificationConfiguration for more information on using the GetBucketNotificationConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketNotificationConfigurationRequest method.
 //    req, resp := client.GetBucketNotificationConfigurationRequest(params)
@@ -2334,19 +2454,18 @@ const opGetBucketPolicy = "GetBucketPolicy"
 
 // GetBucketPolicyRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketPolicy operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketPolicy for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketPolicy method directly
-// instead.
+// See GetBucketPolicy for more information on using the GetBucketPolicy
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketPolicyRequest method.
 //    req, resp := client.GetBucketPolicyRequest(params)
@@ -2409,19 +2528,18 @@ const opGetBucketReplication = "GetBucketReplication"
 
 // GetBucketReplicationRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketReplication operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketReplication for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketReplication method directly
-// instead.
+// See GetBucketReplication for more information on using the GetBucketReplication
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketReplicationRequest method.
 //    req, resp := client.GetBucketReplicationRequest(params)
@@ -2484,19 +2602,18 @@ const opGetBucketRequestPayment = "GetBucketRequestPayment"
 
 // GetBucketRequestPaymentRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketRequestPayment operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketRequestPayment for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketRequestPayment method directly
-// instead.
+// See GetBucketRequestPayment for more information on using the GetBucketRequestPayment
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketRequestPaymentRequest method.
 //    req, resp := client.GetBucketRequestPaymentRequest(params)
@@ -2559,19 +2676,18 @@ const opGetBucketTagging = "GetBucketTagging"
 
 // GetBucketTaggingRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketTagging operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketTagging for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketTagging method directly
-// instead.
+// See GetBucketTagging for more information on using the GetBucketTagging
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketTaggingRequest method.
 //    req, resp := client.GetBucketTaggingRequest(params)
@@ -2634,19 +2750,18 @@ const opGetBucketVersioning = "GetBucketVersioning"
 
 // GetBucketVersioningRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketVersioning operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketVersioning for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketVersioning method directly
-// instead.
+// See GetBucketVersioning for more information on using the GetBucketVersioning
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketVersioningRequest method.
 //    req, resp := client.GetBucketVersioningRequest(params)
@@ -2709,19 +2824,18 @@ const opGetBucketWebsite = "GetBucketWebsite"
 
 // GetBucketWebsiteRequest generates a "aws/request.Request" representing the
 // client's request for the GetBucketWebsite operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetBucketWebsite for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetBucketWebsite method directly
-// instead.
+// See GetBucketWebsite for more information on using the GetBucketWebsite
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetBucketWebsiteRequest method.
 //    req, resp := client.GetBucketWebsiteRequest(params)
@@ -2784,19 +2898,18 @@ const opGetObject = "GetObject"
 
 // GetObjectRequest generates a "aws/request.Request" representing the
 // client's request for the GetObject operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetObject for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetObject method directly
-// instead.
+// See GetObject for more information on using the GetObject
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetObjectRequest method.
 //    req, resp := client.GetObjectRequest(params)
@@ -2864,19 +2977,18 @@ const opGetObjectAcl = "GetObjectAcl"
 
 // GetObjectAclRequest generates a "aws/request.Request" representing the
 // client's request for the GetObjectAcl operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetObjectAcl for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetObjectAcl method directly
-// instead.
+// See GetObjectAcl for more information on using the GetObjectAcl
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetObjectAclRequest method.
 //    req, resp := client.GetObjectAclRequest(params)
@@ -2944,19 +3056,18 @@ const opGetObjectTagging = "GetObjectTagging"
 
 // GetObjectTaggingRequest generates a "aws/request.Request" representing the
 // client's request for the GetObjectTagging operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetObjectTagging for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetObjectTagging method directly
-// instead.
+// See GetObjectTagging for more information on using the GetObjectTagging
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetObjectTaggingRequest method.
 //    req, resp := client.GetObjectTaggingRequest(params)
@@ -3019,19 +3130,18 @@ const opGetObjectTorrent = "GetObjectTorrent"
 
 // GetObjectTorrentRequest generates a "aws/request.Request" representing the
 // client's request for the GetObjectTorrent operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See GetObjectTorrent for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the GetObjectTorrent method directly
-// instead.
+// See GetObjectTorrent for more information on using the GetObjectTorrent
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the GetObjectTorrentRequest method.
 //    req, resp := client.GetObjectTorrentRequest(params)
@@ -3094,19 +3204,18 @@ const opHeadBucket = "HeadBucket"
 
 // HeadBucketRequest generates a "aws/request.Request" representing the
 // client's request for the HeadBucket operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See HeadBucket for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the HeadBucket method directly
-// instead.
+// See HeadBucket for more information on using the HeadBucket
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the HeadBucketRequest method.
 //    req, resp := client.HeadBucketRequest(params)
@@ -3177,19 +3286,18 @@ const opHeadObject = "HeadObject"
 
 // HeadObjectRequest generates a "aws/request.Request" representing the
 // client's request for the HeadObject operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See HeadObject for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the HeadObject method directly
-// instead.
+// See HeadObject for more information on using the HeadObject
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the HeadObjectRequest method.
 //    req, resp := client.HeadObjectRequest(params)
@@ -3257,19 +3365,18 @@ const opListBucketAnalyticsConfigurations = "ListBucketAnalyticsConfigurations"
 
 // ListBucketAnalyticsConfigurationsRequest generates a "aws/request.Request" representing the
 // client's request for the ListBucketAnalyticsConfigurations operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See ListBucketAnalyticsConfigurations for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the ListBucketAnalyticsConfigurations method directly
-// instead.
+// See ListBucketAnalyticsConfigurations for more information on using the ListBucketAnalyticsConfigurations
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the ListBucketAnalyticsConfigurationsRequest method.
 //    req, resp := client.ListBucketAnalyticsConfigurationsRequest(params)
@@ -3332,19 +3439,18 @@ const opListBucketInventoryConfigurations = "ListBucketInventoryConfigurations"
 
 // ListBucketInventoryConfigurationsRequest generates a "aws/request.Request" representing the
 // client's request for the ListBucketInventoryConfigurations operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See ListBucketInventoryConfigurations for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the ListBucketInventoryConfigurations method directly
-// instead.
+// See ListBucketInventoryConfigurations for more information on using the ListBucketInventoryConfigurations
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the ListBucketInventoryConfigurationsRequest method.
 //    req, resp := client.ListBucketInventoryConfigurationsRequest(params)
@@ -3407,19 +3513,18 @@ const opListBucketMetricsConfigurations = "ListBucketMetricsConfigurations"
 
 // ListBucketMetricsConfigurationsRequest generates a "aws/request.Request" representing the
 // client's request for the ListBucketMetricsConfigurations operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See ListBucketMetricsConfigurations for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the ListBucketMetricsConfigurations method directly
-// instead.
+// See ListBucketMetricsConfigurations for more information on using the ListBucketMetricsConfigurations
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the ListBucketMetricsConfigurationsRequest method.
 //    req, resp := client.ListBucketMetricsConfigurationsRequest(params)
@@ -3482,19 +3587,18 @@ const opListBuckets = "ListBuckets"
 
 // ListBucketsRequest generates a "aws/request.Request" representing the
 // client's request for the ListBuckets operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See ListBuckets for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the ListBuckets method directly
-// instead.
+// See ListBuckets for more information on using the ListBuckets
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the ListBucketsRequest method.
 //    req, resp := client.ListBucketsRequest(params)
@@ -3557,19 +3661,18 @@ const opListMultipartUploads = "ListMultipartUploads"
 
 // ListMultipartUploadsRequest generates a "aws/request.Request" representing the
 // client's request for the ListMultipartUploads operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See ListMultipartUploads for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the ListMultipartUploads method directly
-// instead.
+// See ListMultipartUploads for more information on using the ListMultipartUploads
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the ListMultipartUploadsRequest method.
 //    req, resp := client.ListMultipartUploadsRequest(params)
@@ -3688,19 +3791,18 @@ const opListObjectVersions = "ListObjectVersions"
 
 // ListObjectVersionsRequest generates a "aws/request.Request" representing the
 // client's request for the ListObjectVersions operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See ListObjectVersions for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the ListObjectVersions method directly
-// instead.
+// See ListObjectVersions for more information on using the ListObjectVersions
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the ListObjectVersionsRequest method.
 //    req, resp := client.ListObjectVersionsRequest(params)
@@ -3819,19 +3921,18 @@ const opListObjects = "ListObjects"
 
 // ListObjectsRequest generates a "aws/request.Request" representing the
 // client's request for the ListObjects operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See ListObjects for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the ListObjects method directly
-// instead.
+// See ListObjects for more information on using the ListObjects
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the ListObjectsRequest method.
 //    req, resp := client.ListObjectsRequest(params)
@@ -3957,19 +4058,18 @@ const opListObjectsV2 = "ListObjectsV2"
 
 // ListObjectsV2Request generates a "aws/request.Request" representing the
 // client's request for the ListObjectsV2 operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See ListObjectsV2 for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the ListObjectsV2 method directly
-// instead.
+// See ListObjectsV2 for more information on using the ListObjectsV2
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the ListObjectsV2Request method.
 //    req, resp := client.ListObjectsV2Request(params)
@@ -4096,19 +4196,18 @@ const opListParts = "ListParts"
 
 // ListPartsRequest generates a "aws/request.Request" representing the
 // client's request for the ListParts operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See ListParts for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the ListParts method directly
-// instead.
+// See ListParts for more information on using the ListParts
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the ListPartsRequest method.
 //    req, resp := client.ListPartsRequest(params)
@@ -4227,19 +4326,18 @@ const opPutBucketAccelerateConfiguration = "PutBucketAccelerateConfiguration"
 
 // PutBucketAccelerateConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketAccelerateConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketAccelerateConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketAccelerateConfiguration method directly
-// instead.
+// See PutBucketAccelerateConfiguration for more information on using the PutBucketAccelerateConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketAccelerateConfigurationRequest method.
 //    req, resp := client.PutBucketAccelerateConfigurationRequest(params)
@@ -4304,19 +4402,18 @@ const opPutBucketAcl = "PutBucketAcl"
 
 // PutBucketAclRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketAcl operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketAcl for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketAcl method directly
-// instead.
+// See PutBucketAcl for more information on using the PutBucketAcl
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketAclRequest method.
 //    req, resp := client.PutBucketAclRequest(params)
@@ -4381,19 +4478,18 @@ const opPutBucketAnalyticsConfiguration = "PutBucketAnalyticsConfiguration"
 
 // PutBucketAnalyticsConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketAnalyticsConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketAnalyticsConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketAnalyticsConfiguration method directly
-// instead.
+// See PutBucketAnalyticsConfiguration for more information on using the PutBucketAnalyticsConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketAnalyticsConfigurationRequest method.
 //    req, resp := client.PutBucketAnalyticsConfigurationRequest(params)
@@ -4459,19 +4555,18 @@ const opPutBucketCors = "PutBucketCors"
 
 // PutBucketCorsRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketCors operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketCors for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketCors method directly
-// instead.
+// See PutBucketCors for more information on using the PutBucketCors
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketCorsRequest method.
 //    req, resp := client.PutBucketCorsRequest(params)
@@ -4532,23 +4627,99 @@ func (c *S3) PutBucketCorsWithContext(ctx aws.Context, input *PutBucketCorsInput
 	return out, req.Send()
 }
 
+const opPutBucketEncryption = "PutBucketEncryption"
+
+// PutBucketEncryptionRequest generates a "aws/request.Request" representing the
+// client's request for the PutBucketEncryption operation. The "output" return
+// value will be populated with the request's response once the request complets
+// successfuly.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See PutBucketEncryption for more information on using the PutBucketEncryption
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//
+//    // Example sending a request using the PutBucketEncryptionRequest method.
+//    req, resp := client.PutBucketEncryptionRequest(params)
+//
+//    err := req.Send()
+//    if err == nil { // resp is now filled
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketEncryption
+func (c *S3) PutBucketEncryptionRequest(input *PutBucketEncryptionInput) (req *request.Request, output *PutBucketEncryptionOutput) {
+	op := &request.Operation{
+		Name:       opPutBucketEncryption,
+		HTTPMethod: "PUT",
+		HTTPPath:   "/{Bucket}?encryption",
+	}
+
+	if input == nil {
+		input = &PutBucketEncryptionInput{}
+	}
+
+	output = &PutBucketEncryptionOutput{}
+	req = c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Remove(restxml.UnmarshalHandler)
+	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
+	return
+}
+
+// PutBucketEncryption API operation for Amazon Simple Storage Service.
+//
+// Creates a new server-side encryption configuration (or replaces an existing
+// one, if present).
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon Simple Storage Service's
+// API operation PutBucketEncryption for usage and error information.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketEncryption
+func (c *S3) PutBucketEncryption(input *PutBucketEncryptionInput) (*PutBucketEncryptionOutput, error) {
+	req, out := c.PutBucketEncryptionRequest(input)
+	return out, req.Send()
+}
+
+// PutBucketEncryptionWithContext is the same as PutBucketEncryption with the addition of
+// the ability to pass a context and additional request options.
+//
+// See PutBucketEncryption for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *S3) PutBucketEncryptionWithContext(ctx aws.Context, input *PutBucketEncryptionInput, opts ...request.Option) (*PutBucketEncryptionOutput, error) {
+	req, out := c.PutBucketEncryptionRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opPutBucketInventoryConfiguration = "PutBucketInventoryConfiguration"
 
 // PutBucketInventoryConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketInventoryConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketInventoryConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketInventoryConfiguration method directly
-// instead.
+// See PutBucketInventoryConfiguration for more information on using the PutBucketInventoryConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketInventoryConfigurationRequest method.
 //    req, resp := client.PutBucketInventoryConfigurationRequest(params)
@@ -4614,19 +4785,18 @@ const opPutBucketLifecycle = "PutBucketLifecycle"
 
 // PutBucketLifecycleRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketLifecycle operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketLifecycle for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketLifecycle method directly
-// instead.
+// See PutBucketLifecycle for more information on using the PutBucketLifecycle
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketLifecycleRequest method.
 //    req, resp := client.PutBucketLifecycleRequest(params)
@@ -4694,19 +4864,18 @@ const opPutBucketLifecycleConfiguration = "PutBucketLifecycleConfiguration"
 
 // PutBucketLifecycleConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketLifecycleConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketLifecycleConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketLifecycleConfiguration method directly
-// instead.
+// See PutBucketLifecycleConfiguration for more information on using the PutBucketLifecycleConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketLifecycleConfigurationRequest method.
 //    req, resp := client.PutBucketLifecycleConfigurationRequest(params)
@@ -4772,19 +4941,18 @@ const opPutBucketLogging = "PutBucketLogging"
 
 // PutBucketLoggingRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketLogging operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketLogging for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketLogging method directly
-// instead.
+// See PutBucketLogging for more information on using the PutBucketLogging
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketLoggingRequest method.
 //    req, resp := client.PutBucketLoggingRequest(params)
@@ -4851,19 +5019,18 @@ const opPutBucketMetricsConfiguration = "PutBucketMetricsConfiguration"
 
 // PutBucketMetricsConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketMetricsConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketMetricsConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketMetricsConfiguration method directly
-// instead.
+// See PutBucketMetricsConfiguration for more information on using the PutBucketMetricsConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketMetricsConfigurationRequest method.
 //    req, resp := client.PutBucketMetricsConfigurationRequest(params)
@@ -4929,19 +5096,18 @@ const opPutBucketNotification = "PutBucketNotification"
 
 // PutBucketNotificationRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketNotification operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketNotification for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketNotification method directly
-// instead.
+// See PutBucketNotification for more information on using the PutBucketNotification
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketNotificationRequest method.
 //    req, resp := client.PutBucketNotificationRequest(params)
@@ -5009,19 +5175,18 @@ const opPutBucketNotificationConfiguration = "PutBucketNotificationConfiguration
 
 // PutBucketNotificationConfigurationRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketNotificationConfiguration operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketNotificationConfiguration for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketNotificationConfiguration method directly
-// instead.
+// See PutBucketNotificationConfiguration for more information on using the PutBucketNotificationConfiguration
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketNotificationConfigurationRequest method.
 //    req, resp := client.PutBucketNotificationConfigurationRequest(params)
@@ -5086,19 +5251,18 @@ const opPutBucketPolicy = "PutBucketPolicy"
 
 // PutBucketPolicyRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketPolicy operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketPolicy for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketPolicy method directly
-// instead.
+// See PutBucketPolicy for more information on using the PutBucketPolicy
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketPolicyRequest method.
 //    req, resp := client.PutBucketPolicyRequest(params)
@@ -5164,19 +5328,18 @@ const opPutBucketReplication = "PutBucketReplication"
 
 // PutBucketReplicationRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketReplication operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketReplication for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketReplication method directly
-// instead.
+// See PutBucketReplication for more information on using the PutBucketReplication
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketReplicationRequest method.
 //    req, resp := client.PutBucketReplicationRequest(params)
@@ -5242,19 +5405,18 @@ const opPutBucketRequestPayment = "PutBucketRequestPayment"
 
 // PutBucketRequestPaymentRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketRequestPayment operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketRequestPayment for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketRequestPayment method directly
-// instead.
+// See PutBucketRequestPayment for more information on using the PutBucketRequestPayment
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketRequestPaymentRequest method.
 //    req, resp := client.PutBucketRequestPaymentRequest(params)
@@ -5323,19 +5485,18 @@ const opPutBucketTagging = "PutBucketTagging"
 
 // PutBucketTaggingRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketTagging operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketTagging for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketTagging method directly
-// instead.
+// See PutBucketTagging for more information on using the PutBucketTagging
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketTaggingRequest method.
 //    req, resp := client.PutBucketTaggingRequest(params)
@@ -5400,19 +5561,18 @@ const opPutBucketVersioning = "PutBucketVersioning"
 
 // PutBucketVersioningRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketVersioning operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketVersioning for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketVersioning method directly
-// instead.
+// See PutBucketVersioning for more information on using the PutBucketVersioning
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketVersioningRequest method.
 //    req, resp := client.PutBucketVersioningRequest(params)
@@ -5478,19 +5638,18 @@ const opPutBucketWebsite = "PutBucketWebsite"
 
 // PutBucketWebsiteRequest generates a "aws/request.Request" representing the
 // client's request for the PutBucketWebsite operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutBucketWebsite for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutBucketWebsite method directly
-// instead.
+// See PutBucketWebsite for more information on using the PutBucketWebsite
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutBucketWebsiteRequest method.
 //    req, resp := client.PutBucketWebsiteRequest(params)
@@ -5555,19 +5714,18 @@ const opPutObject = "PutObject"
 
 // PutObjectRequest generates a "aws/request.Request" representing the
 // client's request for the PutObject operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutObject for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutObject method directly
-// instead.
+// See PutObject for more information on using the PutObject
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutObjectRequest method.
 //    req, resp := client.PutObjectRequest(params)
@@ -5630,19 +5788,18 @@ const opPutObjectAcl = "PutObjectAcl"
 
 // PutObjectAclRequest generates a "aws/request.Request" representing the
 // client's request for the PutObjectAcl operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutObjectAcl for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutObjectAcl method directly
-// instead.
+// See PutObjectAcl for more information on using the PutObjectAcl
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutObjectAclRequest method.
 //    req, resp := client.PutObjectAclRequest(params)
@@ -5711,19 +5868,18 @@ const opPutObjectTagging = "PutObjectTagging"
 
 // PutObjectTaggingRequest generates a "aws/request.Request" representing the
 // client's request for the PutObjectTagging operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See PutObjectTagging for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the PutObjectTagging method directly
-// instead.
+// See PutObjectTagging for more information on using the PutObjectTagging
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the PutObjectTaggingRequest method.
 //    req, resp := client.PutObjectTaggingRequest(params)
@@ -5786,19 +5942,18 @@ const opRestoreObject = "RestoreObject"
 
 // RestoreObjectRequest generates a "aws/request.Request" representing the
 // client's request for the RestoreObject operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See RestoreObject for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the RestoreObject method directly
-// instead.
+// See RestoreObject for more information on using the RestoreObject
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the RestoreObjectRequest method.
 //    req, resp := client.RestoreObjectRequest(params)
@@ -5866,19 +6021,18 @@ const opUploadPart = "UploadPart"
 
 // UploadPartRequest generates a "aws/request.Request" representing the
 // client's request for the UploadPart operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See UploadPart for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the UploadPart method directly
-// instead.
+// See UploadPart for more information on using the UploadPart
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the UploadPartRequest method.
 //    req, resp := client.UploadPartRequest(params)
@@ -5947,19 +6101,18 @@ const opUploadPartCopy = "UploadPartCopy"
 
 // UploadPartCopyRequest generates a "aws/request.Request" representing the
 // client's request for the UploadPartCopy operation. The "output" return
-// value can be used to capture response data after the request's "Send" method
-// is called.
+// value will be populated with the request's response once the request complets
+// successfuly.
 //
-// See UploadPartCopy for usage and error information.
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
 //
-// Creating a request object using this method should be used when you want to inject
-// custom logic into the request's lifecycle using a custom handler, or if you want to
-// access properties on the request object before or after sending the request. If
-// you just want the service response, call the UploadPartCopy method directly
-// instead.
+// See UploadPartCopy for more information on using the UploadPartCopy
+// API call, and error handling.
 //
-// Note: You must call the "Send" method on the returned request object in order
-// to execute the request.
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
 //
 //    // Example sending a request using the UploadPartCopyRequest method.
 //    req, resp := client.UploadPartCopyRequest(params)
@@ -6226,6 +6379,46 @@ func (s *AccessControlPolicy) SetGrants(v []*Grant) *AccessControlPolicy {
 // SetOwner sets the Owner field's value.
 func (s *AccessControlPolicy) SetOwner(v *Owner) *AccessControlPolicy {
 	s.Owner = v
+	return s
+}
+
+// Container for information regarding the access control for replicas.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/AccessControlTranslation
+type AccessControlTranslation struct {
+	_ struct{} `type:"structure"`
+
+	// The override value for the owner of the replica object.
+	//
+	// Owner is a required field
+	Owner *string `type:"string" required:"true" enum:"OwnerOverride"`
+}
+
+// String returns the string representation
+func (s AccessControlTranslation) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s AccessControlTranslation) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *AccessControlTranslation) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "AccessControlTranslation"}
+	if s.Owner == nil {
+		invalidParams.Add(request.NewErrParamRequired("Owner"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetOwner sets the Owner field's value.
+func (s *AccessControlTranslation) SetOwner(v string) *AccessControlTranslation {
+	s.Owner = &v
 	return s
 }
 
@@ -8456,6 +8649,68 @@ func (s DeleteBucketCorsOutput) GoString() string {
 	return s.String()
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketEncryptionRequest
+type DeleteBucketEncryptionInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the bucket containing the server-side encryption configuration
+	// to delete.
+	//
+	// Bucket is a required field
+	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s DeleteBucketEncryptionInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteBucketEncryptionInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteBucketEncryptionInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "DeleteBucketEncryptionInput"}
+	if s.Bucket == nil {
+		invalidParams.Add(request.NewErrParamRequired("Bucket"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetBucket sets the Bucket field's value.
+func (s *DeleteBucketEncryptionInput) SetBucket(v string) *DeleteBucketEncryptionInput {
+	s.Bucket = &v
+	return s
+}
+
+func (s *DeleteBucketEncryptionInput) getBucket() (v string) {
+	if s.Bucket == nil {
+		return v
+	}
+	return *s.Bucket
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketEncryptionOutput
+type DeleteBucketEncryptionOutput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s DeleteBucketEncryptionOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteBucketEncryptionOutput) GoString() string {
+	return s.String()
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketRequest
 type DeleteBucketInput struct {
 	_ struct{} `type:"structure"`
@@ -9418,15 +9673,26 @@ func (s *DeletedObject) SetVersionId(v string) *DeletedObject {
 	return s
 }
 
+// Container for replication destination information.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/Destination
 type Destination struct {
 	_ struct{} `type:"structure"`
+
+	// Container for information regarding the access control for replicas.
+	AccessControlTranslation *AccessControlTranslation `type:"structure"`
+
+	// Account ID of the destination bucket. Currently this is only being verified
+	// if Access Control Translation is enabled
+	Account *string `type:"string"`
 
 	// Amazon resource name (ARN) of the bucket where you want Amazon S3 to store
 	// replicas of the object identified by the rule.
 	//
 	// Bucket is a required field
 	Bucket *string `type:"string" required:"true"`
+
+	// Container for information regarding encryption based configuration for replicas.
+	EncryptionConfiguration *EncryptionConfiguration `type:"structure"`
 
 	// The class of storage used to store the object.
 	StorageClass *string `type:"string" enum:"StorageClass"`
@@ -9448,11 +9714,28 @@ func (s *Destination) Validate() error {
 	if s.Bucket == nil {
 		invalidParams.Add(request.NewErrParamRequired("Bucket"))
 	}
+	if s.AccessControlTranslation != nil {
+		if err := s.AccessControlTranslation.Validate(); err != nil {
+			invalidParams.AddNested("AccessControlTranslation", err.(request.ErrInvalidParams))
+		}
+	}
 
 	if invalidParams.Len() > 0 {
 		return invalidParams
 	}
 	return nil
+}
+
+// SetAccessControlTranslation sets the AccessControlTranslation field's value.
+func (s *Destination) SetAccessControlTranslation(v *AccessControlTranslation) *Destination {
+	s.AccessControlTranslation = v
+	return s
+}
+
+// SetAccount sets the Account field's value.
+func (s *Destination) SetAccount(v string) *Destination {
+	s.Account = &v
+	return s
 }
 
 // SetBucket sets the Bucket field's value.
@@ -9468,9 +9751,40 @@ func (s *Destination) getBucket() (v string) {
 	return *s.Bucket
 }
 
+// SetEncryptionConfiguration sets the EncryptionConfiguration field's value.
+func (s *Destination) SetEncryptionConfiguration(v *EncryptionConfiguration) *Destination {
+	s.EncryptionConfiguration = v
+	return s
+}
+
 // SetStorageClass sets the StorageClass field's value.
 func (s *Destination) SetStorageClass(v string) *Destination {
 	s.StorageClass = &v
+	return s
+}
+
+// Container for information regarding encryption based configuration for replicas.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/EncryptionConfiguration
+type EncryptionConfiguration struct {
+	_ struct{} `type:"structure"`
+
+	// The id of the KMS key used to encrypt the replica object.
+	ReplicaKmsKeyID *string `type:"string"`
+}
+
+// String returns the string representation
+func (s EncryptionConfiguration) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s EncryptionConfiguration) GoString() string {
+	return s.String()
+}
+
+// SetReplicaKmsKeyID sets the ReplicaKmsKeyID field's value.
+func (s *EncryptionConfiguration) SetReplicaKmsKeyID(v string) *EncryptionConfiguration {
+	s.ReplicaKmsKeyID = &v
 	return s
 }
 
@@ -9893,6 +10207,78 @@ func (s GetBucketCorsOutput) GoString() string {
 // SetCORSRules sets the CORSRules field's value.
 func (s *GetBucketCorsOutput) SetCORSRules(v []*CORSRule) *GetBucketCorsOutput {
 	s.CORSRules = v
+	return s
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketEncryptionRequest
+type GetBucketEncryptionInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the bucket from which the server-side encryption configuration
+	// is retrieved.
+	//
+	// Bucket is a required field
+	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s GetBucketEncryptionInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s GetBucketEncryptionInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *GetBucketEncryptionInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "GetBucketEncryptionInput"}
+	if s.Bucket == nil {
+		invalidParams.Add(request.NewErrParamRequired("Bucket"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetBucket sets the Bucket field's value.
+func (s *GetBucketEncryptionInput) SetBucket(v string) *GetBucketEncryptionInput {
+	s.Bucket = &v
+	return s
+}
+
+func (s *GetBucketEncryptionInput) getBucket() (v string) {
+	if s.Bucket == nil {
+		return v
+	}
+	return *s.Bucket
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketEncryptionOutput
+type GetBucketEncryptionOutput struct {
+	_ struct{} `type:"structure" payload:"ServerSideEncryptionConfiguration"`
+
+	// Container for server-side encryption configuration rules. Currently S3 supports
+	// one rule only.
+	ServerSideEncryptionConfiguration *ServerSideEncryptionConfiguration `type:"structure"`
+}
+
+// String returns the string representation
+func (s GetBucketEncryptionOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s GetBucketEncryptionOutput) GoString() string {
+	return s.String()
+}
+
+// SetServerSideEncryptionConfiguration sets the ServerSideEncryptionConfiguration field's value.
+func (s *GetBucketEncryptionOutput) SetServerSideEncryptionConfiguration(v *ServerSideEncryptionConfiguration) *GetBucketEncryptionOutput {
+	s.ServerSideEncryptionConfiguration = v
 	return s
 }
 
@@ -12574,6 +12960,56 @@ func (s *InventoryDestination) SetS3BucketDestination(v *InventoryS3BucketDestin
 	return s
 }
 
+// Contains the type of server-side encryption used to encrypt the inventory
+// results.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/InventoryEncryption
+type InventoryEncryption struct {
+	_ struct{} `type:"structure"`
+
+	// Specifies the use of SSE-KMS to encrypt delievered Inventory reports.
+	SSEKMS *SSEKMS `locationName:"SSE-KMS" type:"structure"`
+
+	// Specifies the use of SSE-S3 to encrypt delievered Inventory reports.
+	SSES3 *SSES3 `locationName:"SSE-S3" type:"structure"`
+}
+
+// String returns the string representation
+func (s InventoryEncryption) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s InventoryEncryption) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *InventoryEncryption) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "InventoryEncryption"}
+	if s.SSEKMS != nil {
+		if err := s.SSEKMS.Validate(); err != nil {
+			invalidParams.AddNested("SSEKMS", err.(request.ErrInvalidParams))
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetSSEKMS sets the SSEKMS field's value.
+func (s *InventoryEncryption) SetSSEKMS(v *SSEKMS) *InventoryEncryption {
+	s.SSEKMS = v
+	return s
+}
+
+// SetSSES3 sets the SSES3 field's value.
+func (s *InventoryEncryption) SetSSES3(v *SSES3) *InventoryEncryption {
+	s.SSES3 = v
+	return s
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/InventoryFilter
 type InventoryFilter struct {
 	_ struct{} `type:"structure"`
@@ -12626,6 +13062,10 @@ type InventoryS3BucketDestination struct {
 	// Bucket is a required field
 	Bucket *string `type:"string" required:"true"`
 
+	// Contains the type of server-side encryption used to encrypt the inventory
+	// results.
+	Encryption *InventoryEncryption `type:"structure"`
+
 	// Specifies the output format of the inventory results.
 	//
 	// Format is a required field
@@ -12654,6 +13094,11 @@ func (s *InventoryS3BucketDestination) Validate() error {
 	if s.Format == nil {
 		invalidParams.Add(request.NewErrParamRequired("Format"))
 	}
+	if s.Encryption != nil {
+		if err := s.Encryption.Validate(); err != nil {
+			invalidParams.AddNested("Encryption", err.(request.ErrInvalidParams))
+		}
+	}
 
 	if invalidParams.Len() > 0 {
 		return invalidParams
@@ -12678,6 +13123,12 @@ func (s *InventoryS3BucketDestination) getBucket() (v string) {
 		return v
 	}
 	return *s.Bucket
+}
+
+// SetEncryption sets the Encryption field's value.
+func (s *InventoryS3BucketDestination) SetEncryption(v *InventoryEncryption) *InventoryS3BucketDestination {
+	s.Encryption = v
+	return s
 }
 
 // SetFormat sets the Format field's value.
@@ -15934,6 +16385,88 @@ func (s PutBucketCorsOutput) GoString() string {
 	return s.String()
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketEncryptionRequest
+type PutBucketEncryptionInput struct {
+	_ struct{} `type:"structure" payload:"ServerSideEncryptionConfiguration"`
+
+	// The name of the bucket for which the server-side encryption configuration
+	// is set.
+	//
+	// Bucket is a required field
+	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
+
+	// Container for server-side encryption configuration rules. Currently S3 supports
+	// one rule only.
+	//
+	// ServerSideEncryptionConfiguration is a required field
+	ServerSideEncryptionConfiguration *ServerSideEncryptionConfiguration `locationName:"ServerSideEncryptionConfiguration" type:"structure" required:"true" xmlURI:"http://s3.amazonaws.com/doc/2006-03-01/"`
+}
+
+// String returns the string representation
+func (s PutBucketEncryptionInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s PutBucketEncryptionInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *PutBucketEncryptionInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "PutBucketEncryptionInput"}
+	if s.Bucket == nil {
+		invalidParams.Add(request.NewErrParamRequired("Bucket"))
+	}
+	if s.ServerSideEncryptionConfiguration == nil {
+		invalidParams.Add(request.NewErrParamRequired("ServerSideEncryptionConfiguration"))
+	}
+	if s.ServerSideEncryptionConfiguration != nil {
+		if err := s.ServerSideEncryptionConfiguration.Validate(); err != nil {
+			invalidParams.AddNested("ServerSideEncryptionConfiguration", err.(request.ErrInvalidParams))
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetBucket sets the Bucket field's value.
+func (s *PutBucketEncryptionInput) SetBucket(v string) *PutBucketEncryptionInput {
+	s.Bucket = &v
+	return s
+}
+
+func (s *PutBucketEncryptionInput) getBucket() (v string) {
+	if s.Bucket == nil {
+		return v
+	}
+	return *s.Bucket
+}
+
+// SetServerSideEncryptionConfiguration sets the ServerSideEncryptionConfiguration field's value.
+func (s *PutBucketEncryptionInput) SetServerSideEncryptionConfiguration(v *ServerSideEncryptionConfiguration) *PutBucketEncryptionInput {
+	s.ServerSideEncryptionConfiguration = v
+	return s
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketEncryptionOutput
+type PutBucketEncryptionOutput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s PutBucketEncryptionOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s PutBucketEncryptionOutput) GoString() string {
+	return s.String()
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketInventoryConfigurationRequest
 type PutBucketInventoryConfigurationInput struct {
 	_ struct{} `type:"structure" payload:"InventoryConfiguration"`
@@ -16499,6 +17032,10 @@ type PutBucketPolicyInput struct {
 	// Bucket is a required field
 	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
 
+	// Set this parameter to true to confirm that you want to remove your permissions
+	// to change this bucket policy in the future.
+	ConfirmRemoveSelfBucketAccess *bool `location:"header" locationName:"x-amz-confirm-remove-self-bucket-access" type:"boolean"`
+
 	// The bucket policy as a JSON document.
 	//
 	// Policy is a required field
@@ -16542,6 +17079,12 @@ func (s *PutBucketPolicyInput) getBucket() (v string) {
 		return v
 	}
 	return *s.Bucket
+}
+
+// SetConfirmRemoveSelfBucketAccess sets the ConfirmRemoveSelfBucketAccess field's value.
+func (s *PutBucketPolicyInput) SetConfirmRemoveSelfBucketAccess(v bool) *PutBucketPolicyInput {
+	s.ConfirmRemoveSelfBucketAccess = &v
+	return s
 }
 
 // SetPolicy sets the Policy field's value.
@@ -17159,6 +17702,9 @@ type PutObjectInput struct {
 	// body cannot be determined automatically.
 	ContentLength *int64 `location:"header" locationName:"Content-Length" type:"long"`
 
+	// The base64-encoded 128-bit MD5 digest of the part data.
+	ContentMD5 *string `location:"header" locationName:"Content-MD5" type:"string"`
+
 	// A standard MIME type describing the format of the object data.
 	ContentType *string `location:"header" locationName:"Content-Type" type:"string"`
 
@@ -17309,6 +17855,12 @@ func (s *PutObjectInput) SetContentLanguage(v string) *PutObjectInput {
 // SetContentLength sets the ContentLength field's value.
 func (s *PutObjectInput) SetContentLength(v int64) *PutObjectInput {
 	s.ContentLength = &v
+	return s
+}
+
+// SetContentMD5 sets the ContentMD5 field's value.
+func (s *PutObjectInput) SetContentMD5(v string) *PutObjectInput {
+	s.ContentMD5 = &v
 	return s
 }
 
@@ -17932,10 +18484,13 @@ func (s *ReplicationConfiguration) SetRules(v []*ReplicationRule) *ReplicationCo
 	return s
 }
 
+// Container for information about a particular replication rule.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ReplicationRule
 type ReplicationRule struct {
 	_ struct{} `type:"structure"`
 
+	// Container for replication destination information.
+	//
 	// Destination is a required field
 	Destination *Destination `type:"structure" required:"true"`
 
@@ -17948,6 +18503,9 @@ type ReplicationRule struct {
 	//
 	// Prefix is a required field
 	Prefix *string `type:"string" required:"true"`
+
+	// Container for filters that define which source objects should be replicated.
+	SourceSelectionCriteria *SourceSelectionCriteria `type:"structure"`
 
 	// The rule is ignored if status is not Enabled.
 	//
@@ -17982,6 +18540,11 @@ func (s *ReplicationRule) Validate() error {
 			invalidParams.AddNested("Destination", err.(request.ErrInvalidParams))
 		}
 	}
+	if s.SourceSelectionCriteria != nil {
+		if err := s.SourceSelectionCriteria.Validate(); err != nil {
+			invalidParams.AddNested("SourceSelectionCriteria", err.(request.ErrInvalidParams))
+		}
+	}
 
 	if invalidParams.Len() > 0 {
 		return invalidParams
@@ -18004,6 +18567,12 @@ func (s *ReplicationRule) SetID(v string) *ReplicationRule {
 // SetPrefix sets the Prefix field's value.
 func (s *ReplicationRule) SetPrefix(v string) *ReplicationRule {
 	s.Prefix = &v
+	return s
+}
+
+// SetSourceSelectionCriteria sets the SourceSelectionCriteria field's value.
+func (s *ReplicationRule) SetSourceSelectionCriteria(v *SourceSelectionCriteria) *ReplicationRule {
+	s.SourceSelectionCriteria = v
 	return s
 }
 
@@ -18387,6 +18956,291 @@ func (s *Rule) SetStatus(v string) *Rule {
 // SetTransition sets the Transition field's value.
 func (s *Rule) SetTransition(v *Transition) *Rule {
 	s.Transition = v
+	return s
+}
+
+// Specifies the use of SSE-KMS to encrypt delievered Inventory reports.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/SSEKMS
+type SSEKMS struct {
+	_ struct{} `locationName:"SSE-KMS" type:"structure"`
+
+	// Specifies the ID of the AWS Key Management Service (KMS) master encryption
+	// key to use for encrypting Inventory reports.
+	//
+	// KeyId is a required field
+	KeyId *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s SSEKMS) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s SSEKMS) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *SSEKMS) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "SSEKMS"}
+	if s.KeyId == nil {
+		invalidParams.Add(request.NewErrParamRequired("KeyId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetKeyId sets the KeyId field's value.
+func (s *SSEKMS) SetKeyId(v string) *SSEKMS {
+	s.KeyId = &v
+	return s
+}
+
+// Specifies the use of SSE-S3 to encrypt delievered Inventory reports.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/SSES3
+type SSES3 struct {
+	_ struct{} `locationName:"SSE-S3" type:"structure"`
+}
+
+// String returns the string representation
+func (s SSES3) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s SSES3) GoString() string {
+	return s.String()
+}
+
+// Describes the default server-side encryption to apply to new objects in the
+// bucket. If Put Object request does not specify any server-side encryption,
+// this default encryption will be applied.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ServerSideEncryptionByDefault
+type ServerSideEncryptionByDefault struct {
+	_ struct{} `type:"structure"`
+
+	// KMS master key ID to use for the default encryption. This parameter is allowed
+	// if SSEAlgorithm is aws:kms.
+	KMSMasterKeyID *string `type:"string"`
+
+	// Server-side encryption algorithm to use for the default encryption.
+	//
+	// SSEAlgorithm is a required field
+	SSEAlgorithm *string `type:"string" required:"true" enum:"ServerSideEncryption"`
+}
+
+// String returns the string representation
+func (s ServerSideEncryptionByDefault) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ServerSideEncryptionByDefault) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ServerSideEncryptionByDefault) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "ServerSideEncryptionByDefault"}
+	if s.SSEAlgorithm == nil {
+		invalidParams.Add(request.NewErrParamRequired("SSEAlgorithm"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetKMSMasterKeyID sets the KMSMasterKeyID field's value.
+func (s *ServerSideEncryptionByDefault) SetKMSMasterKeyID(v string) *ServerSideEncryptionByDefault {
+	s.KMSMasterKeyID = &v
+	return s
+}
+
+// SetSSEAlgorithm sets the SSEAlgorithm field's value.
+func (s *ServerSideEncryptionByDefault) SetSSEAlgorithm(v string) *ServerSideEncryptionByDefault {
+	s.SSEAlgorithm = &v
+	return s
+}
+
+// Container for server-side encryption configuration rules. Currently S3 supports
+// one rule only.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ServerSideEncryptionConfiguration
+type ServerSideEncryptionConfiguration struct {
+	_ struct{} `type:"structure"`
+
+	// Container for information about a particular server-side encryption configuration
+	// rule.
+	//
+	// Rules is a required field
+	Rules []*ServerSideEncryptionRule `locationName:"Rule" type:"list" flattened:"true" required:"true"`
+}
+
+// String returns the string representation
+func (s ServerSideEncryptionConfiguration) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ServerSideEncryptionConfiguration) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ServerSideEncryptionConfiguration) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "ServerSideEncryptionConfiguration"}
+	if s.Rules == nil {
+		invalidParams.Add(request.NewErrParamRequired("Rules"))
+	}
+	if s.Rules != nil {
+		for i, v := range s.Rules {
+			if v == nil {
+				continue
+			}
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Rules", i), err.(request.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetRules sets the Rules field's value.
+func (s *ServerSideEncryptionConfiguration) SetRules(v []*ServerSideEncryptionRule) *ServerSideEncryptionConfiguration {
+	s.Rules = v
+	return s
+}
+
+// Container for information about a particular server-side encryption configuration
+// rule.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ServerSideEncryptionRule
+type ServerSideEncryptionRule struct {
+	_ struct{} `type:"structure"`
+
+	// Describes the default server-side encryption to apply to new objects in the
+	// bucket. If Put Object request does not specify any server-side encryption,
+	// this default encryption will be applied.
+	ApplyServerSideEncryptionByDefault *ServerSideEncryptionByDefault `type:"structure"`
+}
+
+// String returns the string representation
+func (s ServerSideEncryptionRule) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ServerSideEncryptionRule) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ServerSideEncryptionRule) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "ServerSideEncryptionRule"}
+	if s.ApplyServerSideEncryptionByDefault != nil {
+		if err := s.ApplyServerSideEncryptionByDefault.Validate(); err != nil {
+			invalidParams.AddNested("ApplyServerSideEncryptionByDefault", err.(request.ErrInvalidParams))
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetApplyServerSideEncryptionByDefault sets the ApplyServerSideEncryptionByDefault field's value.
+func (s *ServerSideEncryptionRule) SetApplyServerSideEncryptionByDefault(v *ServerSideEncryptionByDefault) *ServerSideEncryptionRule {
+	s.ApplyServerSideEncryptionByDefault = v
+	return s
+}
+
+// Container for filters that define which source objects should be replicated.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/SourceSelectionCriteria
+type SourceSelectionCriteria struct {
+	_ struct{} `type:"structure"`
+
+	// Container for filter information of selection of KMS Encrypted S3 objects.
+	SseKmsEncryptedObjects *SseKmsEncryptedObjects `type:"structure"`
+}
+
+// String returns the string representation
+func (s SourceSelectionCriteria) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s SourceSelectionCriteria) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *SourceSelectionCriteria) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "SourceSelectionCriteria"}
+	if s.SseKmsEncryptedObjects != nil {
+		if err := s.SseKmsEncryptedObjects.Validate(); err != nil {
+			invalidParams.AddNested("SseKmsEncryptedObjects", err.(request.ErrInvalidParams))
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetSseKmsEncryptedObjects sets the SseKmsEncryptedObjects field's value.
+func (s *SourceSelectionCriteria) SetSseKmsEncryptedObjects(v *SseKmsEncryptedObjects) *SourceSelectionCriteria {
+	s.SseKmsEncryptedObjects = v
+	return s
+}
+
+// Container for filter information of selection of KMS Encrypted S3 objects.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/SseKmsEncryptedObjects
+type SseKmsEncryptedObjects struct {
+	_ struct{} `type:"structure"`
+
+	// The replication for KMS encrypted S3 objects is disabled if status is not
+	// Enabled.
+	//
+	// Status is a required field
+	Status *string `type:"string" required:"true" enum:"SseKmsEncryptedObjectsStatus"`
+}
+
+// String returns the string representation
+func (s SseKmsEncryptedObjects) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s SseKmsEncryptedObjects) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *SseKmsEncryptedObjects) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "SseKmsEncryptedObjects"}
+	if s.Status == nil {
+		invalidParams.Add(request.NewErrParamRequired("Status"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetStatus sets the Status field's value.
+func (s *SseKmsEncryptedObjects) SetStatus(v string) *SseKmsEncryptedObjects {
+	s.Status = &v
 	return s
 }
 
@@ -19153,6 +20007,9 @@ type UploadPartInput struct {
 	// body cannot be determined automatically.
 	ContentLength *int64 `location:"header" locationName:"Content-Length" type:"long"`
 
+	// The base64-encoded 128-bit MD5 digest of the part data.
+	ContentMD5 *string `location:"header" locationName:"Content-MD5" type:"string"`
+
 	// Object key for which the multipart upload was initiated.
 	//
 	// Key is a required field
@@ -19249,6 +20106,12 @@ func (s *UploadPartInput) getBucket() (v string) {
 // SetContentLength sets the ContentLength field's value.
 func (s *UploadPartInput) SetContentLength(v int64) *UploadPartInput {
 	s.ContentLength = &v
+	return s
+}
+
+// SetContentMD5 sets the ContentMD5 field's value.
+func (s *UploadPartInput) SetContentMD5(v string) *UploadPartInput {
+	s.ContentMD5 = &v
 	return s
 }
 
@@ -19671,6 +20534,9 @@ const (
 
 	// InventoryOptionalFieldReplicationStatus is a InventoryOptionalField enum value
 	InventoryOptionalFieldReplicationStatus = "ReplicationStatus"
+
+	// InventoryOptionalFieldEncryptionStatus is a InventoryOptionalField enum value
+	InventoryOptionalFieldEncryptionStatus = "EncryptionStatus"
 )
 
 const (
@@ -19734,6 +20600,11 @@ const (
 const (
 	// ObjectVersionStorageClassStandard is a ObjectVersionStorageClass enum value
 	ObjectVersionStorageClassStandard = "STANDARD"
+)
+
+const (
+	// OwnerOverrideDestination is a OwnerOverride enum value
+	OwnerOverrideDestination = "Destination"
 )
 
 const (
@@ -19813,6 +20684,14 @@ const (
 
 	// ServerSideEncryptionAwsKms is a ServerSideEncryption enum value
 	ServerSideEncryptionAwsKms = "aws:kms"
+)
+
+const (
+	// SseKmsEncryptedObjectsStatusEnabled is a SseKmsEncryptedObjectsStatus enum value
+	SseKmsEncryptedObjectsStatusEnabled = "Enabled"
+
+	// SseKmsEncryptedObjectsStatusDisabled is a SseKmsEncryptedObjectsStatus enum value
+	SseKmsEncryptedObjectsStatusDisabled = "Disabled"
 )
 
 const (
