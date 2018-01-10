@@ -50,8 +50,8 @@
 [[projects]]
   name = "github.com/sirupsen/logrus"
   packages = ["."]
-  revision = "f006c2ac4710855cf0f916dd6b77acf6b048dc6e"
-  version = "v1.0.3"
+  revision = "d682213848ed68c0a260ca37d6dd5ace8423f5ba"
+  version = "v1.0.4"
 
 [[projects]]
   branch = "master"
@@ -71,6 +71,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "d6ea4ab2bd07abd41c71deb051adaf5cff3f6fcee6013f09adb3ee2447f11f7d"
+  inputs-digest = "693eacf4c7ea97d12ab6ba0accd643b223d116d6105ca615e0a775925f873dd2"
   solver-name = "gps-cdcl"
   solver-version = 1
