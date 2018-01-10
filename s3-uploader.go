@@ -27,7 +27,6 @@ type Config struct {
 	HTTPPort        int               `envconfig:"HTTP_PORT" default:"80"`
 	LogLevel        string            `envconfig:"LOG_LEVEL" default:"debug"`
 	CacheControl    cacheControlRules `envconfig:"CACHE_CONTROL_RULES"`
-	Region          string            `envconfig:"AWS_REGION" default:"us-east-1"`
 }
 
 func loadConfig() (Config, error) {
@@ -71,7 +70,6 @@ func main() {
 	if err != nil {
 		logger.WithError(err).Fatal("failed to load AWS config")
 	}
-	sess.Region = cfg.Region
 	uploader := s3manager.NewUploader(sess)
 	http.HandleFunc(cfg.HealthcheckPath, healthcheck)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
