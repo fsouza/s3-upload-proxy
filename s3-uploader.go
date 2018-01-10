@@ -90,7 +90,6 @@ func main() {
 			Key:         aws.String(key),
 			Body:        r.Body,
 			ContentType: aws.String(contentType),
-			Metadata:    make(map[string]*string),
 		}
 		cfg.addCacheMetadata(&input)
 		_, err = uploader.Upload(&input)
