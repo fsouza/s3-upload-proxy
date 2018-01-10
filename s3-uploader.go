@@ -26,7 +26,6 @@ type Config struct {
 	HealthcheckPath string            `envconfig:"HEALTHCHECK_PATH" default:"/healthcheck"`
 	HTTPPort        int               `envconfig:"HTTP_PORT" default:"80"`
 	LogLevel        string            `envconfig:"LOG_LEVEL" default:"debug"`
-	FastlySurrogate bool              `envconfig:"FASTLY_SURROGATE_CACHE"`
 	CacheControl    cacheControlRules `envconfig:"CACHE_CONTROL_RULES"`
 }
 
@@ -48,11 +47,7 @@ func (c *Config) logger() *logrus.Logger {
 
 func (c *Config) addCacheMetadata(input *s3manager.UploadInput) {
 	if value := c.CacheControl.headerValue(aws.StringValue(input.Key)); value != nil {
-		if c.FastlySurrogate {
-			input.Metadata["surrogate-control"] = value
-		} else {
-			input.CacheControl = value
-		}
+		input.CacheControl = value
 	}
 }
 
