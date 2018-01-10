@@ -16,7 +16,7 @@ type cacheControlRules []cacheControlRule
 type cacheControlRule struct {
 	Extension string `json:"ext"`
 	MaxAge    uint   `json:"maxAge"`
-	SMaxAge   uint   `json:"smaxage"`
+	SMaxAge   uint   `json:"sMaxAge"`
 	Private   bool   `json:"private"`
 }
 
