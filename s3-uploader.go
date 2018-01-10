@@ -13,9 +13,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/s3/s3manager"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/aws/external"
+	"github.com/aws/aws-sdk-go-v2/service/s3/s3manager"
 	"github.com/kelseyhightower/envconfig"
 	"github.com/sirupsen/logrus"
 )
@@ -66,9 +66,9 @@ func main() {
 	}
 	logger := cfg.logger()
 
-	sess, err := session.NewSession()
+	sess, err := external.LoadDefaultAWSConfig()
 	if err != nil {
-		logger.WithError(err).Fatal("failed to load aws auth config")
+		logger.WithError(err).Fatal("failed to load AWS config")
 	}
 	uploader := s3manager.NewUploader(sess)
 	http.HandleFunc(cfg.HealthcheckPath, healthcheck)
