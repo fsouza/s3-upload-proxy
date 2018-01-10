@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"path/filepath"
+	"strings"
 )
 
 type cacheControlRules []cacheControlRule
@@ -15,6 +16,7 @@ type cacheControlRules []cacheControlRule
 type cacheControlRule struct {
 	Extension string `json:"ext"`
 	MaxAge    uint   `json:"maxAge"`
+	SMaxAge   uint   `json:"smaxage"`
 	Private   bool   `json:"private"`
 }
 
@@ -22,7 +24,14 @@ func (r cacheControlRule) String() string {
 	if r.Private {
 		return "private"
 	}
-	return fmt.Sprintf("max-age=%d", r.MaxAge)
+	parts := []string{"public"}
+	if r.MaxAge > 0 {
+		parts = append(parts, fmt.Sprintf("max-age=%d", r.MaxAge))
+	}
+	if r.SMaxAge > 0 {
+		parts = append(parts, fmt.Sprintf("s-maxage=%d", r.SMaxAge))
+	}
+	return strings.Join(parts, ", ")
 }
 
 func (c *cacheControlRules) Set(value string) error {

@@ -49,6 +49,8 @@ func TestCacheControlHeaderValue(t *testing.T) {
 		cacheControlRule{Extension: ".mp4", MaxAge: 123456},
 		cacheControlRule{Extension: ".html", MaxAge: 60},
 		cacheControlRule{Extension: ".m3u8", Private: true},
+		cacheControlRule{Extension: ".webm", MaxAge: 2, SMaxAge: 123456},
+		cacheControlRule{Extension: ".mp3", SMaxAge: 123456},
 	}
 	var tests = []struct {
 		input    string
@@ -56,22 +58,30 @@ func TestCacheControlHeaderValue(t *testing.T) {
 	}{
 		{
 			"https://github.com/some/file.mp4",
-			aws.String("max-age=123456"),
+			aws.String("public, max-age=123456"),
 		},
 		{
 			"file.mp4",
-			aws.String("max-age=123456"),
+			aws.String("public, max-age=123456"),
 		},
 		{
 			"some/path/index.html",
-			aws.String("max-age=60"),
+			aws.String("public, max-age=60"),
 		},
 		{
 			"video/master.m3u8",
 			aws.String("private"),
 		},
 		{
-			"some/path/video.webm",
+			"file.mp3",
+			aws.String("public, s-maxage=123456"),
+		},
+		{
+			"video.webm",
+			aws.String("public, max-age=2, s-maxage=123456"),
+		},
+		{
+			"some/path/audio.ogg",
 			nil,
 		},
 	}
