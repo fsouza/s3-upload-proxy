@@ -2,6 +2,7 @@
 
 
 [[projects]]
+  branch = "master"
   name = "github.com/aws/aws-sdk-go-v2"
   packages = [
     "aws",
@@ -27,14 +28,13 @@
     "service/s3/s3manager",
     "service/sts"
   ]
-  revision = "ac26486d921d336e20fec49e2afb348c801f0003"
-  version = "v2.0.0-preview.1"
+  revision = "01b01bc24609090862fbae454a86704b75a0f3b3"
 
 [[projects]]
   name = "github.com/go-ini/ini"
   packages = ["."]
-  revision = "f280b3ba517bf5fc98922624f21fb0e7a92adaec"
-  version = "v1.30.3"
+  revision = "32e4c1e6bc4e7d0d8451aa6b75200d19e37a536a"
+  version = "v1.32.0"
 
 [[projects]]
   name = "github.com/jmespath/go-jmespath"
@@ -57,7 +57,7 @@
   branch = "master"
   name = "golang.org/x/crypto"
   packages = ["ssh/terminal"]
-  revision = "687d4b818545e443c8ba223cbef20b1721afd4db"
+  revision = "5f55bce93ad2c89f411e009659bb1fd83da36e7b"
 
 [[projects]]
   branch = "master"
@@ -66,11 +66,11 @@
     "unix",
     "windows"
   ]
-  revision = "75813c647272dd855bda156405bf844a5414f5bf"
+  revision = "810d7000345868fc619eb81f46307107118f4ae1"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "693eacf4c7ea97d12ab6ba0accd643b223d116d6105ca615e0a775925f873dd2"
+  inputs-digest = "11209e00534bf388aa3de0e7e36d8882f065cced5f0780aeb80b7385570b47ce"
   solver-name = "gps-cdcl"
   solver-version = 1
