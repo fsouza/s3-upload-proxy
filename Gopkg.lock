@@ -28,7 +28,7 @@
     "service/s3/s3manager",
     "service/sts"
   ]
-  revision = "01b01bc24609090862fbae454a86704b75a0f3b3"
+  revision = "a2ae08d9689e5b19eba80dd7589bbc013c2345ee"
 
 [[projects]]
   name = "github.com/go-ini/ini"
@@ -57,7 +57,7 @@
   branch = "master"
   name = "golang.org/x/crypto"
   packages = ["ssh/terminal"]
-  revision = "5f55bce93ad2c89f411e009659bb1fd83da36e7b"
+  revision = "13931e22f9e72ea58bb73048bc752b48c6d4d4ac"
 
 [[projects]]
   branch = "master"
@@ -66,7 +66,7 @@
     "unix",
     "windows"
   ]
-  revision = "810d7000345868fc619eb81f46307107118f4ae1"
+  revision = "2c42eef0765b9837fbdab12011af7830f55f88f0"
 
 [solve-meta]
   analyzer-name = "dep"
