@@ -5,19 +5,20 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
-	"path/filepath"
+	"regexp"
 	"strings"
 )
 
 type cacheControlRules []cacheControlRule
 
 type cacheControlRule struct {
-	Extension string `json:"ext"`
-	MaxAge    uint   `json:"maxAge"`
-	SMaxAge   uint   `json:"sMaxAge"`
-	Private   bool   `json:"private"`
+	Regexp  *jregexp `json:"regexp"`
+	MaxAge  uint     `json:"maxAge"`
+	SMaxAge uint     `json:"sMaxAge"`
+	Private bool     `json:"private"`
 }
 
 func (r cacheControlRule) String() string {
@@ -40,22 +41,22 @@ func (c *cacheControlRules) Set(value string) error {
 }
 
 func (c cacheControlRules) headerValue(file string) *string {
-	var (
-		found bool
-		rule  cacheControlRule
-	)
-	ext := filepath.Ext(file)
-
-	for _, rule = range c {
-		if rule.Extension == ext {
-			found = true
-			break
+	for _, rule := range c {
+		if rule.Regexp.re.MatchString(file) {
+			cacheControl := rule.String()
+			return &cacheControl
 		}
 	}
 
-	if !found {
-		return nil
-	}
-	cacheControl := rule.String()
-	return &cacheControl
+	return nil
+}
+
+type jregexp struct {
+	re *regexp.Regexp
+}
+
+func (r *jregexp) UnmarshalJSON(data []byte) (err error) {
+	expr := string(bytes.Trim(data, `"`))
+	r.re, err = regexp.Compile(expr)
+	return err
 }

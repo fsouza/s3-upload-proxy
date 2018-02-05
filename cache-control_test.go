@@ -7,6 +7,7 @@ package main
 import (
 	"os"
 	"reflect"
+	"regexp"
 	"testing"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -15,26 +16,33 @@ import (
 
 func TestCacheControlRulesCanBeLoadedFromEnv(t *testing.T) {
 	os.Clearenv()
-	os.Setenv("RULES", `[{"ext":".mp4","maxAge":123456},{"ext":".html","maxAge":60}]`)
+	os.Setenv("RULES", `[{"regexp":".mp4$","maxAge":123456},{"regexp":".html$","maxAge":60}]`)
 	var value struct {
 		Rules cacheControlRules `envconfig:"RULES"`
 	}
-	expectedRules := cacheControlRules{
-		cacheControlRule{Extension: ".mp4", MaxAge: 123456},
-		cacheControlRule{Extension: ".html", MaxAge: 60},
+	t.Log(os.Getenv("RULES"))
+	expectedRules := map[string]cacheControlRule{
+		regexp.MustCompile(`.mp4$`).String():  {MaxAge: 123456},
+		regexp.MustCompile(`.html$`).String(): {MaxAge: 60},
 	}
 	err := envconfig.Process("", &value)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !reflect.DeepEqual(value.Rules, expectedRules) {
-		t.Errorf("wrong rules returned\nwant %#v\ngot  %#v", expectedRules, value.Rules)
+	gotRules := map[string]cacheControlRule{}
+	for _, r := range value.Rules {
+		re := r.Regexp.re
+		r.Regexp = nil
+		gotRules[re.String()] = r
+	}
+	if !reflect.DeepEqual(gotRules, expectedRules) {
+		t.Errorf("wrong rules returned\nwant %#v\ngot  %#v", expectedRules, gotRules)
 	}
 }
 
 func TestCacheControlRulesInvalidJSON(t *testing.T) {
 	os.Clearenv()
-	os.Setenv("RULES", `[{"ext":".mp4","maxAge":123456},{"ext":".html",`)
+	os.Setenv("RULES", `[{"regexp:".mp4","maxAge":123456},{"regexp":".html",`)
 	var value struct {
 		Rules cacheControlRules `envconfig:"RULES"`
 	}
@@ -46,11 +54,12 @@ func TestCacheControlRulesInvalidJSON(t *testing.T) {
 
 func TestCacheControlHeaderValue(t *testing.T) {
 	rules := cacheControlRules{
-		cacheControlRule{Extension: ".mp4", MaxAge: 123456},
-		cacheControlRule{Extension: ".html", MaxAge: 60},
-		cacheControlRule{Extension: ".m3u8", Private: true},
-		cacheControlRule{Extension: ".webm", MaxAge: 2, SMaxAge: 123456},
-		cacheControlRule{Extension: ".mp3", SMaxAge: 123456},
+		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.mp4$`)}, MaxAge: 123456},
+		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.html$`)}, MaxAge: 60},
+		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`master_.+\.m3u8$`)}, Private: true},
+		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`master\.m3u8$`)}, MaxAge: 1},
+		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.webm$`)}, MaxAge: 2, SMaxAge: 123456},
+		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.mp3$`)}, SMaxAge: 123456},
 	}
 	var tests = []struct {
 		input    string
@@ -70,6 +79,10 @@ func TestCacheControlHeaderValue(t *testing.T) {
 		},
 		{
 			"video/master.m3u8",
+			aws.String("public, max-age=1"),
+		},
+		{
+			"video/master_720p.m3u8",
 			aws.String("private"),
 		},
 		{
