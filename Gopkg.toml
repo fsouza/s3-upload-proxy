@@ -9,3 +9,8 @@
 [[override]]
   branch = "master"
   name = "github.com/aws/aws-sdk-go-v2"
+
+[prune]
+  unused-packages = true
+  non-go = true
+  go-tests = true
