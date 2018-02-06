@@ -9,6 +9,7 @@ import (
 	"mime"
 	"net"
 	"net/http"
+	"path"
 	"path/filepath"
 	"strings"
 	"time"
@@ -27,6 +28,7 @@ type Config struct {
 	HTTPPort        int               `envconfig:"HTTP_PORT" default:"80"`
 	LogLevel        string            `envconfig:"LOG_LEVEL" default:"debug"`
 	CacheControl    cacheControlRules `envconfig:"CACHE_CONTROL_RULES"`
+	SurrogateKey    bool              `envconfig:"SURROGATE_KEY"`
 }
 
 func loadConfig() (Config, error) {
@@ -90,6 +92,12 @@ func main() {
 			ContentType: aws.String(contentType),
 		}
 		cfg.addCacheMetadata(&input)
+		if cfg.SurrogateKey {
+			p, _ := path.Split(key)
+			input.Metadata = map[string]string{
+				"Surrogate-Key": "video/" + strings.TrimRight(p, "/"),
+			}
+		}
 		_, err = uploader.Upload(&input)
 		if err != nil {
 			logger.WithFields(logFields).WithError(err).Error("failed to upload file")
