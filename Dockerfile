@@ -1,4 +1,4 @@
-FROM golang:1.9-alpine AS build
+FROM golang:1.10-alpine AS build
 ENV  CGO_ENABLED 0
 ADD  . /go/src/github.com/fsouza/s3-upload-proxy
 RUN  go test github.com/fsouza/s3-upload-proxy
