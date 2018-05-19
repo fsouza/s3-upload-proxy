@@ -16,14 +16,14 @@ import (
 
 func TestCacheControlRulesCanBeLoadedFromEnv(t *testing.T) {
 	os.Clearenv()
-	os.Setenv("RULES", `[{"regexp":".mp4$","maxAge":123456},{"regexp":".html$","maxAge":60}]`)
+	os.Setenv("RULES", `[{"regexp":".mp4$","value":"public, max-age=123456"},{"regexp":".html$","value":"public, max-age=60"}]`)
 	var value struct {
 		Rules cacheControlRules `envconfig:"RULES"`
 	}
 	t.Log(os.Getenv("RULES"))
 	expectedRules := map[string]cacheControlRule{
-		regexp.MustCompile(`.mp4$`).String():  {MaxAge: 123456},
-		regexp.MustCompile(`.html$`).String(): {MaxAge: 60},
+		regexp.MustCompile(`.mp4$`).String():  {Value: "public, max-age=123456"},
+		regexp.MustCompile(`.html$`).String(): {Value: "public, max-age=60"},
 	}
 	err := envconfig.Process("", &value)
 	if err != nil {
@@ -42,7 +42,7 @@ func TestCacheControlRulesCanBeLoadedFromEnv(t *testing.T) {
 
 func TestCacheControlRulesInvalidJSON(t *testing.T) {
 	os.Clearenv()
-	os.Setenv("RULES", `[{"regexp:".mp4","maxAge":123456},{"regexp":".html",`)
+	os.Setenv("RULES", `[{"regexp:".mp4"},{"regexp":".html",`)
 	var value struct {
 		Rules cacheControlRules `envconfig:"RULES"`
 	}
@@ -54,12 +54,12 @@ func TestCacheControlRulesInvalidJSON(t *testing.T) {
 
 func TestCacheControlHeaderValue(t *testing.T) {
 	rules := cacheControlRules{
-		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.mp4$`)}, MaxAge: 123456},
-		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.html$`)}, MaxAge: 60},
-		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`master_.+\.m3u8$`)}, Private: true},
-		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`master\.m3u8$`)}, MaxAge: 1},
-		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.webm$`)}, MaxAge: 2, SMaxAge: 123456},
-		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.mp3$`)}, SMaxAge: 123456},
+		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.mp4$`)}, Value: "public, max-age=123456"},
+		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.html$`)}, Value: "public, max-age=60"},
+		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`master_.+\.m3u8$`)}, Value: "private"},
+		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`master\.m3u8$`)}, Value: "public, max-age=1"},
+		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.webm$`)}, Value: "public, max-age=2, s-maxage=123456"},
+		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.mp3$`)}, Value: "public, s-maxage=123456"},
 	}
 	var tests = []struct {
 		input    string
