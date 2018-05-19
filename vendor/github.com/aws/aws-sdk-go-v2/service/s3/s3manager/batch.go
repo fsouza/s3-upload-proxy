@@ -6,7 +6,6 @@ import (
 	"io"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-	request "github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/awserr"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/aws-sdk-go-v2/service/s3/s3iface"
@@ -59,7 +58,15 @@ func newError(err error, bucket, key *string) Error {
 }
 
 func (err *Error) Error() string {
-	return fmt.Sprintf("failed to upload %q to %q:\n%s", err.Key, err.Bucket, err.OrigErr.Error())
+	origErr := ""
+	if err.OrigErr != nil {
+		origErr = ":\n" + err.OrigErr.Error()
+	}
+	return fmt.Sprintf("failed to perform batch operation on %q to %q%s",
+		aws.StringValue(err.Key),
+		aws.StringValue(err.Bucket),
+		origErr,
+	)
 }
 
 // NewBatchError will return a BatchError that satisfies the awserr.Error interface.
@@ -128,25 +135,16 @@ type BatchDeleteIterator interface {
 //	}
 type DeleteListIterator struct {
 	Bucket    *string
-	Paginator request.Pagination
+	Paginator s3.ListObjectsPager
 	objects   []s3.Object
 }
 
 // NewDeleteListIterator will return a new DeleteListIterator.
 func NewDeleteListIterator(svc s3iface.S3API, input *s3.ListObjectsInput, opts ...func(*DeleteListIterator)) BatchDeleteIterator {
+	req := svc.ListObjectsRequest(input)
 	iter := &DeleteListIterator{
-		Bucket: input.Bucket,
-		Paginator: request.Pagination{
-			NewRequest: func() (*request.Request, error) {
-				var inCpy *s3.ListObjectsInput
-				if input != nil {
-					tmp := *input
-					inCpy = &tmp
-				}
-				req := svc.ListObjectsRequest(inCpy)
-				return req.Request, nil
-			},
-		},
+		Bucket:    input.Bucket,
+		Paginator: req.Paginate(),
 	}
 
 	for _, opt := range opts {
@@ -162,7 +160,7 @@ func (iter *DeleteListIterator) Next() bool {
 	}
 
 	if len(iter.objects) == 0 && iter.Paginator.Next() {
-		iter.objects = iter.Paginator.Page().(s3.ListObjectsOutput).Contents
+		iter.objects = iter.Paginator.CurrentPage().Contents
 	}
 
 	return len(iter.objects) > 0
@@ -205,7 +203,7 @@ type BatchDelete struct {
 //		},
 //	}
 //
-//	if err := batcher.Delete(&s3manager.DeleteObjectsIterator{
+//	if err := batcher.Delete(aws.BackgroundContext(), &s3manager.DeleteObjectsIterator{
 //		Objects: objects,
 //	}); err != nil {
 //		return err
@@ -238,7 +236,7 @@ func NewBatchDeleteWithClient(client s3iface.S3API, options ...func(*BatchDelete
 //		},
 //	}
 //
-//	if err := batcher.Delete(&s3manager.DeleteObjectsIterator{
+//	if err := batcher.Delete(aws.BackgroundContext(), &s3manager.DeleteObjectsIterator{
 //		Objects: objects,
 //	}); err != nil {
 //		return err
@@ -311,7 +309,7 @@ func (d *BatchDelete) Delete(ctx aws.Context, iter BatchDeleteIterator) error {
 		}
 
 		if len(input.Delete.Objects) == d.BatchSize || !parity {
-			if err := deleteBatch(d, input, objects); err != nil {
+			if err := deleteBatch(ctx, d, input, objects); err != nil {
 				errs = append(errs, err...)
 			}
 
@@ -330,7 +328,7 @@ func (d *BatchDelete) Delete(ctx aws.Context, iter BatchDeleteIterator) error {
 	}
 
 	if input != nil && len(input.Delete.Objects) > 0 {
-		if err := deleteBatch(d, input, objects); err != nil {
+		if err := deleteBatch(ctx, d, input, objects); err != nil {
 			errs = append(errs, err...)
 		}
 	}
@@ -350,18 +348,34 @@ func initDeleteObjectsInput(o *s3.DeleteObjectInput) *s3.DeleteObjectsInput {
 	}
 }
 
-// deleteBatch will delete a batch of items in the objects parameters.
-func deleteBatch(d *BatchDelete, input *s3.DeleteObjectsInput, objects []BatchDeleteObject) []Error {
-	errs := []Error{}
+const (
+	// ErrDeleteBatchFailCode represents an error code which will be returned
+	// only when DeleteObjects.Errors has an error that does not contain a code.
+	ErrDeleteBatchFailCode       = "DeleteBatchError"
+	errDefaultDeleteBatchMessage = "failed to delete"
+)
 
+// deleteBatch will delete a batch of items in the objects parameters.
+func deleteBatch(ctx aws.Context, d *BatchDelete, input *s3.DeleteObjectsInput, objects []BatchDeleteObject) []Error {
+	errs := []Error{}
 	req := d.Client.DeleteObjectsRequest(input)
+	req.SetContext(ctx)
 	if result, err := req.Send(); err != nil {
 		for i := 0; i < len(input.Delete.Objects); i++ {
 			errs = append(errs, newError(err, input.Bucket, input.Delete.Objects[i].Key))
 		}
 	} else if len(result.Errors) > 0 {
 		for i := 0; i < len(result.Errors); i++ {
-			errs = append(errs, newError(err, input.Bucket, result.Errors[i].Key))
+			code := ErrDeleteBatchFailCode
+			msg := errDefaultDeleteBatchMessage
+			if result.Errors[i].Message != nil {
+				msg = *result.Errors[i].Message
+			}
+			if result.Errors[i].Code != nil {
+				code = *result.Errors[i].Code
+			}
+
+			errs = append(errs, newError(awserr.New(code, msg, err), input.Bucket, result.Errors[i].Key))
 		}
 	}
 	for _, object := range objects {

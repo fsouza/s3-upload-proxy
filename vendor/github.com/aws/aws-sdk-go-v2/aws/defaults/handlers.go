@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"net/url"
 	"regexp"
-	"runtime"
 	"strconv"
 	"time"
 
@@ -58,13 +57,6 @@ var BuildContentLengthHandler = aws.NamedHandler{Name: "core.BuildContentLengthH
 		r.HTTPRequest.Header.Del("Content-Length")
 	}
 }}
-
-// SDKVersionUserAgentHandler is a request handler for adding the SDK Version to the user agent.
-var SDKVersionUserAgentHandler = aws.NamedHandler{
-	Name: "core.SDKVersionUserAgentHandler",
-	Fn: aws.MakeAddToUserAgentHandler(aws.SDKName, aws.SDKVersion,
-		runtime.Version(), runtime.GOOS, runtime.GOARCH),
-}
 
 var reStatusCode = regexp.MustCompile(`^(\d{3})`)
 
@@ -179,7 +171,7 @@ func handleSendError(r *aws.Request, err error) {
 	ctx := r.Context()
 	select {
 	case <-ctx.Done():
-		r.Error = awserr.New(aws.CanceledErrorCode,
+		r.Error = awserr.New(aws.ErrCodeRequestCanceled,
 			"request context canceled", ctx.Err())
 		r.Retryable = aws.Bool(false)
 	default:
@@ -207,7 +199,7 @@ var AfterRetryHandler = aws.NamedHandler{Name: "core.AfterRetryHandler", Fn: fun
 		r.RetryDelay = r.RetryRules(r)
 
 		if err := sdk.SleepWithContext(r.Context(), r.RetryDelay); err != nil {
-			r.Error = awserr.New(aws.CanceledErrorCode,
+			r.Error = awserr.New(aws.ErrCodeRequestCanceled,
 				"request context canceled", err)
 			r.Retryable = aws.Bool(false)
 			return
