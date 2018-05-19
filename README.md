@@ -44,7 +44,7 @@ environment variable ``CACHE_CONTROL_RULES`` is a JSON array with the rules. An
 example:
 
 ```
-% export CACHE_CONTROL_RULES='[{"regexp":".mp4$","maxAge":3600},{"regexp":".ts$","maxAge":2,"sMaxAge":999999},{"regexp":".m3u8$","private":true}]'
+% export CACHE_CONTROL_RULES='[{"regexp":".mp4$","value":"public, max-age=3600"},{"regexp":".ts$","value":"public, max-age=2, s-maxage=999999"},{"regexp":".m3u8$","value":"private"}]'
 ```
 
 Notice that the extension must include the dot.
