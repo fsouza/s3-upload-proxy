@@ -9,15 +9,13 @@ import (
 	"mime"
 	"net"
 	"net/http"
-	"path"
 	"path/filepath"
 	"strings"
 	"time"
 
-	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/aws/external"
-	"github.com/aws/aws-sdk-go-v2/service/s3/s3manager"
 	"github.com/fsouza/s3-upload-proxy/internal/cachecontrol"
+	"github.com/fsouza/s3-upload-proxy/internal/uploader"
+	"github.com/fsouza/s3-upload-proxy/internal/uploader/s3"
 	"github.com/kelseyhightower/envconfig"
 	"github.com/sirupsen/logrus"
 )
@@ -48,9 +46,9 @@ func (c *Config) logger() *logrus.Logger {
 	return logger
 }
 
-func (c *Config) addCacheMetadata(input *s3manager.UploadInput) {
-	if value := c.CacheControl.HeaderValue(aws.StringValue(input.Key)); value != nil {
-		input.CacheControl = value
+func (c *Config) addCacheMetadata(options *uploader.Options) {
+	if value := c.CacheControl.HeaderValue(options.Path); value != nil {
+		options.CacheControl = *value
 	}
 }
 
@@ -68,12 +66,12 @@ func main() {
 		panic(err)
 	}
 	logger := cfg.logger()
+	var uper uploader.Uploader
 
-	sess, err := external.LoadDefaultAWSConfig()
+	uper, err = s3.New()
 	if err != nil {
-		logger.WithError(err).Fatal("failed to load AWS config")
+		logger.WithError(err).Fatal("failed to create S3 uploader")
 	}
-	uploader := s3manager.NewUploader(sess)
 	http.HandleFunc(cfg.HealthcheckPath, healthcheck)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
@@ -86,20 +84,14 @@ func main() {
 		key := strings.TrimLeft(r.URL.Path, "/")
 		contentType := mime.TypeByExtension(filepath.Ext(key))
 		logFields := logrus.Fields{"bucket": cfg.BucketName, "objectKey": key}
-		input := s3manager.UploadInput{
-			Bucket:      aws.String(cfg.BucketName),
-			Key:         aws.String(key),
+		options := uploader.Options{
+			BucketName:  cfg.BucketName,
+			Path:        key,
 			Body:        r.Body,
-			ContentType: aws.String(contentType),
+			ContentType: contentType,
 		}
-		cfg.addCacheMetadata(&input)
-		if cfg.SurrogateKey {
-			p, _ := path.Split(key)
-			input.Metadata = map[string]string{
-				"Surrogate-Key": "video/" + strings.TrimRight(p, "/"),
-			}
-		}
-		_, err = uploader.Upload(&input)
+		cfg.addCacheMetadata(&options)
+		err = uper.Upload(options)
 		if err != nil {
 			logger.WithFields(logFields).WithError(err).Error("failed to upload file")
 			http.Error(w, err.Error(), http.StatusInternalServerError)
