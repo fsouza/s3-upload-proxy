@@ -12,8 +12,8 @@ import (
 )
 
 // New returns an uploader that sends objects to S3.
-func New() (uploader.Uploader, error) {
-	var u s3Uploader
+func New(bucketName string) (uploader.Uploader, error) {
+	u := s3Uploader{bucketName: bucketName}
 	sess, err := external.LoadDefaultAWSConfig()
 	if err != nil {
 		return nil, err
@@ -23,12 +23,13 @@ func New() (uploader.Uploader, error) {
 }
 
 type s3Uploader struct {
-	uploader *s3manager.Uploader
+	bucketName string
+	uploader   *s3manager.Uploader
 }
 
 func (u *s3Uploader) Upload(options uploader.Options) error {
 	input := s3manager.UploadInput{
-		Bucket:       aws.String(options.BucketName),
+		Bucket:       aws.String(u.bucketName),
 		Key:          aws.String(options.Path),
 		Body:         options.Body,
 		ContentType:  aws.String(options.ContentType),
