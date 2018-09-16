@@ -17,18 +17,19 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/external"
 	"github.com/aws/aws-sdk-go-v2/service/s3/s3manager"
+	"github.com/fsouza/s3-upload-proxy/internal/cachecontrol"
 	"github.com/kelseyhightower/envconfig"
 	"github.com/sirupsen/logrus"
 )
 
 // Config is the configuration of the s3-uploader.
 type Config struct {
-	BucketName      string            `envconfig:"BUCKET_NAME" required:"true"`
-	HealthcheckPath string            `envconfig:"HEALTHCHECK_PATH" default:"/healthcheck"`
-	HTTPPort        int               `envconfig:"HTTP_PORT" default:"80"`
-	LogLevel        string            `envconfig:"LOG_LEVEL" default:"debug"`
-	CacheControl    cacheControlRules `envconfig:"CACHE_CONTROL_RULES"`
-	SurrogateKey    bool              `envconfig:"SURROGATE_KEY"`
+	BucketName      string             `envconfig:"BUCKET_NAME" required:"true"`
+	HealthcheckPath string             `envconfig:"HEALTHCHECK_PATH" default:"/healthcheck"`
+	HTTPPort        int                `envconfig:"HTTP_PORT" default:"80"`
+	LogLevel        string             `envconfig:"LOG_LEVEL" default:"debug"`
+	CacheControl    cachecontrol.Rules `envconfig:"CACHE_CONTROL_RULES"`
+	SurrogateKey    bool               `envconfig:"SURROGATE_KEY"`
 }
 
 func loadConfig() (Config, error) {
@@ -48,7 +49,7 @@ func (c *Config) logger() *logrus.Logger {
 }
 
 func (c *Config) addCacheMetadata(input *s3manager.UploadInput) {
-	if value := c.CacheControl.headerValue(aws.StringValue(input.Key)); value != nil {
+	if value := c.CacheControl.HeaderValue(aws.StringValue(input.Key)); value != nil {
 		input.CacheControl = value
 	}
 }

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package main
+package cachecontrol
 
 import (
 	"os"
@@ -18,10 +18,10 @@ func TestCacheControlRulesCanBeLoadedFromEnv(t *testing.T) {
 	os.Clearenv()
 	os.Setenv("RULES", `[{"regexp":".mp4$","value":"public, max-age=123456"},{"regexp":".html$","value":"public, max-age=60"}]`)
 	var value struct {
-		Rules cacheControlRules `envconfig:"RULES"`
+		Rules Rules `envconfig:"RULES"`
 	}
 	t.Log(os.Getenv("RULES"))
-	expectedRules := map[string]cacheControlRule{
+	expectedRules := map[string]Rule{
 		regexp.MustCompile(`.mp4$`).String():  {Value: "public, max-age=123456"},
 		regexp.MustCompile(`.html$`).String(): {Value: "public, max-age=60"},
 	}
@@ -29,7 +29,7 @@ func TestCacheControlRulesCanBeLoadedFromEnv(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	gotRules := map[string]cacheControlRule{}
+	gotRules := map[string]Rule{}
 	for _, r := range value.Rules {
 		re := r.Regexp.re
 		r.Regexp = nil
@@ -44,7 +44,7 @@ func TestCacheControlRulesInvalidJSON(t *testing.T) {
 	os.Clearenv()
 	os.Setenv("RULES", `[{"regexp:".mp4"},{"regexp":".html",`)
 	var value struct {
-		Rules cacheControlRules `envconfig:"RULES"`
+		Rules Rules `envconfig:"RULES"`
 	}
 	err := envconfig.Process("", &value)
 	if err == nil {
@@ -53,13 +53,13 @@ func TestCacheControlRulesInvalidJSON(t *testing.T) {
 }
 
 func TestCacheControlHeaderValue(t *testing.T) {
-	rules := cacheControlRules{
-		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.mp4$`)}, Value: "public, max-age=123456"},
-		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.html$`)}, Value: "public, max-age=60"},
-		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`master_.+\.m3u8$`)}, Value: "private"},
-		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`master\.m3u8$`)}, Value: "public, max-age=1"},
-		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.webm$`)}, Value: "public, max-age=2, s-maxage=123456"},
-		cacheControlRule{Regexp: &jregexp{re: regexp.MustCompile(`\.mp3$`)}, Value: "public, s-maxage=123456"},
+	rules := Rules{
+		Rule{Regexp: &jregexp{re: regexp.MustCompile(`\.mp4$`)}, Value: "public, max-age=123456"},
+		Rule{Regexp: &jregexp{re: regexp.MustCompile(`\.html$`)}, Value: "public, max-age=60"},
+		Rule{Regexp: &jregexp{re: regexp.MustCompile(`master_.+\.m3u8$`)}, Value: "private"},
+		Rule{Regexp: &jregexp{re: regexp.MustCompile(`master\.m3u8$`)}, Value: "public, max-age=1"},
+		Rule{Regexp: &jregexp{re: regexp.MustCompile(`\.webm$`)}, Value: "public, max-age=2, s-maxage=123456"},
+		Rule{Regexp: &jregexp{re: regexp.MustCompile(`\.mp3$`)}, Value: "public, s-maxage=123456"},
 	}
 	var tests = []struct {
 		input    string
@@ -100,7 +100,7 @@ func TestCacheControlHeaderValue(t *testing.T) {
 	}
 	for _, test := range tests {
 		t.Run(test.input, func(t *testing.T) {
-			value := rules.headerValue(test.input)
+			value := rules.HeaderValue(test.input)
 			if !reflect.DeepEqual(value, test.expected) {
 				t.Errorf("wrong value returned\nwant %#v\ngot  %#v", test.expected, value)
 			}

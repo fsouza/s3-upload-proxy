@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package main
+package cachecontrol
 
 import (
 	"bytes"
@@ -10,21 +10,26 @@ import (
 	"regexp"
 )
 
-type cacheControlRules []cacheControlRule
+// Rules is a list of cache control rules.
+type Rules []Rule
 
-type cacheControlRule struct {
+// Rule is a mapping of regular expressions to cache-control string rules.
+type Rule struct {
 	Regexp *jregexp `json:"regexp"`
 	Value  string   `json:"value"`
 }
 
-func (c *cacheControlRules) Set(value string) error {
+// Set loads the list of rules as a JSON-string, allowing values of type Rules
+// to be used with envconfig.
+func (c *Rules) Set(value string) error {
 	err := json.Unmarshal([]byte(value), c)
 	return err
 }
 
-func (c cacheControlRules) headerValue(file string) *string {
+// HeaderValue returns the matching cache control rule for the given file name.
+func (c Rules) HeaderValue(fileName string) *string {
 	for _, rule := range c {
-		if rule.Regexp.re.MatchString(file) {
+		if rule.Regexp.re.MatchString(fileName) {
 			cacheControl := rule.Value
 			return &cacheControl
 		}

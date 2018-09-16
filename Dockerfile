@@ -2,7 +2,7 @@ FROM golang:1.11 AS build
 ENV  CGO_ENABLED 0
 ADD  . /code
 WORKDIR /code
-RUN  go test
+RUN  go test ./...
 RUN  go install
 
 FROM alpine:3.8
