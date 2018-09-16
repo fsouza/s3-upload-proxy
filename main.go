@@ -5,6 +5,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"mime"
 	"net"
@@ -15,6 +16,7 @@ import (
 
 	"github.com/fsouza/s3-upload-proxy/internal/cachecontrol"
 	"github.com/fsouza/s3-upload-proxy/internal/uploader"
+	"github.com/fsouza/s3-upload-proxy/internal/uploader/mediastore"
 	"github.com/fsouza/s3-upload-proxy/internal/uploader/s3"
 	"github.com/kelseyhightower/envconfig"
 	"github.com/sirupsen/logrus"
@@ -22,18 +24,41 @@ import (
 
 // Config is the configuration of the s3-uploader.
 type Config struct {
-	BucketName      string             `envconfig:"BUCKET_NAME" required:"true"`
+	BucketName      string             `envconfig:"BUCKET_NAME"`
+	DataEndpoint    string             `envconfig:"MEDIASTORE_DATA_ENDPOINT"`
+	UploadDriver    string             `envconfig:"UPLOAD_DRIVER" default:"s3"`
 	HealthcheckPath string             `envconfig:"HEALTHCHECK_PATH" default:"/healthcheck"`
 	HTTPPort        int                `envconfig:"HTTP_PORT" default:"80"`
 	LogLevel        string             `envconfig:"LOG_LEVEL" default:"debug"`
 	CacheControl    cachecontrol.Rules `envconfig:"CACHE_CONTROL_RULES"`
-	SurrogateKey    bool               `envconfig:"SURROGATE_KEY"`
 }
 
 func loadConfig() (Config, error) {
 	var cfg Config
 	err := envconfig.Process("", &cfg)
-	return cfg, err
+	if err != nil {
+		return cfg, err
+	}
+	if cfg.UploadDriver != "s3" && cfg.UploadDriver != "mediastore" {
+		return cfg, errors.New(`invalid UPLOAD_DRIVER, valid options are "s3" and "mediastore"`)
+	}
+	if cfg.UploadDriver == "s3" && cfg.BucketName == "" {
+		return cfg, errors.New("s3 upload driver requires the BUCKET_NAME")
+	}
+	if cfg.UploadDriver == "mediastore" && cfg.DataEndpoint == "" {
+		return cfg, errors.New("mediastore upload driver requires the MEDIASTORE_DATA_ENDPOINT")
+	}
+	return cfg, nil
+}
+
+func (c *Config) uploader() (uploader.Uploader, error) {
+	if c.UploadDriver == "s3" {
+		return s3.New(c.BucketName)
+	}
+	if c.UploadDriver == "mediastore" {
+		return mediastore.New(c.DataEndpoint)
+	}
+	return nil, fmt.Errorf("invalid upload driver %q", c.UploadDriver)
 }
 
 func (c *Config) logger() *logrus.Logger {
@@ -66,12 +91,12 @@ func main() {
 		panic(err)
 	}
 	logger := cfg.logger()
-	var uper uploader.Uploader
 
-	uper, err = s3.New()
+	uper, err := cfg.uploader()
 	if err != nil {
-		logger.WithError(err).Fatal("failed to create S3 uploader")
+		logger.WithError(err).Fatal("failed to create uploader")
 	}
+
 	http.HandleFunc(cfg.HealthcheckPath, healthcheck)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
@@ -85,7 +110,6 @@ func main() {
 		contentType := mime.TypeByExtension(filepath.Ext(key))
 		logFields := logrus.Fields{"bucket": cfg.BucketName, "objectKey": key}
 		options := uploader.Options{
-			BucketName:  cfg.BucketName,
 			Path:        key,
 			Body:        r.Body,
 			ContentType: contentType,
