@@ -14,6 +14,7 @@ type Uploader interface {
 
 // Options presents the set of options to the Upload method.
 type Options struct {
+	Bucket       string
 	Path         string
 	Body         io.Reader
 	ContentType  string

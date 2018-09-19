@@ -41,8 +41,7 @@ variables:
 | Variable                 | Default value | Required | Description                                                                             |
 | ------------------------ | ------------- | -------- | --------------------------------------------------------------------------------------- |
 | UPLOAD_DRIVER            | s3            | No       | Upload driver to use (options are "mediastore" or "s3")                                 |
-| BUCKET_NAME              |               | Yes**    | Name of the bucket. Required for the "s3" upload driver                                 |
-| MEDIASTORE_DATA_ENDPOINT |               | Yes**    | Media Store Data endpoint. Required for the "mediastore" upload driver                  |
+| BUCKET_NAME              |               | Yes      | Name of the S3 bucket or the mediastore container (depends on the upload driver)        |
 | HEALTHCHECK_PATH         | /healthcheck  | No       | Path for healthcheck                                                                    |
 | HTTP_PORT                | 80            | No       | Port to bind (unsigned int)                                                             |
 | LOG_LEVEL                | debug         | No       | Logging level                                                                           |

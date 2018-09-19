@@ -24,7 +24,7 @@ import (
 
 // Config is the configuration of the s3-uploader.
 type Config struct {
-	BucketName      string             `envconfig:"BUCKET_NAME"`
+	BucketName      string             `envconfig:"BUCKET_NAME" required:"true"`
 	DataEndpoint    string             `envconfig:"MEDIASTORE_DATA_ENDPOINT"`
 	UploadDriver    string             `envconfig:"UPLOAD_DRIVER" default:"s3"`
 	HealthcheckPath string             `envconfig:"HEALTHCHECK_PATH" default:"/healthcheck"`
@@ -42,21 +42,18 @@ func loadConfig() (Config, error) {
 	if cfg.UploadDriver != "s3" && cfg.UploadDriver != "mediastore" {
 		return cfg, errors.New(`invalid UPLOAD_DRIVER, valid options are "s3" and "mediastore"`)
 	}
-	if cfg.UploadDriver == "s3" && cfg.BucketName == "" {
-		return cfg, errors.New("s3 upload driver requires the BUCKET_NAME")
-	}
-	if cfg.UploadDriver == "mediastore" && cfg.DataEndpoint == "" {
-		return cfg, errors.New("mediastore upload driver requires the MEDIASTORE_DATA_ENDPOINT")
+	if cfg.DataEndpoint != "" {
+		return cfg, errors.New("MEDIASTORE_DATA_ENDPOINT shouldn't be used anymore, please set BUCKET_NAME to the name of the MediaStore container")
 	}
 	return cfg, nil
 }
 
 func (c *Config) uploader() (uploader.Uploader, error) {
 	if c.UploadDriver == "s3" {
-		return s3.New(c.BucketName)
+		return s3.New()
 	}
 	if c.UploadDriver == "mediastore" {
-		return mediastore.New(c.DataEndpoint)
+		return mediastore.New()
 	}
 	return nil, fmt.Errorf("invalid upload driver %q", c.UploadDriver)
 }
@@ -110,6 +107,7 @@ func main() {
 		contentType := mime.TypeByExtension(filepath.Ext(key))
 		logFields := logrus.Fields{"bucket": cfg.BucketName, "objectKey": key}
 		options := uploader.Options{
+			Bucket:      cfg.BucketName,
 			Path:        key,
 			Body:        r.Body,
 			ContentType: contentType,
