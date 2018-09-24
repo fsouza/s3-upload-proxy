@@ -23,11 +23,11 @@ Having Go and AWS credentials, just set the environment variable
 ```
 
 If you want to use MediaStore, the environment variable ``UPLOAD_DRIVER``
-should be set to "mediastore" and ``MEDIASTORE_DATA_ENDPOINT`` must be
-provided:
+should be set to "mediastore" and ``BUCKET_NAME`` must be set to the container
+name on mediastore:
 
 ```
-% export UPLOAD_DRIVER=mediastore MEDIASTORE_DATA_ENDPOINT=aaabbbcccdddee.files.mediastore-us-west-2.com
+% export UPLOAD_DRIVER=mediastore BUCKET_NAME=mediastoretest
 % go build -o s3-upload-proxy
 % ./s3-upload-proxy
 ```
