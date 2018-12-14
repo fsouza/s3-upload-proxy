@@ -22,11 +22,9 @@ steps:
     password:
       from_secret: docker_password
   when:
-    event:
-    - push
-    - tag
-    branch:
-    - master
+    ref:
+    - refs/tags/*
+    - refs/heads/master
 
 ---
 kind: signature
