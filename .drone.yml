@@ -17,8 +17,6 @@ steps:
   settings:
     repo: fsouza/s3-upload-proxy
     auto_tag: true
-    tags:
-      - latest
     username:
       from_secret: docker_user
     password:
@@ -32,6 +30,6 @@ steps:
 
 ---
 kind: signature
-hmac: 8d300dc4b3855d2ad6f861d54149c2e098a68ab086b60697ed9d8e765dac5f9e
+hmac: 0e73b28bf0493fd733b140af6d782837be3b6691dac3eeb3ec079f1127e46ae2
 
 ...
