@@ -1,0 +1,29 @@
+kind: pipeline
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: test
+  image: golang:1.11
+  commands:
+  - go test -race ./...
+
+- name: push-to-dockerhub
+  image: plugins/docker
+  settings:
+    repo: fsouza/s3-upload-proxy
+    tags:
+      - latest
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+  when:
+    branch:
+    - master
+
+
+...
