@@ -1,6 +1,8 @@
 s3-upload-proxy
 ===============
 
+[![Build Status](https://cloud.drone.io/api/badges/fsouza/s3-upload-proxy/status.svg)](https://cloud.drone.io/fsouza/s3-upload-proxy)
+
 Tool for proxying HTTP uploads to S3 buckets and Elemental MediaStore
 Containers (added later, bad naming :D).  Useful for private network protected environments.
 
