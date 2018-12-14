@@ -18,7 +18,7 @@ steps:
     tags:
       - latest
     username:
-      from_secret: docker_username
+      from_secret: docker_user
     password:
       from_secret: docker_password
   when:
