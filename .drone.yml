@@ -1,3 +1,4 @@
+---
 kind: pipeline
 name: default
 
@@ -15,6 +16,7 @@ steps:
   image: plugins/docker
   settings:
     repo: fsouza/s3-upload-proxy
+    auto_tag: true
     tags:
       - latest
     username:
@@ -22,8 +24,14 @@ steps:
     password:
       from_secret: docker_password
   when:
+    event:
+    - push
+    - tag
     branch:
     - master
 
+---
+kind: signature
+hmac: 8d300dc4b3855d2ad6f861d54149c2e098a68ab086b60697ed9d8e765dac5f9e
 
 ...
