@@ -7,27 +7,25 @@ platform:
   arch: amd64
 
 steps:
-- name: test
-  image: golang:1.11
-  commands:
-  - go test -race ./...
+  - name: test
+    image: golang:1.11
+    commands:
+      - go test -race ./...
 
-- name: push-to-dockerhub
-  image: plugins/docker
-  settings:
-    repo: fsouza/s3-upload-proxy
-    auto_tag: true
-    username:
-      from_secret: docker_user
-    password:
-      from_secret: docker_password
-  when:
-    ref:
-    - refs/tags/*
-    - refs/heads/master
+  - name: push-to-dockerhub
+    image: plugins/docker
+    settings:
+      repo: fsouza/s3-upload-proxy
+      auto_tag: true
+      username:
+        from_secret: docker_user
+      password:
+        from_secret: docker_password
+    when:
+      ref:
+        - refs/tags/*
+        - refs/heads/master
 
 ---
 kind: signature
 hmac: 898286541faa4bf5f9dafa46c3b7d31cf4be317d134b9ca9268fe0a7a7f58d00
-
-...
