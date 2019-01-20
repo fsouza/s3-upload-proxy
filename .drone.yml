@@ -12,7 +12,7 @@ steps:
     commands:
       - go test -race ./...
 
-  - name: push-to-dockerhub
+  - name: build-and-push-to-dockerhub
     image: plugins/docker
     settings:
       repo: fsouza/s3-upload-proxy
