@@ -8,15 +8,29 @@ platform:
 
 steps:
   - name: test
-    image: golang:1.11
+    image: golang:1.12rc1
     commands:
       - go test -race ./...
+
+  - name: lint
+    image: golang:1.12rc1
+    commands:
+      - go get github.com/golangci/golangci-lint/cmd/golangci-lint@master
+      - golangci-lint --enable-all -D lll -D errcheck ./...
+
+  - name: build
+    image: golang:1.12rc1
+    commands:
+      - go build -o s3-upload-proxy
+    environment:
+      - CGO_ENABLED=0
 
   - name: build-and-push-to-dockerhub
     image: plugins/docker
     settings:
       repo: fsouza/s3-upload-proxy
       auto_tag: true
+      dockerfile: Dockerfile.ci
       username:
         from_secret: docker_user
       password:
