@@ -16,7 +16,7 @@ steps:
     image: golang:1.12rc1
     commands:
       - go get github.com/golangci/golangci-lint/cmd/golangci-lint@master
-      - golangci-lint --enable-all -D lll -D errcheck ./...
+      - golangci-lint run --enable-all -D lll -D errcheck ./...
 
   - name: build
     image: golang:1.12rc1
