@@ -23,7 +23,7 @@ steps:
     commands:
       - go build -o s3-upload-proxy
     environment:
-      - CGO_ENABLED=0
+      CGO_ENABLED: 0
 
   - name: build-and-push-to-dockerhub
     image: plugins/docker
