@@ -24,9 +24,9 @@ steps:
       - mod-download
 
   - name: lint
-    image: golang:1.12rc1
+    image: golangci/golangci-lint
+    pull: always
     commands:
-      - go get github.com/golangci/golangci-lint/cmd/golangci-lint@master
       - golangci-lint run --enable-all -D lll -D errcheck ./...
     depends_on:
       - mod-download
