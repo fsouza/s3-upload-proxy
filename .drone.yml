@@ -11,7 +11,7 @@ workspace:
   path: s3-upload-proxy
 
 steps:
-  - name: download-deps
+  - name: mod-download
     image: golang:1.12rc1
     commands:
       - go mod download
@@ -21,7 +21,7 @@ steps:
     commands:
       - go test -race ./...
     depends_on:
-      - download-deps
+      - mod-download
 
   - name: lint
     image: golang:1.12rc1
@@ -29,7 +29,7 @@ steps:
       - go get github.com/golangci/golangci-lint/cmd/golangci-lint@master
       - golangci-lint run --enable-all -D lll -D errcheck ./...
     depends_on:
-      - download-deps
+      - mod-download
 
   - name: build
     image: golang:1.12rc1
@@ -38,7 +38,7 @@ steps:
     environment:
       CGO_ENABLED: 0
     depends_on:
-      - download-deps
+      - mod-download
 
   - name: build-and-push-to-dockerhub
     image: plugins/docker
