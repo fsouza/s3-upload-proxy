@@ -27,7 +27,7 @@ steps:
     image: golangci/golangci-lint
     pull: always
     commands:
-      - /go/bin/golangci-lint run --enable-all -D lll -D errcheck ./...
+      - golangci-lint run --enable-all -D lll -D errcheck ./...
     depends_on:
       - mod-download
 
