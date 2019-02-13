@@ -5,25 +5,21 @@
 package mediastore
 
 import (
-	"sync"
-
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/external"
 	"github.com/aws/aws-sdk-go-v2/service/mediastore"
 	"github.com/aws/aws-sdk-go-v2/service/mediastoredata"
 )
 
-var containers sync.Map
-
 func (u *msUploader) getDataClientForContainer(name string) (*mediastoredata.MediaStoreData, error) {
-	v, ok := containers.Load(name)
+	v, ok := u.containers.Load(name)
 	if !ok {
 		client, err := u.newDataClient(name)
 		if err != nil {
 			return nil, err
 		}
 		v = client
-		containers.Store(name, v)
+		u.containers.Store(name, v)
 	}
 	return v.(*mediastoredata.MediaStoreData), nil
 }

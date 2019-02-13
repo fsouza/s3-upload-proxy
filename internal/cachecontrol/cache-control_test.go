@@ -99,6 +99,7 @@ func TestCacheControlHeaderValue(t *testing.T) {
 		},
 	}
 	for _, test := range tests {
+		test := test
 		t.Run(test.input, func(t *testing.T) {
 			value := rules.HeaderValue(test.input)
 			if !reflect.DeepEqual(value, test.expected) {

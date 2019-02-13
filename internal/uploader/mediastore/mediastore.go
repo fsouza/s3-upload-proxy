@@ -6,6 +6,7 @@ package mediastore
 
 import (
 	"io"
+	"sync"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/external"
@@ -26,7 +27,8 @@ func New() (uploader.Uploader, error) {
 }
 
 type msUploader struct {
-	client *mediastore.MediaStore
+	client     *mediastore.MediaStore
+	containers sync.Map
 }
 
 func (u *msUploader) Upload(options uploader.Options) error {
