@@ -17,7 +17,7 @@ steps:
     ports:
       - 3000
     environment:
-      ATHENS_STORAGE_TYPE: S3
+      ATHENS_STORAGE_TYPE: s3
       AWS_REGION:
         from_secret: aws_region
       AWS_ACCESS_KEY_ID:
