@@ -43,7 +43,7 @@ steps:
   - name: wait-for-proxy
     image: alpine
     commands:
-      - while ! nc athens-proxy 3000; do echo waiting for the proxy; sleep 1; done
+      - "while ! nc athens-proxy 3000; do echo waiting for the proxy; sleep 1; done"
     depends_on: athens-proxy
 
   - name: mod-download
