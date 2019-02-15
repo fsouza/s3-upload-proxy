@@ -35,7 +35,8 @@ steps:
   - name: athens-proxy
     image: gomods/athens:canary
     detach: true
-    ports: 3000:3000
+    ports:
+      - 3000
     when:
       event: pull_request
 
