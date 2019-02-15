@@ -42,8 +42,9 @@ steps:
 
   - name: wait-for-proxy
     image: alpine
+    pull: always
     commands:
-      - "while ! nc athens-proxy 3000; do echo waiting for the proxy; sleep 1; done"
+      - sh -c "while ! nc athens-proxy 3000; do echo waiting for the proxy; sleep 1; done"
     depends_on: athens-proxy
 
   - name: mod-download
@@ -51,7 +52,7 @@ steps:
     commands:
       - go mod download
     environment:
-      - GOPROXY=http://athens-proxy:3000
+      GOPROXY: http://athens-proxy:3000
     depends_on:
       - wait-for-proxy
 
