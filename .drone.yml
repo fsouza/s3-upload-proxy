@@ -14,7 +14,8 @@ steps:
   - name: athens-proxy
     image: gomods/athens:canary
     detach: true
-    ports: 3000:3000
+    ports:
+      - 3000
     environment:
       ATHENS_STORAGE_TYPE: S3
       AWS_REGION:
