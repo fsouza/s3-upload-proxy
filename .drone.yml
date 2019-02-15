@@ -92,3 +92,8 @@ steps:
       - test
       - lint
       - build
+---
+kind: signature
+hmac: c3e3786d8ad93062a1413f74a4f57b8c96f99f41655b2a552d08a779660d1ec9
+
+...
