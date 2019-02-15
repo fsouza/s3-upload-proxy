@@ -36,7 +36,7 @@ steps:
     image: alpine
     pull: always
     commands:
-      - while ! nc athens-proxy 3000; do echo waiting for the proxy; sleep 1; done
+      - timeout -t 10 sh -c 'while ! wget -O /dev/null -T 1 http://athens-proxy:3000/healthz; do echo waiting for the proxy; sleep 1; done'
     depends_on:
       - athens-proxy
 
