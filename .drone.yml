@@ -13,6 +13,7 @@ workspace:
 steps:
   - name: athens-proxy
     image: gomods/athens:canary
+    pull: always
     detach: true
     ports:
       - 3000
