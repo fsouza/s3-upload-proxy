@@ -44,8 +44,9 @@ steps:
     image: alpine
     pull: always
     commands:
-      - sh -c "while ! nc athens-proxy 3000; do echo waiting for the proxy; sleep 1; done"
-    depends_on: athens-proxy
+      - while ! nc athens-proxy 3000; do echo waiting for the proxy; sleep 1; done
+    depends_on:
+      - athens-proxy
 
   - name: mod-download
     image: golang:1.12rc1
