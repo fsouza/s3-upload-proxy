@@ -28,9 +28,6 @@ steps:
       ATHENS_S3_BUCKET_NAME:
         from_secret: s3_bucket_name
     when:
-      event:
-        - push
-        - tag
       repo: fsouza/s3-upload-proxy
 
   - name: wait-for-proxy
@@ -94,6 +91,6 @@ steps:
       - build
 ---
 kind: signature
-hmac: c3e3786d8ad93062a1413f74a4f57b8c96f99f41655b2a552d08a779660d1ec9
+hmac: b61e7f3b40e5a8f7ea2f81288c1d0ddce245756ce6e126082a7fc49bc901ff96
 
 ...
