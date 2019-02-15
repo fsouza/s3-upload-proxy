@@ -32,14 +32,6 @@ steps:
         - tag
       repo: fsouza/s3-upload-proxy
 
-  - name: athens-proxy
-    image: gomods/athens:canary
-    detach: true
-    ports:
-      - 3000
-    when:
-      event: pull_request
-
   - name: wait-for-proxy
     image: alpine
     pull: always
