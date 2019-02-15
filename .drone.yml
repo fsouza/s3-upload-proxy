@@ -13,11 +13,12 @@ workspace:
 steps:
   - name: athens-proxy
     image: gomods/athens:canary
+    pull: always
     detach: true
     ports:
       - 3000
     environment:
-      ATHENS_STORAGE_TYPE: S3
+      ATHENS_STORAGE_TYPE: s3
       AWS_REGION:
         from_secret: aws_region
       AWS_ACCESS_KEY_ID:
@@ -27,31 +28,22 @@ steps:
       ATHENS_S3_BUCKET_NAME:
         from_secret: s3_bucket_name
     when:
-      event:
-        - push
-        - tag
       repo: fsouza/s3-upload-proxy
-
-  - name: athens-proxy
-    image: gomods/athens:canary
-    detach: true
-    ports:
-      - 3000
-    when:
-      event: pull_request
 
   - name: wait-for-proxy
     image: alpine
+    pull: always
     commands:
-      - while ! nc athens-proxy 3000; do echo waiting for the proxy; sleep 1; done
-    depends_on: athens-proxy
+      - timeout -t 10 sh -c 'while ! wget -O /dev/null -T 1 http://athens-proxy:3000/healthz; do echo waiting for the proxy; sleep 1; done'
+    depends_on:
+      - athens-proxy
 
   - name: mod-download
     image: golang:1.12rc1
     commands:
       - go mod download
     environment:
-      - GOPROXY=http://athens-proxy:3000
+      GOPROXY: http://athens-proxy:3000
     depends_on:
       - wait-for-proxy
 
@@ -97,3 +89,8 @@ steps:
       - test
       - lint
       - build
+---
+kind: signature
+hmac: b61e7f3b40e5a8f7ea2f81288c1d0ddce245756ce6e126082a7fc49bc901ff96
+
+...
