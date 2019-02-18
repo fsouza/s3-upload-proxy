@@ -55,7 +55,7 @@ steps:
       - mod-download
 
   - name: lint
-    image: fsouza/golangci-lint
+    image: golangci/golangci-lint
     pull: always
     commands:
       - golangci-lint run --enable-all -D lll -D errcheck ./...
