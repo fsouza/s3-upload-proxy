@@ -30,7 +30,6 @@ steps:
 
   - name: wait-for-proxy
     image: alpine
-    pull: always
     commands:
       - timeout -t 10 sh -c 'while ! wget -O /dev/null -T 1 http://athens-proxy:3000/healthz; do echo waiting for the proxy; sleep 1; done'
     depends_on:
@@ -89,6 +88,6 @@ steps:
       - build
 ---
 kind: signature
-hmac: 00d81f858e9c9ad15bef28148d7009793341b086f29fef28cb7c87c884d6f217
+hmac: b090c968b55ba5f5f5c308d1f94ceb7b54c6dd726a488a69b327b8be518e1262
 
 ...
