@@ -73,7 +73,7 @@ steps:
     settings:
       repo: fsouza/s3-upload-proxy
       auto_tag: true
-      dockerfile: Dockerfile.ci
+      dockerfile: ci/Dockerfile
       username:
         from_secret: docker_user
       password:
@@ -89,5 +89,3 @@ steps:
 ---
 kind: signature
 hmac: b090c968b55ba5f5f5c308d1f94ceb7b54c6dd726a488a69b327b8be518e1262
-
-...
