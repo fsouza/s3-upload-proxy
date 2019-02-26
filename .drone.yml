@@ -36,7 +36,7 @@ steps:
       - athens-proxy
 
   - name: mod-download
-    image: golang:1.12rc1
+    image: golang:1.12
     commands:
       - go mod download
     environment:
@@ -45,7 +45,7 @@ steps:
       - wait-for-proxy
 
   - name: test
-    image: golang:1.12rc1
+    image: golang:1.12
     commands:
       - go test -race ./...
     depends_on:
@@ -60,7 +60,7 @@ steps:
       - mod-download
 
   - name: build
-    image: golang:1.12rc1
+    image: golang:1.12
     commands:
       - go build -o s3-upload-proxy
     environment:
@@ -88,6 +88,6 @@ steps:
       - build
 ---
 kind: signature
-hmac: cc0a8ad4d22fd5968e3f17c6b4d375c37a615f9985317c8d10e341bd6e18f035
+hmac: c4b770e6728c948158b4e507d777cef58b6f38b3d0adda66f445dda1cbc667b9
 
 ...

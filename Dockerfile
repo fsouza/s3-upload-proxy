@@ -1,4 +1,4 @@
-FROM golang:1.12rc1-alpine AS build
+FROM golang:1.12-alpine AS build
 RUN apk add --no-cache git
 ENV  CGO_ENABLED 0
 ADD  . /code
