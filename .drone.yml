@@ -36,7 +36,7 @@ steps:
       - athens-proxy
 
   - name: mod-download
-    image: &goimage "golang:1.12.2"
+    image: &goimage "golang:1.12.3"
     commands:
       - go mod download
     environment:
@@ -89,5 +89,3 @@ steps:
 ---
 kind: signature
 hmac: f7a917453c15520d506534cc7820253a21aabd1a5b912c12ed1b95355cf67e1e
-
-...
