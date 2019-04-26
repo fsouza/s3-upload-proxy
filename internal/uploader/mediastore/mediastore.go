@@ -5,6 +5,7 @@
 package mediastore
 
 import (
+	"context"
 	"io"
 	"sync"
 
@@ -45,7 +46,7 @@ func (u *msUploader) Upload(options uploader.Options) error {
 		input.CacheControl = aws.String(options.CacheControl)
 	}
 	req := client.PutObjectRequest(&input)
-	_, err = req.Send()
+	_, err = req.Send(context.Background())
 	return err
 }
 

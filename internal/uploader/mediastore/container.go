@@ -5,6 +5,8 @@
 package mediastore
 
 import (
+	"context"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/external"
 	"github.com/aws/aws-sdk-go-v2/service/mediastore"
@@ -28,7 +30,7 @@ func (u *msUploader) newDataClient(containerName string) (*mediastoredata.MediaS
 	req := u.client.DescribeContainerRequest(&mediastore.DescribeContainerInput{
 		ContainerName: aws.String(containerName),
 	})
-	resp, err := req.Send()
+	resp, err := req.Send(context.Background())
 	if err != nil {
 		return nil, err
 	}
