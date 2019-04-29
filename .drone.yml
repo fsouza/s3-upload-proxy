@@ -17,8 +17,6 @@ steps:
       - go mod download
     environment:
       GOPROXY: https://proxy.golang.org
-    depends_on:
-      - wait-for-proxy
 
   - name: test
     image: *goimage
@@ -64,6 +62,6 @@ steps:
       - build
 ---
 kind: signature
-hmac: 9a5a8c23165675582ac14083e55bee44d6ccba3a031df94aed86ec2c00763667
+hmac: 059453453db602404058daba3cf53719bb2903bb4339ec2381f0e9a5bf59dbbf
 
 ...
