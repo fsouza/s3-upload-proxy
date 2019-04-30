@@ -17,6 +17,18 @@ steps:
       - go mod download
     environment:
       GOPROXY: https://proxy.golang.org
+    depends_on:
+      - clone
+
+  - name: test-dockerfile
+    image: plugins/docker
+    settings:
+      repo: fsouza/s3-upload-proxy
+      dry_run: true
+    when:
+      event: pull_request
+    depends_on:
+      - clone
 
   - name: test
     image: *goimage
@@ -39,16 +51,6 @@ steps:
       - go build -o s3-upload-proxy
     environment:
       CGO_ENABLED: 0
-    depends_on:
-      - mod-download
-
-  - name: test-dockerfile
-    image: plugins/docker
-    settings:
-      repo: fsouza/s3-upload-proxy
-      dry_run: true
-    when:
-      event: pull_request
     depends_on:
       - mod-download
 
@@ -84,5 +86,3 @@ steps:
 ---
 kind: signature
 hmac: 296313724d8921bcabd3f22a6d60a42154820d7e861412dc0627d8561e7e431e
-
-...
