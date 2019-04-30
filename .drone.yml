@@ -42,6 +42,27 @@ steps:
     depends_on:
       - mod-download
 
+  - name: test-dockerfile
+    image: plugins/docker
+    settings:
+      repo: fsouza/s3-upload-proxy
+      dry_run: true
+    when:
+      event: pull_request
+    depends_on:
+      - mod-download
+
+  - name: test-ci-dockerfile
+    image: plugins/docker
+    settings:
+      repo: fsouza/s3-upload-proxy
+      dockerfile: ci/Dockerfile
+      dry_run: true
+    when:
+      event: pull_request
+    depends_on:
+      - build
+
   - name: build-and-push-to-dockerhub
     image: plugins/docker
     settings:
@@ -60,8 +81,3 @@ steps:
       - test
       - lint
       - build
----
-kind: signature
-hmac: 059453453db602404058daba3cf53719bb2903bb4339ec2381f0e9a5bf59dbbf
-
-...
