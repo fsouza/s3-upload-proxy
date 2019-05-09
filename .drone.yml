@@ -12,7 +12,7 @@ workspace:
 
 steps:
   - name: mod-download
-    image: &goimage "golang:1.12.4"
+    image: &goimage "golang:1.12.5"
     commands:
       - go mod download
     environment:
@@ -85,6 +85,6 @@ steps:
       - build
 ---
 kind: signature
-hmac: 92acfca36f96bcdc4a6210b95e8609b1f5b783d75bc55bed324533cb48880685
+hmac: cf482c89117c430d215ff31b555f664307213fb897b13102e1115dc9f450f51c
 
 ...
