@@ -85,4 +85,6 @@ steps:
       - build
 ---
 kind: signature
-hmac: cf482c89117c430d215ff31b555f664307213fb897b13102e1115dc9f450f51c
+hmac: 661bb823223fdc6b927f2388167acaf5cc98fa9cc06668891bb31fb7bcd94ed2
+
+...
