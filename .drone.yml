@@ -33,7 +33,7 @@ steps:
   - name: test
     image: *goimage
     commands:
-      - go test -race ./...
+      - go test -race -vet all -mod readonly ./...
     depends_on:
       - mod-download
 
@@ -48,7 +48,7 @@ steps:
   - name: build
     image: *goimage
     commands:
-      - go build -o s3-upload-proxy
+      - go build -o s3-upload-proxy -mod readonly
     environment:
       CGO_ENABLED: 0
     depends_on:
@@ -86,5 +86,3 @@ steps:
 ---
 kind: signature
 hmac: cf482c89117c430d215ff31b555f664307213fb897b13102e1115dc9f450f51c
-
-...
