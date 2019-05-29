@@ -13,7 +13,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/mediastoredata"
 )
 
-func (u *msUploader) getDataClientForContainer(name string) (*mediastoredata.MediaStoreData, error) {
+func (u *msUploader) getDataClientForContainer(name string) (*mediastoredata.Client, error) {
 	v, ok := u.containers.Load(name)
 	if !ok {
 		client, err := u.newDataClient(name)
@@ -23,10 +23,10 @@ func (u *msUploader) getDataClientForContainer(name string) (*mediastoredata.Med
 		v = client
 		u.containers.Store(name, v)
 	}
-	return v.(*mediastoredata.MediaStoreData), nil
+	return v.(*mediastoredata.Client), nil
 }
 
-func (u *msUploader) newDataClient(containerName string) (*mediastoredata.MediaStoreData, error) {
+func (u *msUploader) newDataClient(containerName string) (*mediastoredata.Client, error) {
 	req := u.client.DescribeContainerRequest(&mediastore.DescribeContainerInput{
 		ContainerName: aws.String(containerName),
 	})

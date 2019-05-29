@@ -28,7 +28,7 @@ func New() (uploader.Uploader, error) {
 }
 
 type msUploader struct {
-	client     *mediastore.MediaStore
+	client     *mediastore.Client
 	containers sync.Map
 }
 
