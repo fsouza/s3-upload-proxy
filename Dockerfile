@@ -1,4 +1,4 @@
-FROM golang:1.12.7-alpine AS build
+FROM golang:1.13beta1-alpine AS build
 RUN apk add --no-cache git
 ENV  GOPROXY https://proxy.golang.org
 ENV  CGO_ENABLED 0
