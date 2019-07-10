@@ -85,7 +85,7 @@ local build(go_version) = {
 
 local pipeline(go_version) = {
   kind: "pipeline",
-  name: "build_%(go_version)s" % {go_version: go_version},
+  name: "build_go_%(go_version)s" % {go_version: go_version},
   workspace: {
     base: "/go",
     path: "s3-upload-proxy-%(go_version)s" % {go_version: go_version},

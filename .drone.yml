@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: build_1.12.7
+name: build_go_1.12.7
 
 platform:
   os: linux
@@ -86,7 +86,7 @@ steps:
 
 ---
 kind: pipeline
-name: build_1.13beta1
+name: build_go_1.13beta1
 
 platform:
   os: linux
