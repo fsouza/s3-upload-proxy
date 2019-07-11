@@ -6,7 +6,6 @@ package mediastore
 
 import (
 	"context"
-	"io"
 	"sync"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -39,7 +38,7 @@ func (u *msUploader) Upload(options uploader.Options) error {
 	}
 	input := mediastoredata.PutObjectInput{
 		Path:        aws.String(options.Path),
-		Body:        nopSeeker{options.Body},
+		Body:        aws.ReadSeekCloser(options.Body),
 		ContentType: aws.String(options.ContentType),
 	}
 	if options.CacheControl != "" {
@@ -48,12 +47,4 @@ func (u *msUploader) Upload(options uploader.Options) error {
 	req := client.PutObjectRequest(&input)
 	_, err = req.Send(context.Background())
 	return err
-}
-
-type nopSeeker struct {
-	io.Reader
-}
-
-func (nopSeeker) Seek(_ int64, _ int) (int64, error) {
-	return 0, nil
 }
