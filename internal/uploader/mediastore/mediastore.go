@@ -38,8 +38,9 @@ func (u *msUploader) Upload(options uploader.Options) error {
 	}
 	input := mediastoredata.PutObjectInput{
 		Path:        aws.String(options.Path),
-		Body:        aws.ReadSeekCloser(options.Body),
 		ContentType: aws.String(options.ContentType),
+		//nolint:staticcheck
+		Body: aws.ReadSeekCloser(options.Body),
 	}
 	if options.CacheControl != "" {
 		input.CacheControl = aws.String(options.CacheControl)
