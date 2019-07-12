@@ -95,11 +95,7 @@ local pipeline(go_version) = {
     tests(go_version),
     lint,
     build(go_version),
-  ] + if go_version == go_versions[0] then [
-    test_dockerfile,
-    test_ci_dockerfile,
-    push_to_dockerhub,
-  ] else [],
+  ] + if go_version == go_versions[0] then dockerfile_steps else [],
 };
 
 std.map(pipeline, go_versions)
