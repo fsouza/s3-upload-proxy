@@ -69,9 +69,7 @@ func (c *Config) logger() *logrus.Logger {
 }
 
 func (c *Config) addCacheMetadata(options *uploader.Options) {
-	if value := c.CacheControl.HeaderValue(options.Path); value != nil {
-		options.CacheControl = *value
-	}
+	options.CacheControl = c.CacheControl.HeaderValue(options.Path)
 }
 
 func healthcheck(w http.ResponseWriter, r *http.Request) {
@@ -110,7 +108,7 @@ func main() {
 			Bucket:      cfg.BucketName,
 			Path:        key,
 			Body:        r.Body,
-			ContentType: contentType,
+			ContentType: stringPtr(contentType),
 		}
 		cfg.addCacheMetadata(&options)
 		err = uper.Upload(options)
@@ -131,4 +129,12 @@ func main() {
 	defer listener.Close()
 	logger.Infof("listening on %s", listener.Addr())
 	http.Serve(listener, nil)
+}
+
+// stringPtr makes empty strings a nil pointer
+func stringPtr(input string) *string {
+	if input == "" {
+		return nil
+	}
+	return &input
 }

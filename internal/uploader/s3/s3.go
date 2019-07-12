@@ -31,8 +31,8 @@ func (u *s3Uploader) Upload(options uploader.Options) error {
 		Bucket:       aws.String(options.Bucket),
 		Key:          aws.String(options.Path),
 		Body:         options.Body,
-		ContentType:  aws.String(options.ContentType),
-		CacheControl: aws.String(options.CacheControl),
+		ContentType:  options.ContentType,
+		CacheControl: options.CacheControl,
 	}
 	_, err := u.uploader.Upload(&input)
 	return err

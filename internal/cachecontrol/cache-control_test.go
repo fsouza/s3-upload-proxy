@@ -61,7 +61,7 @@ func TestCacheControlHeaderValue(t *testing.T) {
 		Rule{Regexp: &jregexp{re: regexp.MustCompile(`\.webm$`)}, Value: "public, max-age=2, s-maxage=123456"},
 		Rule{Regexp: &jregexp{re: regexp.MustCompile(`\.mp3$`)}, Value: "public, s-maxage=123456"},
 	}
-	var tests = []struct {
+	tests := []struct {
 		input    string
 		expected *string
 	}{

@@ -17,6 +17,6 @@ type Options struct {
 	Bucket       string
 	Path         string
 	Body         io.Reader
-	ContentType  string
-	CacheControl string
+	ContentType  *string
+	CacheControl *string
 }
