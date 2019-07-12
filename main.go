@@ -105,7 +105,7 @@ func main() {
 
 		key := strings.TrimLeft(r.URL.Path, "/")
 		contentType := mime.TypeByExtension(filepath.Ext(key))
-		logFields := logrus.Fields{"bucket": cfg.BucketName, "objectKey": key}
+		logFields := logrus.Fields{"bucket": cfg.BucketName, "objectKey": key, "contentType": contentType}
 		options := uploader.Options{
 			Bucket:      cfg.BucketName,
 			Path:        key,
@@ -119,7 +119,7 @@ func main() {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		logger.WithFields(logFields).WithField("contentType", contentType).Debugf("finished upload in %s", time.Since(start))
+		logger.WithFields(logFields).Debugf("finished upload in %s", time.Since(start))
 		fmt.Fprintln(w, "OK")
 	})
 
