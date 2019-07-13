@@ -5,7 +5,6 @@
 package mediastore
 
 import (
-	"context"
 	"sync"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -44,7 +43,7 @@ func (u *msUploader) Upload(options uploader.Options) error {
 		Body: aws.ReadSeekCloser(options.Body),
 	}
 	req := client.PutObjectRequest(&input)
-	_, err = req.Send(context.Background())
+	_, err = req.Send(options.Context)
 	return err
 }
 
@@ -55,6 +54,6 @@ func (u *msUploader) Delete(options uploader.Options) error {
 	}
 	input := mediastoredata.DeleteObjectInput{Path: aws.String(options.Path)}
 	req := client.DeleteObjectRequest(&input)
-	_, err = req.Send(context.Background())
+	_, err = req.Send(options.Context)
 	return err
 }

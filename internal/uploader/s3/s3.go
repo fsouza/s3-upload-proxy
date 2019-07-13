@@ -5,8 +5,6 @@
 package s3
 
 import (
-	"context"
-
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/external"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
@@ -48,6 +46,6 @@ func (u *s3Uploader) Delete(options uploader.Options) error {
 		Bucket: aws.String(options.Bucket),
 		Key:    aws.String(options.Path),
 	})
-	_, err := req.Send(context.Background())
+	_, err := req.Send(options.Context)
 	return err
 }

@@ -109,6 +109,7 @@ func main() {
 			Path:        key,
 			Body:        r.Body,
 			ContentType: stringPtr(contentType),
+			Context:     r.Context(),
 		}
 		cfg.addCacheMetadata(&options)
 		switch r.Method {
