@@ -96,7 +96,7 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
 		defer r.Body.Close()
-		if r.Method != "POST" && r.Method != "PUT" {
+		if r.Method != http.MethodPost && r.Method != http.MethodPut && r.Method != http.MethodDelete {
 			http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
 			return
 		}
@@ -111,13 +111,24 @@ func main() {
 			ContentType: stringPtr(contentType),
 		}
 		cfg.addCacheMetadata(&options)
-		err = uper.Upload(options)
-		if err != nil {
-			logger.WithFields(logFields).WithError(err).Error("failed to upload file")
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
+		switch r.Method {
+		case http.MethodPost, http.MethodPut:
+			err = uper.Upload(options)
+			if err != nil {
+				logger.WithFields(logFields).WithError(err).Error("failed to upload file")
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
+			logger.WithFields(logFields).Debugf("finished upload in %s", time.Since(start))
+		case http.MethodDelete:
+			err = uper.Delete(options)
+			if err != nil {
+				logger.WithFields(logFields).WithError(err).Error("failed to delete file")
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
+			logger.WithFields(logFields).Debugf("deleted in %s", time.Since(start))
 		}
-		logger.WithFields(logFields).Debugf("finished upload in %s", time.Since(start))
 		fmt.Fprintln(w, "OK")
 	})
 

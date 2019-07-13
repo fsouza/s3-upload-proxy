@@ -47,3 +47,14 @@ func (u *msUploader) Upload(options uploader.Options) error {
 	_, err = req.Send(context.Background())
 	return err
 }
+
+func (u *msUploader) Delete(options uploader.Options) error {
+	client, err := u.getDataClientForContainer(options.Bucket)
+	if err != nil {
+		return err
+	}
+	input := mediastoredata.DeleteObjectInput{Path: aws.String(options.Path)}
+	req := client.DeleteObjectRequest(&input)
+	_, err = req.Send(context.Background())
+	return err
+}

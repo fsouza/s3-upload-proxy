@@ -10,6 +10,7 @@ import "io"
 // servers.
 type Uploader interface {
 	Upload(Options) error
+	Delete(Options) error
 }
 
 // Options presents the set of options to the Upload method.
