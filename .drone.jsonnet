@@ -14,20 +14,6 @@ local test_dockerfile = {
   depends_on: ['clone'],
 };
 
-local test_ci_dockerfile = {
-  name: 'test-ci-dockerfile',
-  image: 'plugins/docker',
-  settings: {
-    repo: 'fsouza/s3-upload-proxy',
-    dockerfile: 'ci/Dockerfile',
-    dry_run: true,
-  },
-  when: {
-    event: ['pull_request'],
-  },
-  depends_on: ['build'],
-};
-
 local push_to_dockerhub = {
   name: 'build-and-push-to-dockerhub',
   image: 'plugins/docker',
@@ -47,10 +33,27 @@ local push_to_dockerhub = {
   depends_on: ['test', 'lint', 'build'],
 };
 
-local dockerfile_steps = [
+local goreleaser = {
+  name: 'goreleaser',
+  image: 'goreleaser/goreleaser',
+  commands: [
+    'goreleaser',
+  ],
+  environment: {
+    GITHUB_TOKEN: {
+      from_secret: 'github_token',
+    },
+  },
+  depends_on: ['test', 'lint'],
+  when: {
+    event: ['tag'],
+  },
+};
+
+local release_steps = [
   test_dockerfile,
-  test_ci_dockerfile,
   push_to_dockerhub,
+  goreleaser,
 ];
 
 local mod_download(go_version) = {
@@ -83,6 +86,20 @@ local build(go_version) = {
   depends_on: ['mod-download'],
 };
 
+local test_ci_dockerfile = {
+  name: 'test-ci-dockerfile',
+  image: 'plugins/docker',
+  settings: {
+    repo: 'fsouza/s3-upload-proxy',
+    dockerfile: 'ci/Dockerfile',
+    dry_run: true,
+  },
+  when: {
+    event: ['pull_request'],
+  },
+  depends_on: ['build'],
+};
+
 local pipeline(go_version) = {
   kind: 'pipeline',
   name: 'build_go_%(go_version)s' % { go_version: go_version },
@@ -95,7 +112,8 @@ local pipeline(go_version) = {
     tests(go_version),
     lint,
     build(go_version),
-  ] + if go_version == go_versions[0] then dockerfile_steps else [],
+    test_ci_dockerfile,
+  ] + if go_version == go_versions[0] then release_steps else [],
 };
 
 std.map(pipeline, go_versions)

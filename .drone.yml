@@ -42,17 +42,6 @@ steps:
   depends_on:
   - mod-download
 
-- name: test-dockerfile
-  image: plugins/docker
-  settings:
-    dry_run: true
-    repo: fsouza/s3-upload-proxy
-  when:
-    event:
-    - pull_request
-  depends_on:
-  - clone
-
 - name: test-ci-dockerfile
   image: plugins/docker
   settings:
@@ -64,6 +53,17 @@ steps:
     - pull_request
   depends_on:
   - build
+
+- name: test-dockerfile
+  image: plugins/docker
+  settings:
+    dry_run: true
+    repo: fsouza/s3-upload-proxy
+  when:
+    event:
+    - pull_request
+  depends_on:
+  - clone
 
 - name: build-and-push-to-dockerhub
   image: plugins/docker
@@ -83,6 +83,20 @@ steps:
   - test
   - lint
   - build
+
+- name: goreleaser
+  image: goreleaser/goreleaser
+  commands:
+  - goreleaser
+  environment:
+    GITHUB_TOKEN:
+      from_secret: github_token
+  when:
+    event:
+    - tag
+  depends_on:
+  - test
+  - lint
 
 ---
 kind: pipeline
@@ -127,5 +141,17 @@ steps:
   - go build -o s3-upload-proxy -mod readonly
   depends_on:
   - mod-download
+
+- name: test-ci-dockerfile
+  image: plugins/docker
+  settings:
+    dockerfile: ci/Dockerfile
+    dry_run: true
+    repo: fsouza/s3-upload-proxy
+  when:
+    event:
+    - pull_request
+  depends_on:
+  - build
 
 ...
