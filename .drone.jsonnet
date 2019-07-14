@@ -37,7 +37,8 @@ local goreleaser = {
   name: 'goreleaser',
   image: 'goreleaser/goreleaser',
   commands: [
-    'goreleaser',
+    'git fetch --tags',
+    'goreleaser release',
   ],
   environment: {
     GITHUB_TOKEN: {
