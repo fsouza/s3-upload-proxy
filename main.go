@@ -25,7 +25,6 @@ import (
 // Config is the configuration of the s3-uploader.
 type Config struct {
 	BucketName      string             `envconfig:"BUCKET_NAME" required:"true"`
-	DataEndpoint    string             `envconfig:"MEDIASTORE_DATA_ENDPOINT"`
 	UploadDriver    string             `envconfig:"UPLOAD_DRIVER" default:"s3"`
 	HealthcheckPath string             `envconfig:"HEALTHCHECK_PATH" default:"/healthcheck"`
 	HTTPPort        int                `envconfig:"HTTP_PORT" default:"80"`
@@ -41,9 +40,6 @@ func loadConfig() (Config, error) {
 	}
 	if cfg.UploadDriver != "s3" && cfg.UploadDriver != "mediastore" {
 		return cfg, errors.New(`invalid UPLOAD_DRIVER, valid options are "s3" and "mediastore"`)
-	}
-	if cfg.DataEndpoint != "" {
-		return cfg, errors.New("MEDIASTORE_DATA_ENDPOINT shouldn't be used anymore, please set BUCKET_NAME to the name of the MediaStore container")
 	}
 	return cfg, nil
 }
@@ -66,10 +62,6 @@ func (c *Config) logger() *logrus.Logger {
 	logger := logrus.New()
 	logger.Level = level
 	return logger
-}
-
-func (c *Config) addCacheMetadata(options *uploader.Options) {
-	options.CacheControl = c.CacheControl.HeaderValue(options.Path)
 }
 
 func healthcheck(w http.ResponseWriter, r *http.Request) {
@@ -105,13 +97,13 @@ func main() {
 		contentType := mime.TypeByExtension(filepath.Ext(key))
 		logFields := logrus.Fields{"bucket": cfg.BucketName, "objectKey": key, "contentType": contentType}
 		options := uploader.Options{
-			Bucket:      cfg.BucketName,
-			Path:        key,
-			Body:        r.Body,
-			ContentType: stringPtr(contentType),
-			Context:     r.Context(),
+			Bucket:       cfg.BucketName,
+			Path:         key,
+			Body:         r.Body,
+			ContentType:  stringPtr(contentType),
+			Context:      r.Context(),
+			CacheControl: cfg.CacheControl.HeaderValue(key),
 		}
-		cfg.addCacheMetadata(&options)
 		switch r.Method {
 		case http.MethodPost, http.MethodPut:
 			err = uper.Upload(options)
