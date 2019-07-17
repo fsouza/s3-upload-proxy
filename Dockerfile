@@ -1,9 +1,11 @@
 FROM golang:1.12.7-alpine AS build
+
+ARG GOPROXY
+
 RUN apk add --no-cache git
-ENV  GOPROXY https://proxy.golang.org
 ENV  CGO_ENABLED 0
-ADD  . /code
 WORKDIR /code
+ADD  . ./
 RUN  go test ./...
 RUN  go install
 

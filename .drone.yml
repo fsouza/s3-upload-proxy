@@ -57,6 +57,8 @@ steps:
 - name: test-dockerfile
   image: plugins/docker
   settings:
+    build_args:
+    - GOPROXY=https://proxy.golang.org
     dry_run: true
     repo: fsouza/s3-upload-proxy
   when:
