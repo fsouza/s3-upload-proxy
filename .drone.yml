@@ -63,6 +63,7 @@ steps:
     repo: fsouza/s3-upload-proxy
   when:
     event:
+    - push
     - pull_request
   depends_on:
   - clone

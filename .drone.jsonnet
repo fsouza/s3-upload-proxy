@@ -12,7 +12,7 @@ local test_dockerfile = {
     ],
   },
   when: {
-    event: ['pull_request'],
+    event: ['push', 'pull_request'],
   },
   depends_on: ['clone'],
 };
