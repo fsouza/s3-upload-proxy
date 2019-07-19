@@ -106,10 +106,10 @@ local test_ci_dockerfile = {
 
 local pipeline(go_version) = {
   kind: 'pipeline',
-  name: 'build_go_%(go_version)s' % { go_version: go_version },
+  name: 'go:%(go_version)s' % { go_version: go_version },
   workspace: {
     base: '/go',
-    path: 's3-upload-proxy-%(go_version)s' % { go_version: go_version },
+    path: 's3-upload-proxy',
   },
   steps: [
     mod_download(go_version),

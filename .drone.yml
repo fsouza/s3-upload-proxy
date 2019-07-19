@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: build_go_1.12.7
+name: go:1.12.7
 
 platform:
   os: linux
@@ -8,7 +8,7 @@ platform:
 
 workspace:
   base: /go
-  path: s3-upload-proxy-1.12.7
+  path: s3-upload-proxy
 
 steps:
 - name: mod-download
@@ -104,7 +104,7 @@ steps:
 
 ---
 kind: pipeline
-name: build_go_1.11.12
+name: go:1.11.12
 
 platform:
   os: linux
@@ -112,7 +112,7 @@ platform:
 
 workspace:
   base: /go
-  path: s3-upload-proxy-1.11.12
+  path: s3-upload-proxy
 
 steps:
 - name: mod-download
@@ -160,7 +160,7 @@ steps:
 
 ---
 kind: pipeline
-name: build_go_1.13beta1
+name: go:1.13beta1
 
 platform:
   os: linux
@@ -168,7 +168,7 @@ platform:
 
 workspace:
   base: /go
-  path: s3-upload-proxy-1.13beta1
+  path: s3-upload-proxy
 
 steps:
 - name: mod-download
