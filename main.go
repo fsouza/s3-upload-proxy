@@ -7,6 +7,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"log"
 	"mime"
 	"net"
 	"net/http"
@@ -75,7 +76,7 @@ func healthcheck(w http.ResponseWriter, r *http.Request) {
 func main() {
 	cfg, err := loadConfig()
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	logger := cfg.logger()
 
