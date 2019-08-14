@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: go:1.12.7
+name: go:1.12.8
 
 platform:
   os: linux
@@ -12,7 +12,7 @@ workspace:
 
 steps:
 - name: mod-download
-  image: golang:1.12.7
+  image: golang:1.12.8
   commands:
   - go mod download
   environment:
@@ -21,7 +21,7 @@ steps:
   - clone
 
 - name: test
-  image: golang:1.12.7
+  image: golang:1.12.8
   commands:
   - go test -race -vet all -mod readonly ./...
   depends_on:
@@ -36,7 +36,7 @@ steps:
   - mod-download
 
 - name: build
-  image: golang:1.12.7
+  image: golang:1.12.8
   commands:
   - go build -o s3-upload-proxy -mod readonly
   environment:
@@ -117,7 +117,7 @@ steps:
 
 ---
 kind: pipeline
-name: go:1.11.12
+name: go:1.11.13
 
 platform:
   os: linux
@@ -129,7 +129,7 @@ workspace:
 
 steps:
 - name: mod-download
-  image: golang:1.11.12
+  image: golang:1.11.13
   commands:
   - go mod download
   environment:
@@ -138,7 +138,7 @@ steps:
   - clone
 
 - name: test
-  image: golang:1.11.12
+  image: golang:1.11.13
   commands:
   - go test -race -vet all -mod readonly ./...
   depends_on:
@@ -153,7 +153,7 @@ steps:
   - mod-download
 
 - name: build
-  image: golang:1.11.12
+  image: golang:1.11.13
   commands:
   - go build -o s3-upload-proxy -mod readonly
   environment:
