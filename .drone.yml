@@ -1,5 +1,122 @@
 ---
 kind: pipeline
+name: go:1.13rc1
+
+platform:
+  os: linux
+  arch: amd64
+
+workspace:
+  base: /go
+  path: s3-upload-proxy
+
+steps:
+- name: mod-download
+  image: golang:1.13rc1
+  commands:
+  - go mod download
+  environment:
+    GOPROXY: https://proxy.golang.org
+  depends_on:
+  - clone
+
+- name: test
+  image: golang:1.13rc1
+  commands:
+  - go test -race -vet all -mod readonly ./...
+  depends_on:
+  - mod-download
+
+- name: lint
+  pull: always
+  image: golangci/golangci-lint
+  commands:
+  - golangci-lint run --enable-all -D lll -D errcheck ./...
+  depends_on:
+  - mod-download
+
+- name: build
+  image: golang:1.13rc1
+  commands:
+  - go build -o s3-upload-proxy -mod readonly
+  environment:
+    CGO_ENABLED: 0
+  depends_on:
+  - mod-download
+
+- name: test-ci-dockerfile
+  image: plugins/docker
+  settings:
+    dockerfile: ci/Dockerfile
+    dry_run: true
+    repo: fsouza/s3-upload-proxy
+  when:
+    event:
+    - pull_request
+  depends_on:
+  - build
+
+- name: test-dockerfile
+  image: plugins/docker
+  settings:
+    build_args:
+    - GOPROXY=https://proxy.golang.org
+    dry_run: true
+    repo: fsouza/s3-upload-proxy
+  when:
+    event:
+    - push
+    - pull_request
+  depends_on:
+  - clone
+
+- name: build-and-push-to-dockerhub
+  image: plugins/docker
+  settings:
+    auto_tag: true
+    dockerfile: ci/Dockerfile
+    password:
+      from_secret: docker_password
+    repo: fsouza/s3-upload-proxy
+    username:
+      from_secret: docker_user
+  when:
+    ref:
+    - refs/tags/*
+    - refs/heads/master
+  depends_on:
+  - test
+  - lint
+  - build
+
+- name: test-goreleaser
+  image: goreleaser/goreleaser
+  commands:
+  - goreleaser release --snapshot
+  when:
+    event:
+    - push
+    - pull_request
+  depends_on:
+  - clone
+
+- name: goreleaser
+  image: goreleaser/goreleaser
+  commands:
+  - git fetch --tags
+  - goreleaser release
+  environment:
+    GITHUB_TOKEN:
+      from_secret: github_token
+  when:
+    event:
+    - tag
+  depends_on:
+  - test
+  - lint
+
+---
+kind: pipeline
 name: go:1.12.9
 
 platform:
@@ -56,65 +173,6 @@ steps:
   depends_on:
   - build
 
-- name: test-dockerfile
-  image: plugins/docker
-  settings:
-    build_args:
-    - GOPROXY=https://proxy.golang.org
-    dry_run: true
-    repo: fsouza/s3-upload-proxy
-  when:
-    event:
-    - push
-    - pull_request
-  depends_on:
-  - clone
-
-- name: build-and-push-to-dockerhub
-  image: plugins/docker
-  settings:
-    auto_tag: true
-    dockerfile: ci/Dockerfile
-    password:
-      from_secret: docker_password
-    repo: fsouza/s3-upload-proxy
-    username:
-      from_secret: docker_user
-  when:
-    ref:
-    - "refs/tags/*"
-    - refs/heads/master
-  depends_on:
-  - test
-  - lint
-  - build
-
-- name: test-goreleaser
-  image: goreleaser/goreleaser
-  commands:
-  - goreleaser release --snapshot
-  when:
-    event:
-    - push
-    - pull_request
-  depends_on:
-  - clone
-
-- name: goreleaser
-  image: goreleaser/goreleaser
-  commands:
-  - git fetch --tags
-  - goreleaser release
-  environment:
-    GITHUB_TOKEN:
-      from_secret: github_token
-  when:
-    event:
-    - tag
-  depends_on:
-  - test
-  - lint
-
 ---
 kind: pipeline
 name: go:1.11.13
@@ -154,64 +212,6 @@ steps:
 
 - name: build
   image: golang:1.11.13
-  commands:
-  - go build -o s3-upload-proxy -mod readonly
-  environment:
-    CGO_ENABLED: 0
-  depends_on:
-  - mod-download
-
-- name: test-ci-dockerfile
-  image: plugins/docker
-  settings:
-    dockerfile: ci/Dockerfile
-    dry_run: true
-    repo: fsouza/s3-upload-proxy
-  when:
-    event:
-    - pull_request
-  depends_on:
-  - build
-
----
-kind: pipeline
-name: go:1.13beta1
-
-platform:
-  os: linux
-  arch: amd64
-
-workspace:
-  base: /go
-  path: s3-upload-proxy
-
-steps:
-- name: mod-download
-  image: golang:1.13beta1
-  commands:
-  - go mod download
-  environment:
-    GOPROXY: https://proxy.golang.org
-  depends_on:
-  - clone
-
-- name: test
-  image: golang:1.13beta1
-  commands:
-  - go test -race -vet all -mod readonly ./...
-  depends_on:
-  - mod-download
-
-- name: lint
-  pull: always
-  image: golangci/golangci-lint
-  commands:
-  - golangci-lint run --enable-all -D lll -D errcheck ./...
-  depends_on:
-  - mod-download
-
-- name: build
-  image: golang:1.13beta1
   commands:
   - go build -o s3-upload-proxy -mod readonly
   environment:
