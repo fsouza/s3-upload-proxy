@@ -41,7 +41,7 @@ local goreleaser = {
   image: 'goreleaser/goreleaser',
   commands: [
     'git fetch --tags',
-    'goreleaser release',
+    'goreleaser release -f ci/.goreleaser.yml',
   ],
   environment: {
     GITHUB_TOKEN: {
@@ -58,7 +58,7 @@ local goreleaser_test = {
   name: 'test-goreleaser',
   image: 'goreleaser/goreleaser',
   commands: [
-    'goreleaser release --snapshot',
+    'goreleaser release --snapshot -f ci/.goreleaser.yml',
   ],
   depends_on: ['clone'],
   when: {

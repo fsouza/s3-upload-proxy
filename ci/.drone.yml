@@ -92,7 +92,7 @@ steps:
 - name: test-goreleaser
   image: goreleaser/goreleaser
   commands:
-  - goreleaser release --snapshot
+  - goreleaser release --snapshot -f ci/.goreleaser.yml
   when:
     event:
     - push
@@ -104,7 +104,7 @@ steps:
   image: goreleaser/goreleaser
   commands:
   - git fetch --tags
-  - goreleaser release
+  - goreleaser release -f ci/.goreleaser.yml
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
