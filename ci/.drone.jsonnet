@@ -1,5 +1,5 @@
 // the first version is used to build the binary that gets shipped to Docker Hub.
-local go_versions = ['1.13rc2', '1.12.9', '1.11.13'];
+local go_versions = ['1.13', '1.12.9'];
 
 local test_dockerfile = {
   name: 'test-dockerfile',
