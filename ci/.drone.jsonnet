@@ -92,7 +92,7 @@ local lint = {
   name: 'lint',
   image: 'golangci/golangci-lint',
   pull: 'always',
-  commands: ['golangci-lint run ./...'],
+  commands: ['golangci-lint run'],
   depends_on: ['mod-download'],
 };
 

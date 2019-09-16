@@ -31,7 +31,7 @@ steps:
   pull: always
   image: golangci/golangci-lint
   commands:
-  - golangci-lint run ./...
+  - golangci-lint run
   depends_on:
   - mod-download
 
@@ -148,7 +148,7 @@ steps:
   pull: always
   image: golangci/golangci-lint
   commands:
-  - golangci-lint run ./...
+  - golangci-lint run
   depends_on:
   - mod-download
 
