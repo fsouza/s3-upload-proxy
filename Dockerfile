@@ -1,7 +1,5 @@
 FROM golang:1.13.4-alpine AS build
 
-ARG GOPROXY=https://proxy.golang.org,https://gocenter.io,direct
-
 ENV  CGO_ENABLED 0
 WORKDIR /code
 ADD  . ./
