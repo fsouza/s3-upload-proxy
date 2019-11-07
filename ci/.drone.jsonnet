@@ -7,9 +7,6 @@ local test_dockerfile = {
   settings: {
     repo: 'fsouza/s3-upload-proxy',
     dry_run: true,
-    build_args: [
-      'GOPROXY=https://proxy.golang.org',
-    ],
   },
   when: {
     event: ['push', 'pull_request'],
