@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: go:1.13.5
+name: go:1.14
 
 platform:
   os: linux
@@ -12,7 +12,7 @@ workspace:
 
 steps:
 - name: mod-download
-  image: golang:1.13.5
+  image: golang:1.14
   commands:
   - go mod download
   environment:
@@ -21,7 +21,7 @@ steps:
   - clone
 
 - name: test
-  image: golang:1.13.5
+  image: golang:1.14
   commands:
   - go test -race -vet all -mod readonly ./...
   depends_on:
@@ -36,7 +36,7 @@ steps:
   - mod-download
 
 - name: build
-  image: golang:1.13.5
+  image: golang:1.14
   commands:
   - go build -o s3-upload-proxy -mod readonly
   environment:
@@ -115,7 +115,7 @@ steps:
 
 ---
 kind: pipeline
-name: go:1.12.14
+name: go:1.13.8
 
 platform:
   os: linux
@@ -127,7 +127,7 @@ workspace:
 
 steps:
 - name: mod-download
-  image: golang:1.12.14
+  image: golang:1.13.8
   commands:
   - go mod download
   environment:
@@ -136,7 +136,7 @@ steps:
   - clone
 
 - name: test
-  image: golang:1.12.14
+  image: golang:1.13.8
   commands:
   - go test -race -vet all -mod readonly ./...
   depends_on:
@@ -151,65 +151,7 @@ steps:
   - mod-download
 
 - name: build
-  image: golang:1.12.14
-  commands:
-  - go build -o s3-upload-proxy -mod readonly
-  environment:
-    CGO_ENABLED: 0
-  depends_on:
-  - mod-download
-
-- name: test-ci-dockerfile
-  image: plugins/docker
-  settings:
-    dockerfile: ci/Dockerfile
-    dry_run: true
-    repo: fsouza/s3-upload-proxy
-  when:
-    event:
-    - pull_request
-  depends_on:
-  - build
-
----
-kind: pipeline
-name: go:1.14beta1
-
-platform:
-  os: linux
-  arch: amd64
-
-workspace:
-  base: /go
-  path: s3-upload-proxy
-
-steps:
-- name: mod-download
-  image: golang:1.14beta1
-  commands:
-  - go mod download
-  environment:
-    GOPROXY: https://proxy.golang.org
-  depends_on:
-  - clone
-
-- name: test
-  image: golang:1.14beta1
-  commands:
-  - go test -race -vet all -mod readonly ./...
-  depends_on:
-  - mod-download
-
-- name: lint
-  pull: always
-  image: golangci/golangci-lint
-  commands:
-  - golangci-lint run
-  depends_on:
-  - mod-download
-
-- name: build
-  image: golang:1.14beta1
+  image: golang:1.13.8
   commands:
   - go build -o s3-upload-proxy -mod readonly
   environment:
