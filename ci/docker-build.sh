@@ -35,5 +35,5 @@ if [[ ${GITHUB_EVENT_NAME} == "push" || ${GITHUB_EVENT_NAME} == "create" ]]; the
 	docker system prune -af
 
 	# sanity check
-	docker run "${IMAGE_NAME}:${tag}" -h
+	docker pull "${IMAGE_NAME}:${tag}"
 fi
