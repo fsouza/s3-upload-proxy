@@ -11,22 +11,17 @@ on:
 jobs:
   lint-and-test:
     strategy:
-      matrix:
-        go_version:
-          - 1.13
-          - 1.14
-        os:
-          - macos
-          - ubuntu
+      os:
+        - macos
+        - ubuntu
 
-    name: lint-and-test (${{ matrix.os }}/go-${{ matrix.go_version }})
+    name: lint-and-test (${{ matrix.os }}
     runs-on: ${{ matrix.os }}-latest
     steps:
       - uses: actions/setup-go@master
         id: go
         with:
-          stable: false
-          go-version: ${{ matrix.go_version }}
+          go-version: 1.x
 
       - uses: actions/checkout@master
 
