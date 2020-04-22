@@ -11,9 +11,10 @@ on:
 jobs:
   lint-and-test:
     strategy:
-      os:
-        - macos
-        - ubuntu
+      matrix:
+        os:
+          - macos
+          - ubuntu
 
     name: lint-and-test (${{ matrix.os }}
     runs-on: ${{ matrix.os }}-latest
