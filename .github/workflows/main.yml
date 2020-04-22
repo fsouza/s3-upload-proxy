@@ -16,7 +16,7 @@ jobs:
           - macos
           - ubuntu
 
-    name: lint-and-test (${{ matrix.os }}
+    name: lint-and-test (${{ matrix.os }})
     runs-on: ${{ matrix.os }}-latest
     steps:
       - uses: actions/setup-go@master
