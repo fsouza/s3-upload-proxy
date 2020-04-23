@@ -136,7 +136,7 @@ func main() {
 	http.Serve(listener, nil)
 }
 
-// stringPtr makes empty strings a nil pointer
+// stringPtr makes empty strings a nil pointer.
 func stringPtr(input string) *string {
 	if input == "" {
 		return nil

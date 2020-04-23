@@ -3,4 +3,5 @@ linters:
   disable:
     - errcheck
     - lll
+    - testpackage
     - wsl
