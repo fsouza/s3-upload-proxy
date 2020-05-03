@@ -39,8 +39,7 @@ func (u *msUploader) Upload(options uploader.Options) error {
 		Path:         aws.String(options.Path),
 		ContentType:  options.ContentType,
 		CacheControl: options.CacheControl,
-		//nolint:staticcheck
-		Body: aws.ReadSeekCloser(options.Body),
+		Body:         aws.ReadSeekCloser(options.Body),
 	}
 	req := client.PutObjectRequest(&input)
 	_, err = req.Send(options.Context)
