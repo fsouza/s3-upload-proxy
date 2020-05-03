@@ -10,14 +10,8 @@ on:
 
 jobs:
   lint-and-test:
-    strategy:
-      matrix:
-        os:
-          - macos
-          - ubuntu
-
-    name: lint-and-test (${{ matrix.os }})
-    runs-on: ${{ matrix.os }}-latest
+    name: lint-and-test
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-go@master
         id: go
