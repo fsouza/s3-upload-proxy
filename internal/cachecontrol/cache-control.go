@@ -22,8 +22,7 @@ type Rule struct {
 // Set loads the list of rules as a JSON-string, allowing values of type Rules
 // to be used with envconfig.
 func (c *Rules) Set(value string) error {
-	err := json.Unmarshal([]byte(value), c)
-	return err
+	return json.Unmarshal([]byte(value), c)
 }
 
 // HeaderValue returns the matching cache control rule for the given file name.
