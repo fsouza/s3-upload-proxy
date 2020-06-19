@@ -1,6 +1,6 @@
 # s3-upload-proxy
 
-[![Build Status](https://github.com/fsouza/s3-upload-proxy/workflows/Build/badge.svg)](https://github.com/fsouza/s3-upload-proxy/actions?query=branch:master+workflow:Build)
+[![Build Status](https://github.com/fsouza/s3-upload-proxy/workflows/Build/badge.svg)](https://github.com/fsouza/s3-upload-proxy/actions?query=branch:main+workflow:Build)
 
 Tool for proxying HTTP uploads to S3 buckets and Elemental MediaStore
 Containers (added later, bad naming :D). Useful for private network protected environments.
