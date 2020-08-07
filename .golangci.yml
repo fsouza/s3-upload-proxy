@@ -4,5 +4,6 @@ linters:
     - errcheck
     - goerr113
     - lll
+    - nlreturn
     - testpackage
     - wsl
