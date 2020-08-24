@@ -5,10 +5,11 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.1
+      - uses: actions/checkout@v2.3.2
         if: github.event.ref_type == 'tag'
 
       - name: fetch tags
+        if: github.event.ref_type == 'tag'
         run: git fetch --tags --prune --prune-tags
 
       - uses: docker://goreleaser/goreleaser
