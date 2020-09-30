@@ -8,7 +8,7 @@ import (
 	"sync"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/aws/external"
+	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/mediastore"
 	"github.com/aws/aws-sdk-go-v2/service/mediastoredata"
 	"github.com/fsouza/s3-upload-proxy/internal/uploader"
@@ -17,11 +17,11 @@ import (
 // New returns an uploader that sends objects to Elemental MediaStore.
 func New() (uploader.Uploader, error) {
 	var u msUploader
-	sess, err := external.LoadDefaultAWSConfig()
+	sess, err := config.LoadDefaultConfig()
 	if err != nil {
 		return nil, err
 	}
-	u.client = mediastore.New(sess)
+	u.client = mediastore.NewFromConfig(sess)
 	return &u, nil
 }
 
@@ -41,8 +41,7 @@ func (u *msUploader) Upload(options uploader.Options) error {
 		CacheControl: options.CacheControl,
 		Body:         aws.ReadSeekCloser(options.Body),
 	}
-	req := client.PutObjectRequest(&input)
-	_, err = req.Send(options.Context)
+	_, err = client.PutObject(options.Context, &input)
 	return err
 }
 
@@ -52,7 +51,6 @@ func (u *msUploader) Delete(options uploader.Options) error {
 		return err
 	}
 	input := mediastoredata.DeleteObjectInput{Path: aws.String(options.Path)}
-	req := client.DeleteObjectRequest(&input)
-	_, err = req.Send(options.Context)
+	_, err = client.DeleteObject(options.Context, &input)
 	return err
 }

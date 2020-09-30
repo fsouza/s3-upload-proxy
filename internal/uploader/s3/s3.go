@@ -6,46 +6,41 @@ package s3
 
 import (
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/aws/external"
+	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
-	"github.com/aws/aws-sdk-go-v2/service/s3/s3manager"
 	"github.com/fsouza/s3-upload-proxy/internal/uploader"
 )
 
 // New returns an uploader that sends objects to S3.
 func New() (uploader.Uploader, error) {
 	u := s3Uploader{}
-	sess, err := external.LoadDefaultAWSConfig()
+	sess, err := config.LoadDefaultConfig()
 	if err != nil {
 		return nil, err
 	}
-	u.client = s3.New(sess)
-	u.uploader = s3manager.NewUploaderWithClient(u.client)
+	u.client = s3.NewFromConfig(sess)
 	return &u, nil
 }
 
 type s3Uploader struct {
-	client   *s3.Client
-	uploader *s3manager.Uploader
+	client *s3.Client
 }
 
 func (u *s3Uploader) Upload(options uploader.Options) error {
-	input := s3manager.UploadInput{
+	_, err := u.client.PutObject(options.Context, &s3.PutObjectInput{
 		Bucket:       aws.String(options.Bucket),
 		Key:          aws.String(options.Path),
 		Body:         options.Body,
 		ContentType:  options.ContentType,
 		CacheControl: options.CacheControl,
-	}
-	_, err := u.uploader.Upload(&input)
+	})
 	return err
 }
 
 func (u *s3Uploader) Delete(options uploader.Options) error {
-	req := u.client.DeleteObjectRequest(&s3.DeleteObjectInput{
+	_, err := u.client.DeleteObject(options.Context, &s3.DeleteObjectInput{
 		Bucket: aws.String(options.Bucket),
 		Key:    aws.String(options.Path),
 	})
-	_, err := req.Send(options.Context)
 	return err
 }

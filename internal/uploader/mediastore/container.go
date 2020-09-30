@@ -8,7 +8,7 @@ import (
 	"context"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/aws/external"
+	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/mediastore"
 	"github.com/aws/aws-sdk-go-v2/service/mediastoredata"
 )
@@ -27,19 +27,19 @@ func (u *msUploader) getDataClientForContainer(name string) (*mediastoredata.Cli
 }
 
 func (u *msUploader) newDataClient(containerName string) (*mediastoredata.Client, error) {
-	req := u.client.DescribeContainerRequest(&mediastore.DescribeContainerInput{
+	resp, err := u.client.DescribeContainer(context.Background(), &mediastore.DescribeContainerInput{
 		ContainerName: aws.String(containerName),
 	})
-	resp, err := req.Send(context.Background())
 	if err != nil {
 		return nil, err
 	}
-	endpoint := aws.StringValue(resp.Container.Endpoint)
-	sess, err := external.LoadDefaultAWSConfig()
+	cfg, err := config.LoadDefaultConfig()
 	if err != nil {
 		return nil, err
 	}
-	sess.EndpointResolver = aws.ResolveWithEndpointURL(endpoint)
-	client := mediastoredata.New(sess)
+	cfg.EndpointResolver = aws.EndpointResolverFunc(func(string, string) (aws.Endpoint, error) {
+		return aws.Endpoint{URL: *resp.Container.Endpoint}, nil
+	})
+	client := mediastoredata.NewFromConfig(cfg)
 	return client, nil
 }
