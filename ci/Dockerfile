@@ -1,4 +1,4 @@
-FROM alpine:3.12.0
+FROM alpine:3.12.1
 
 RUN apk add --no-cache ca-certificates mailcap
 ADD s3-upload-proxy /usr/bin/s3-upload-proxy
