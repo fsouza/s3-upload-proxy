@@ -2,8 +2,10 @@ linters:
   enable-all: true
   disable:
     - errcheck
+    - exhaustivestruct
     - goerr113
     - lll
     - nlreturn
     - testpackage
+    - wrapcheck
     - wsl
