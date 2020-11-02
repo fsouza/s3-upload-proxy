@@ -1,5 +1,3 @@
-github.com/aws/aws-sdk-go-v2 v0.28.0 h1:+LRTQpWWXQBsjqd5nNkOGvKey6LWL01xZnyMQB/ZLwo=
-github.com/aws/aws-sdk-go-v2 v0.28.0/go.mod h1:P9h1Cf+uOpElAT533QXKOzrpFaOlm8JMorThJNUfQ6Q=
 github.com/aws/aws-sdk-go-v2 v0.29.0 h1:V/KKvuMO2hwHRg2SXJc5aasBHhD1AWbS6KMWg/Ueq1w=
 github.com/aws/aws-sdk-go-v2 v0.29.0/go.mod h1:4d1/Ee0vCwCF7BfG1hCT3zu82493cRy5+VZ8JHvMPf0=
 github.com/aws/aws-sdk-go-v2/config v0.2.2 h1:CBZGPlpL5h+BDoNBNTgypqMxlWgCome/O/i8gdjaOtE=
@@ -10,14 +8,14 @@ github.com/aws/aws-sdk-go-v2/ec2imds v0.1.4 h1:N3atV6naU7rFtS3gg/XU2ZuiPqzFm3HON
 github.com/aws/aws-sdk-go-v2/ec2imds v0.1.4/go.mod h1:h5WB2P4CTnVroyw/gvIiyMTtl/zvnKAC4H74EWiKOco=
 github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v0.3.0 h1:OGNwNNeQvOZsa+zAK5nE7r6e0serfSAFznoXqbvbzFE=
 github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v0.3.0/go.mod h1:bMiNrEKNefchodwRJnuwaiAZj2NJq8ZHAYASve6mbFs=
-github.com/aws/aws-sdk-go-v2/service/internal/s3shared v0.3.0 h1:W9iV5Wv4ENG/tZJNj5cGAPqaIqTzYbfAuSLufE+nFHk=
-github.com/aws/aws-sdk-go-v2/service/internal/s3shared v0.3.0/go.mod h1:+jAbMTkZ52kAOhaU0NUn5/gY6i4oRcIJxfPUVrpDdq4=
+github.com/aws/aws-sdk-go-v2/service/internal/s3shared v0.3.1 h1:5dV7pN0xCrnecvbn7+qkK1XbsYwSqbDoSCzVeaW2LJE=
+github.com/aws/aws-sdk-go-v2/service/internal/s3shared v0.3.1/go.mod h1:XHXNMjAkjOXqnmixax5P9IsLhJd6mEU+yrsGls4b5zk=
 github.com/aws/aws-sdk-go-v2/service/mediastore v0.29.0 h1:ElfAEhHszYjX18S52/73u48+zvPQ6sw2lqPUWcBRxdc=
 github.com/aws/aws-sdk-go-v2/service/mediastore v0.29.0/go.mod h1:uy+yUzUgTRbUkOwvtxAdSPSY8sQ2HiXI02wRZcoORb0=
 github.com/aws/aws-sdk-go-v2/service/mediastoredata v0.29.0 h1:JR3cjwLuW+o3RYTsKAR7cwIsPjuJsYkoWovDmXRL2yE=
 github.com/aws/aws-sdk-go-v2/service/mediastoredata v0.29.0/go.mod h1:Iqk7iICD5IbMOjFx0zwNbUFkudBbm7FHHIIHZfEDn7I=
-github.com/aws/aws-sdk-go-v2/service/s3 v0.28.0 h1:SwlO55TpntMeMvUCWwPae6RgsbplIx5ktxJ5CQnpq68=
-github.com/aws/aws-sdk-go-v2/service/s3 v0.28.0/go.mod h1:0cSPvUIK053aHptJM5Z8KflwHky2xTTWZnjh2P/5bcA=
+github.com/aws/aws-sdk-go-v2/service/s3 v0.29.0 h1:rFcFgFNUgnsY1Xdl93lz/oMUvxtReICkt4uVJ+cxY0U=
+github.com/aws/aws-sdk-go-v2/service/s3 v0.29.0/go.mod h1:AczwX1lIFRCemJqc/Jl8xaoc/V7QlAUenAT9pMGqPQw=
 github.com/aws/aws-sdk-go-v2/service/sts v0.29.0 h1:EOEsrzOQh+xU4lKbrkRoTybsP704I32GczRFsW6apEw=
 github.com/aws/aws-sdk-go-v2/service/sts v0.29.0/go.mod h1:zV0Fx4GE1wPZJ3iHn1g7UxoPb+uJfqOkvBp3UQAq3bc=
 github.com/awslabs/smithy-go v0.2.1 h1:guvR5teu1q6IoZnE9PFyPjxh/H7YEcZGysx9vu5ZwZ0=
@@ -42,8 +40,7 @@ github.com/stretchr/testify v1.2.2 h1:bSDNvY7ZPG5RlJ8otE/7V6gMiyenm9RtJ7IUVIAoJ1
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
 golang.org/x/sys v0.0.0-20191026070338-33540a1f6037 h1:YyJpGZS1sBuBCzLAR1VEpK193GlqGZbnPFnPV/5Rsb4=
 golang.org/x/sys v0.0.0-20191026070338-33540a1f6037/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543 h1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=
 golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
-golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 h1:go1bK/D/BFZV2I8cIQd1NKEZ+0owSTG1fDTci4IqFcE=
-golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v2 v2.2.8/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
