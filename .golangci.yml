@@ -6,6 +6,7 @@ linters:
     - goerr113
     - lll
     - nlreturn
+    - paralleltest
     - testpackage
     - wrapcheck
     - wsl
