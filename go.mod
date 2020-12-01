@@ -1,8 +1,8 @@
 module github.com/fsouza/s3-upload-proxy
 
 require (
-	github.com/aws/aws-sdk-go-v2 v0.29.0
-	github.com/aws/aws-sdk-go-v2/config v0.2.2
+	github.com/aws/aws-sdk-go-v2 v0.30.0
+	github.com/aws/aws-sdk-go-v2/config v0.3.0
 	github.com/aws/aws-sdk-go-v2/service/mediastore v0.29.0
 	github.com/aws/aws-sdk-go-v2/service/mediastoredata v0.29.0
 	github.com/aws/aws-sdk-go-v2/service/s3 v0.29.0
