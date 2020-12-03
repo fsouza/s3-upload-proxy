@@ -7,6 +7,7 @@ package s3
 import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/feature/s3/manager"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/fsouza/s3-upload-proxy/internal/uploader"
 )
@@ -19,15 +20,17 @@ func New() (uploader.Uploader, error) {
 		return nil, err
 	}
 	u.client = s3.NewFromConfig(sess)
+	u.upload = manager.NewUploader(u.client)
 	return &u, nil
 }
 
 type s3Uploader struct {
 	client *s3.Client
+	upload *manager.Uploader
 }
 
 func (u *s3Uploader) Upload(options uploader.Options) error {
-	_, err := u.client.PutObject(options.Context, &s3.PutObjectInput{
+	_, err := u.upload.Upload(options.Context, &s3.PutObjectInput{
 		Bucket:       aws.String(options.Bucket),
 		Key:          aws.String(options.Path),
 		Body:         options.Body,
