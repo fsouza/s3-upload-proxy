@@ -5,6 +5,7 @@
 package mediastore
 
 import (
+	"context"
 	"sync"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -17,7 +18,7 @@ import (
 // New returns an uploader that sends objects to Elemental MediaStore.
 func New() (uploader.Uploader, error) {
 	var u msUploader
-	sess, err := config.LoadDefaultConfig()
+	sess, err := config.LoadDefaultConfig(context.Background())
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +40,7 @@ func (u *msUploader) Upload(options uploader.Options) error {
 		Path:         aws.String(options.Path),
 		ContentType:  options.ContentType,
 		CacheControl: options.CacheControl,
-		Body:         aws.ReadSeekCloser(options.Body),
+		Body:         options.Body,
 	}
 	_, err = client.PutObject(options.Context, &input)
 	return err

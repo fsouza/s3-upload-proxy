@@ -5,6 +5,8 @@
 package s3
 
 import (
+	"context"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/feature/s3/manager"
@@ -15,7 +17,7 @@ import (
 // New returns an uploader that sends objects to S3.
 func New() (uploader.Uploader, error) {
 	u := s3Uploader{}
-	sess, err := config.LoadDefaultConfig()
+	sess, err := config.LoadDefaultConfig(context.Background())
 	if err != nil {
 		return nil, err
 	}

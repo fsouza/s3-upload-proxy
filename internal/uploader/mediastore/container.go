@@ -33,7 +33,7 @@ func (u *msUploader) newDataClient(containerName string) (*mediastoredata.Client
 	if err != nil {
 		return nil, err
 	}
-	cfg, err := config.LoadDefaultConfig()
+	cfg, err := config.LoadDefaultConfig(context.Background())
 	if err != nil {
 		return nil, err
 	}
