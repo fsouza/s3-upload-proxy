@@ -5,19 +5,17 @@
 package s3
 
 import (
-	"context"
-
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/feature/s3/manager"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
+	awsint "github.com/fsouza/s3-upload-proxy/internal/aws"
 	"github.com/fsouza/s3-upload-proxy/internal/uploader"
 )
 
 // New returns an uploader that sends objects to S3.
 func New() (uploader.Uploader, error) {
 	u := s3Uploader{}
-	sess, err := config.LoadDefaultConfig(context.Background())
+	sess, err := awsint.Config()
 	if err != nil {
 		return nil, err
 	}

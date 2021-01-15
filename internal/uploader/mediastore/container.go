@@ -8,9 +8,9 @@ import (
 	"context"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/mediastore"
 	"github.com/aws/aws-sdk-go-v2/service/mediastoredata"
+	awsint "github.com/fsouza/s3-upload-proxy/internal/aws"
 )
 
 func (u *msUploader) getDataClientForContainer(name string) (*mediastoredata.Client, error) {
@@ -33,7 +33,7 @@ func (u *msUploader) newDataClient(containerName string) (*mediastoredata.Client
 	if err != nil {
 		return nil, err
 	}
-	cfg, err := config.LoadDefaultConfig(context.Background())
+	cfg, err := awsint.Config()
 	if err != nil {
 		return nil, err
 	}

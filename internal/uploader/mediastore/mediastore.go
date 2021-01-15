@@ -5,20 +5,19 @@
 package mediastore
 
 import (
-	"context"
 	"sync"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/mediastore"
 	"github.com/aws/aws-sdk-go-v2/service/mediastoredata"
+	awsint "github.com/fsouza/s3-upload-proxy/internal/aws"
 	"github.com/fsouza/s3-upload-proxy/internal/uploader"
 )
 
 // New returns an uploader that sends objects to Elemental MediaStore.
 func New() (uploader.Uploader, error) {
 	var u msUploader
-	sess, err := config.LoadDefaultConfig(context.Background())
+	sess, err := awsint.Config()
 	if err != nil {
 		return nil, err
 	}
