@@ -10,13 +10,23 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/mediastore"
 	"github.com/aws/aws-sdk-go-v2/service/mediastoredata"
+	"github.com/aws/aws-sdk-go-v2/service/mediastoredata/types"
 	awsint "github.com/fsouza/s3-upload-proxy/internal/aws"
 	"github.com/fsouza/s3-upload-proxy/internal/uploader"
 )
 
+// DriverOptions are the set of options that can change how the mediastore
+// driver behaves.
+type DriverOptions struct {
+	ChunkedTransfer bool
+}
+
 // New returns an uploader that sends objects to Elemental MediaStore.
-func New() (uploader.Uploader, error) {
-	var u msUploader
+func New(options DriverOptions) (uploader.Uploader, error) {
+	u := msUploader{uploadAvailability: types.UploadAvailabilityStandard}
+	if options.ChunkedTransfer {
+		u.uploadAvailability = types.UploadAvailabilityStreaming
+	}
 	sess, err := awsint.Config()
 	if err != nil {
 		return nil, err
@@ -26,8 +36,9 @@ func New() (uploader.Uploader, error) {
 }
 
 type msUploader struct {
-	client     *mediastore.Client
-	containers sync.Map
+	client             *mediastore.Client
+	containers         sync.Map
+	uploadAvailability types.UploadAvailability
 }
 
 func (u *msUploader) Upload(options uploader.Options) error {
@@ -36,10 +47,11 @@ func (u *msUploader) Upload(options uploader.Options) error {
 		return err
 	}
 	input := mediastoredata.PutObjectInput{
-		Path:         aws.String(options.Path),
-		ContentType:  options.ContentType,
-		CacheControl: options.CacheControl,
-		Body:         options.Body,
+		Path:               aws.String(options.Path),
+		ContentType:        options.ContentType,
+		CacheControl:       options.CacheControl,
+		Body:               options.Body,
+		UploadAvailability: u.uploadAvailability,
 	}
 	_, err = client.PutObject(options.Context, &input)
 	return err

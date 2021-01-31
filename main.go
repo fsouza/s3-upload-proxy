@@ -31,6 +31,7 @@ type Config struct {
 	HTTPPort        int                `envconfig:"HTTP_PORT" default:"80"`
 	LogLevel        string             `envconfig:"LOG_LEVEL" default:"debug"`
 	CacheControl    cachecontrol.Rules `envconfig:"CACHE_CONTROL_RULES"`
+	ChunkedTransfer bool               `envconfig:"MEDIASTORE_CHUNKED_TRANSFER"`
 }
 
 func loadConfig() (Config, error) {
@@ -42,6 +43,9 @@ func loadConfig() (Config, error) {
 	if cfg.UploadDriver != "s3" && cfg.UploadDriver != "mediastore" {
 		return cfg, errors.New(`invalid UPLOAD_DRIVER, valid options are "s3" and "mediastore"`)
 	}
+	if cfg.ChunkedTransfer && cfg.UploadDriver != "mediastore" {
+		return cfg, errors.New("MEDIASTORE_CHUNKED_TRANSFERS should only be defined for the mediastore UPLOAD_DRIVER")
+	}
 	return cfg, nil
 }
 
@@ -50,7 +54,7 @@ func (c *Config) uploader() (uploader.Uploader, error) {
 		return s3.New()
 	}
 	if c.UploadDriver == "mediastore" {
-		return mediastore.New()
+		return mediastore.New(mediastore.DriverOptions{ChunkedTransfer: c.ChunkedTransfer})
 	}
 	return nil, fmt.Errorf("invalid upload driver %q", c.UploadDriver)
 }
