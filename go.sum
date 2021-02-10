@@ -24,8 +24,8 @@ github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.0.2 h1:4AH9fFjUlV
 github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.0.2/go.mod h1:45MfaXZ0cNbeuT0KQ1XJylq8A6+OpVV2E5kvY/Kq+u8=
 github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.0.1 h1:U78TX1VNmbtb7Mea2LdXQXNtLJ6wWZ0yDJgEYeRX0wg=
 github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.0.1/go.mod h1:IQF5AljyiiUz/CnLbe1FeE3hZZ/Kr87gJ1+/yEYel3I=
-github.com/aws/aws-sdk-go-v2/service/mediastore v1.1.0 h1:j4sxe1iw8HOoEisPWri2XDOhWQ+3aUXDvtkNjG9vEKs=
-github.com/aws/aws-sdk-go-v2/service/mediastore v1.1.0/go.mod h1:TITXnvaujGdNlpiD3N5ud/NdUKK5//mIfC+EzlCqC9M=
+github.com/aws/aws-sdk-go-v2/service/mediastore v1.1.1 h1:tl/58Fn+6E9VTEmconNpPqDWSZM+aeV1DjI/sahJYLQ=
+github.com/aws/aws-sdk-go-v2/service/mediastore v1.1.1/go.mod h1:gevnsX8qzzxtNcZoSab72+PNtrfFmgb1n1Z4GKbgkxU=
 github.com/aws/aws-sdk-go-v2/service/mediastoredata v1.1.0 h1:leq+NN0jABMQYhKi03itwG20fiAjihDlehU2ONYeB9k=
 github.com/aws/aws-sdk-go-v2/service/mediastoredata v1.1.0/go.mod h1:vPvDfFWEvX0sfC7XirZF562eiZ49A90zmioU3S2CpSs=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.1.0 h1:d3PK2s3MB8ikznU/tChWoWQM2EVHo+4ZymURcl9WVE4=
