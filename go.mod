@@ -8,7 +8,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/mediastoredata v1.1.1
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.2.0
 	github.com/kelseyhightower/envconfig v1.4.0
-	github.com/sirupsen/logrus v1.7.0
+	github.com/sirupsen/logrus v1.7.1
 )
 
 go 1.15
