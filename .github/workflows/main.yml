@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-go@v2.1.3
         id: go
         with:
-          go-version: 1.x
+          go-version: 1.16
 
       - uses: actions/checkout@v2.3.4
 
@@ -45,10 +45,10 @@ jobs:
         id: go
         with:
           stable: false
-          go-version: 1.x
+          go-version: 1.16
 
       - run: |
-          GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@master
+          go install honnef.co/go/tools/cmd/staticcheck@master
 
       - name: get staticcheck version
         id: get-staticcheck-version
@@ -81,7 +81,7 @@ jobs:
       - uses: actions/setup-go@v2.1.3
         id: go
         with:
-          go-version: 1.x
+          go-version: 1.16
 
       - name: go-build
         run: go build -o s3-upload-proxy -mod readonly
