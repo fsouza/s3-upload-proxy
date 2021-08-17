@@ -7,11 +7,10 @@ package mediastore
 import (
 	"sync"
 
-	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/service/mediastore"
-	"github.com/aws/aws-sdk-go-v2/service/mediastoredata"
-	"github.com/aws/aws-sdk-go-v2/service/mediastoredata/types"
-	awsint "github.com/fsouza/s3-upload-proxy/internal/aws"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/mediastore"
+	"github.com/aws/aws-sdk-go/service/mediastoredata"
 	"github.com/fsouza/s3-upload-proxy/internal/uploader"
 )
 
@@ -23,22 +22,22 @@ type DriverOptions struct {
 
 // New returns an uploader that sends objects to Elemental MediaStore.
 func New(options DriverOptions) (uploader.Uploader, error) {
-	u := msUploader{uploadAvailability: types.UploadAvailabilityStandard}
+	u := msUploader{uploadAvailability: mediastoredata.UploadAvailabilityStandard}
 	if options.ChunkedTransfer {
-		u.uploadAvailability = types.UploadAvailabilityStreaming
+		u.uploadAvailability = mediastoredata.UploadAvailabilityStreaming
 	}
-	sess, err := awsint.Config()
+	sess, err := session.NewSession()
 	if err != nil {
 		return nil, err
 	}
-	u.client = mediastore.NewFromConfig(sess)
+	u.client = mediastore.New(sess)
 	return &u, nil
 }
 
 type msUploader struct {
-	client             *mediastore.Client
+	client             *mediastore.MediaStore
 	containers         sync.Map
-	uploadAvailability types.UploadAvailability
+	uploadAvailability string
 }
 
 func (u *msUploader) Upload(options uploader.Options) error {
@@ -50,10 +49,10 @@ func (u *msUploader) Upload(options uploader.Options) error {
 		Path:               aws.String(options.Path),
 		ContentType:        options.ContentType,
 		CacheControl:       options.CacheControl,
-		Body:               options.Body,
-		UploadAvailability: u.uploadAvailability,
+		Body:               aws.ReadSeekCloser(options.Body),
+		UploadAvailability: aws.String(u.uploadAvailability),
 	}
-	_, err = client.PutObject(options.Context, &input)
+	_, err = client.PutObjectWithContext(options.Context, &input)
 	return err
 }
 
@@ -63,6 +62,6 @@ func (u *msUploader) Delete(options uploader.Options) error {
 		return err
 	}
 	input := mediastoredata.DeleteObjectInput{Path: aws.String(options.Path)}
-	_, err = client.DeleteObject(options.Context, &input)
+	_, err = client.DeleteObjectWithContext(options.Context, &input)
 	return err
 }

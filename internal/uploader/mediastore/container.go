@@ -5,15 +5,13 @@
 package mediastore
 
 import (
-	"context"
-
-	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/service/mediastore"
-	"github.com/aws/aws-sdk-go-v2/service/mediastoredata"
-	awsint "github.com/fsouza/s3-upload-proxy/internal/aws"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/mediastore"
+	"github.com/aws/aws-sdk-go/service/mediastoredata"
 )
 
-func (u *msUploader) getDataClientForContainer(name string) (*mediastoredata.Client, error) {
+func (u *msUploader) getDataClientForContainer(name string) (*mediastoredata.MediaStoreData, error) {
 	v, ok := u.containers.Load(name)
 	if !ok {
 		client, err := u.newDataClient(name)
@@ -23,23 +21,20 @@ func (u *msUploader) getDataClientForContainer(name string) (*mediastoredata.Cli
 		v = client
 		u.containers.Store(name, v)
 	}
-	return v.(*mediastoredata.Client), nil
+	return v.(*mediastoredata.MediaStoreData), nil
 }
 
-func (u *msUploader) newDataClient(containerName string) (*mediastoredata.Client, error) {
-	resp, err := u.client.DescribeContainer(context.Background(), &mediastore.DescribeContainerInput{
+func (u *msUploader) newDataClient(containerName string) (*mediastoredata.MediaStoreData, error) {
+	resp, err := u.client.DescribeContainer(&mediastore.DescribeContainerInput{
 		ContainerName: aws.String(containerName),
 	})
 	if err != nil {
 		return nil, err
 	}
-	cfg, err := awsint.Config()
+	sess, err := session.NewSession(aws.NewConfig().WithEndpoint(*resp.Container.Endpoint))
 	if err != nil {
 		return nil, err
 	}
-	cfg.EndpointResolver = aws.EndpointResolverFunc(func(string, string) (aws.Endpoint, error) {
-		return aws.Endpoint{URL: *resp.Container.Endpoint}, nil
-	})
-	client := mediastoredata.NewFromConfig(cfg)
+	client := mediastoredata.New(sess)
 	return client, nil
 }
