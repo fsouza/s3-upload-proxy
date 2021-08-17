@@ -5,32 +5,32 @@
 package s3
 
 import (
-	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/feature/s3/manager"
-	"github.com/aws/aws-sdk-go-v2/service/s3"
-	awsint "github.com/fsouza/s3-upload-proxy/internal/aws"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/fsouza/s3-upload-proxy/internal/uploader"
 )
 
 // New returns an uploader that sends objects to S3.
 func New() (uploader.Uploader, error) {
 	u := s3Uploader{}
-	sess, err := awsint.Config()
+	sess, err := session.NewSession()
 	if err != nil {
 		return nil, err
 	}
-	u.client = s3.NewFromConfig(sess)
-	u.upload = manager.NewUploader(u.client)
+	u.client = s3.New(sess)
+	u.upload = s3manager.NewUploader(sess)
 	return &u, nil
 }
 
 type s3Uploader struct {
-	client *s3.Client
-	upload *manager.Uploader
+	client *s3.S3
+	upload *s3manager.Uploader
 }
 
 func (u *s3Uploader) Upload(options uploader.Options) error {
-	_, err := u.upload.Upload(options.Context, &s3.PutObjectInput{
+	_, err := u.upload.UploadWithContext(options.Context, &s3manager.UploadInput{
 		Bucket:       aws.String(options.Bucket),
 		Key:          aws.String(options.Path),
 		Body:         options.Body,
@@ -41,7 +41,7 @@ func (u *s3Uploader) Upload(options uploader.Options) error {
 }
 
 func (u *s3Uploader) Delete(options uploader.Options) error {
-	_, err := u.client.DeleteObject(options.Context, &s3.DeleteObjectInput{
+	_, err := u.client.DeleteObjectWithContext(options.Context, &s3.DeleteObjectInput{
 		Bucket: aws.String(options.Bucket),
 		Key:    aws.String(options.Path),
 	})
