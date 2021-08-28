@@ -84,10 +84,9 @@ jobs:
           CGO_ENABLED: 0
 
       - name: docker-publish
-        uses: docker://docker
-        env:
-          DOCKER_USERNAME: ${{ secrets.docker_username }}
-          DOCKER_PASSWORD: ${{ secrets.docker_password }}
+        uses: fsouza/docker-publish-action@main
         with:
-          entrypoint: sh
-          args: ci/docker-build.sh
+          dockerfile: ci/Dockerfile
+          docker-image: fsouza/s3-upload-proxy
+          docker-username: ${{ secrets.docker_username }}
+          docker-password: ${{ secrets.docker_password }}
