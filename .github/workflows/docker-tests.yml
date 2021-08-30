@@ -15,5 +15,5 @@ jobs:
       - name: test Dockerfile
         uses: fsouza/docker-publish-action@v1.0.0
         with:
-          image-name: fsouza/s3-upload-proxy
+          docker-image: fsouza/s3-upload-proxy
           skip-push: true
