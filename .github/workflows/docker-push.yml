@@ -22,7 +22,7 @@ jobs:
 
       - name: docker-publish
         if: github.event.ref_type == 'tag'
-        uses: fsouza/docker-publish-action@v1.0.0
+        uses: fsouza/docker-publish-action@v1.0.1
         with:
           dockerfile: ci/Dockerfile
           docker-image: fsouza/s3-upload-proxy
