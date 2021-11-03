@@ -18,7 +18,7 @@ jobs:
         with:
           go-version: 1.17
 
-      - uses: actions/checkout@v2.3.5
+      - uses: actions/checkout@v2.4.0
 
       - name: run-tests
         run: go test -race -vet all ./...
@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2.3.5
+      - uses: actions/checkout@v2.4.0
 
       - uses: golangci/golangci-lint-action@v2.5.2
 
@@ -57,7 +57,7 @@ jobs:
           path: ~/.cache/staticcheck
           key: "${{ steps.get-staticcheck-version.outputs.version }}"
 
-      - uses: actions/checkout@v2.3.5
+      - uses: actions/checkout@v2.4.0
 
       - name: run staticcheck
         run: |
@@ -71,7 +71,7 @@ jobs:
       - lint
       - staticcheck
     steps:
-      - uses: actions/checkout@v2.3.5
+      - uses: actions/checkout@v2.4.0
 
       - uses: actions/setup-go@v2.1.4
         id: go
