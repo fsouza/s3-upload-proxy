@@ -9,9 +9,6 @@ on:
     paths:
       - ci/.goreleaser.yml
 
-permissions:
-  contents: read
-
 jobs:
   test-goreleaser:
     runs-on: ubuntu-latest
