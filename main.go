@@ -11,6 +11,7 @@ import (
 	"mime"
 	"net"
 	"net/http"
+	"os"
 	"path/filepath"
 	"strings"
 	"time"
@@ -20,7 +21,7 @@ import (
 	"github.com/fsouza/s3-upload-proxy/internal/uploader/mediastore"
 	"github.com/fsouza/s3-upload-proxy/internal/uploader/s3"
 	"github.com/kelseyhightower/envconfig"
-	"github.com/sirupsen/logrus"
+	"golang.org/x/exp/slog"
 )
 
 // Config is the configuration of the s3-uploader.
@@ -59,14 +60,16 @@ func (c *Config) uploader() (uploader.Uploader, error) {
 	return nil, fmt.Errorf("invalid upload driver %q", c.UploadDriver)
 }
 
-func (c *Config) logger() *logrus.Logger {
-	level, err := logrus.ParseLevel(c.LogLevel)
-	if err != nil {
-		level = logrus.DebugLevel
+func (c *Config) logger() slog.Logger {
+	levels := map[string]slog.Level{
+		"debug":   slog.DebugLevel,
+		"info":    slog.InfoLevel,
+		"warning": slog.WarnLevel,
+		"warn":    slog.WarnLevel,
+		"error":   slog.ErrorLevel,
 	}
-	logger := logrus.New()
-	logger.Level = level
-	return logger
+	opts := slog.HandlerOptions{Level: levels[c.LogLevel]}
+	return slog.New(opts.NewTextHandler(os.Stderr))
 }
 
 func healthcheck(w http.ResponseWriter, r *http.Request) {
@@ -86,7 +89,8 @@ func main() {
 
 	uper, err := cfg.uploader()
 	if err != nil {
-		logger.WithError(err).Fatal("failed to create uploader")
+		logger.Error("failed to create uploader", err)
+		os.Exit(1)
 	}
 
 	http.HandleFunc(cfg.HealthcheckPath, healthcheck)
@@ -100,7 +104,11 @@ func main() {
 
 		key := strings.TrimLeft(r.URL.Path, "/")
 		contentType := mime.TypeByExtension(filepath.Ext(key))
-		logFields := logrus.Fields{"bucket": cfg.BucketName, "objectKey": key, "contentType": contentType}
+		logger := logger.With(
+			slog.String("bucket", cfg.BucketName),
+			slog.String("objectkey", key),
+			slog.String("contentType", contentType),
+		)
 		options := uploader.Options{
 			Bucket:       cfg.BucketName,
 			Path:         key,
@@ -113,19 +121,19 @@ func main() {
 		case http.MethodPost, http.MethodPut:
 			err = uper.Upload(options)
 			if err != nil {
-				logger.WithFields(logFields).WithError(err).Error("failed to upload file")
+				logger.Error("failed to upload file", err)
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 				return
 			}
-			logger.WithFields(logFields).Debugf("finished upload in %s", time.Since(start))
+			logger.Debug(fmt.Sprintf("finished upload in %s", time.Since(start)))
 		case http.MethodDelete:
 			err = uper.Delete(options)
 			if err != nil {
-				logger.WithFields(logFields).WithError(err).Error("failed to delete file")
+				logger.Error("failed to delete file", err)
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 				return
 			}
-			logger.WithFields(logFields).Debugf("deleted in %s", time.Since(start))
+			logger.Debug(fmt.Sprintf("deleted in %s", time.Since(start)))
 		}
 		fmt.Fprintln(w, "OK")
 	})
@@ -133,10 +141,11 @@ func main() {
 	listenAddr := fmt.Sprintf(":%d", cfg.HTTPPort)
 	listener, err := net.Listen("tcp", listenAddr)
 	if err != nil {
-		logger.WithError(err).Fatal("failed to start listener")
+		logger.Error("failed to start listener", err)
+		os.Exit(1)
 	}
 	defer listener.Close()
-	logger.Infof("listening on %s", listener.Addr())
+	logger.Info(fmt.Sprintf("listening on %s", listener.Addr()))
 	http.Serve(listener, nil)
 }
 
