@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-go@v3.3.1
-        id: go
+        id: setup-go
         with:
           go-version: 1.19
 
@@ -54,7 +54,7 @@ jobs:
         uses: actions/cache@v3.0.11
         with:
           path: ~/.cache/staticcheck
-          key: "${{ steps.get-staticcheck-version.outputs.version }}"
+          key: "${{ steps.get-staticcheck-version.outputs.version }}-${{ steps.setup-go.outputs.go-version }}"
 
       - uses: actions/checkout@v3.1.0
 
