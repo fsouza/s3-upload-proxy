@@ -60,7 +60,7 @@ func (c *Config) uploader() (uploader.Uploader, error) {
 	return nil, fmt.Errorf("invalid upload driver %q", c.UploadDriver)
 }
 
-func (c *Config) logger() slog.Logger {
+func (c *Config) logger() *slog.Logger {
 	levels := map[string]slog.Level{
 		"debug":   slog.DebugLevel,
 		"info":    slog.InfoLevel,
