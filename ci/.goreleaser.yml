@@ -5,10 +5,7 @@ builds:
       - amd64
       - arm64
 archives:
-  - replacements:
-      darwin: Darwin
-      linux: Linux
-    files:
+  - files:
       - LICENSE
       - README.md
 checksum:
