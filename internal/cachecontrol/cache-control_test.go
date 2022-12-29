@@ -5,7 +5,6 @@
 package cachecontrol
 
 import (
-	"os"
 	"reflect"
 	"regexp"
 	"testing"
@@ -15,12 +14,10 @@ import (
 )
 
 func TestCacheControlRulesCanBeLoadedFromEnv(t *testing.T) {
-	os.Clearenv()
-	os.Setenv("RULES", `[{"regexp":".mp4$","value":"public, max-age=123456"},{"regexp":".html$","value":"public, max-age=60"}]`)
+	t.Setenv("RULES", `[{"regexp":".mp4$","value":"public, max-age=123456"},{"regexp":".html$","value":"public, max-age=60"}]`)
 	var value struct {
 		Rules Rules `envconfig:"RULES"`
 	}
-	t.Log(os.Getenv("RULES"))
 	expectedRules := map[string]Rule{
 		regexp.MustCompile(`.mp4$`).String():  {Value: "public, max-age=123456"},
 		regexp.MustCompile(`.html$`).String(): {Value: "public, max-age=60"},
@@ -41,8 +38,7 @@ func TestCacheControlRulesCanBeLoadedFromEnv(t *testing.T) {
 }
 
 func TestCacheControlRulesInvalidJSON(t *testing.T) {
-	os.Clearenv()
-	os.Setenv("RULES", `[{"regexp:".mp4"},{"regexp":".html",`)
+	t.Setenv("RULES", `[{"regexp:".mp4"},{"regexp":".html",`)
 	var value struct {
 		Rules Rules `envconfig:"RULES"`
 	}
