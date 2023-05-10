@@ -20,6 +20,7 @@ jobs:
       - name: build
         uses: docker/build-push-action@v4.0.0
         with:
+          cache-from: fsouzaci/gha-cache:s3-upload-proxy
           context: .
           push: false
           tags: fsouza/s3-upload-proxy:latest

@@ -38,6 +38,8 @@ jobs:
       - name: build and push
         uses: docker/build-push-action@v4.0.0
         with:
+          cache-from: fsouzaci/gha-cache:s3-upload-proxy
+          cache-to: fsouzaci/gha-cache:s3-upload-proxy
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
