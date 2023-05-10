@@ -1,9 +1,11 @@
 FROM golang:1.20.4-alpine AS build
 
-ENV  CGO_ENABLED 0
+ENV CGO_ENABLED 0
 WORKDIR /code
-ADD  . ./
-RUN  go install
+ADD go.mod go.sum ./
+RUN go mod download
+ADD . ./
+RUN go install
 RUN apk add --no-cache mailcap
 
 FROM gcr.io/distroless/static
