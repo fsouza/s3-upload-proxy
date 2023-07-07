@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"log/slog"
 	"mime"
 	"net"
 	"net/http"
@@ -21,7 +22,6 @@ import (
 	"github.com/fsouza/s3-upload-proxy/internal/uploader/mediastore"
 	"github.com/fsouza/s3-upload-proxy/internal/uploader/s3"
 	"github.com/kelseyhightower/envconfig"
-	"golang.org/x/exp/slog"
 )
 
 // Config is the configuration of the s3-uploader.
