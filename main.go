@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"log/slog"
 	"mime"
 	"net"
 	"net/http"
@@ -21,7 +22,6 @@ import (
 	"github.com/fsouza/s3-upload-proxy/internal/uploader/mediastore"
 	"github.com/fsouza/s3-upload-proxy/internal/uploader/s3"
 	"github.com/kelseyhightower/envconfig"
-	"golang.org/x/exp/slog"
 )
 
 // Config is the configuration of the s3-uploader.
@@ -62,14 +62,14 @@ func (c *Config) uploader() (uploader.Uploader, error) {
 
 func (c *Config) logger() *slog.Logger {
 	levels := map[string]slog.Level{
-		"debug":   slog.DebugLevel,
-		"info":    slog.InfoLevel,
-		"warning": slog.WarnLevel,
-		"warn":    slog.WarnLevel,
-		"error":   slog.ErrorLevel,
+		"debug":   slog.LevelDebug,
+		"info":    slog.LevelInfo,
+		"warning": slog.LevelWarn,
+		"warn":    slog.LevelWarn,
+		"error":   slog.LevelError,
 	}
 	opts := slog.HandlerOptions{Level: levels[c.LogLevel]}
-	return slog.New(opts.NewTextHandler(os.Stderr))
+	return slog.New(slog.NewTextHandler(os.Stderr, &opts))
 }
 
 func healthcheck(w http.ResponseWriter, r *http.Request) {
