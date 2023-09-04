@@ -12,4 +12,4 @@ require (
 
 go 1.21
 
-toolchain 1.21.0
+toolchain go1.21.0
