@@ -22,15 +22,6 @@ jobs:
       - name: run-tests
         run: go test -race -vet all ./...
 
-  lint:
-    name: lint
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4.0.0
-
-      - uses: golangci/golangci-lint-action@v3
-
   staticcheck:
     name: staticcheck
     runs-on: ubuntu-latest
