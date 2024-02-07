@@ -9,4 +9,4 @@ require github.com/jmespath/go-jmespath v0.4.0 // indirect
 
 go 1.22
 
-toolchain go1.22-rc1
+toolchain go1.22.0
