@@ -13,7 +13,7 @@ jobs:
     name: tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.4
+      - uses: actions/checkout@v4.1.5
 
       - uses: actions/setup-go@v5.0.1
         with:
@@ -26,7 +26,7 @@ jobs:
     name: staticcheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.4
+      - uses: actions/checkout@v4.1.5
 
       - uses: actions/setup-go@v5.0.1
         id: setup-go
