@@ -1,7 +1,7 @@
 module github.com/fsouza/s3-upload-proxy
 
 require (
-	github.com/aws/aws-sdk-go v1.52.2
+	github.com/aws/aws-sdk-go v1.53.0
 	github.com/kelseyhightower/envconfig v1.4.0
 )
 
